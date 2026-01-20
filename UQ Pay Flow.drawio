@@ -698,7 +698,7 @@
           <mxGeometry height="118" width="277" x="-843" y="434" as="geometry" />
         </mxCell>
         <mxCell id="U2rX5dGLKtsL1cAguU3J-86" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="We have endpoints to get card transactions, but no API for card ledger. But we have reports for both." vertex="1">
-          <mxGeometry height="118" width="237" x="-843" y="731" as="geometry" />
+          <mxGeometry height="118" width="237" x="-837" y="998" as="geometry" />
         </mxCell>
         <mxCell id="U2rX5dGLKtsL1cAguU3J-87" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=28;fontStyle=1" value="Side Notes" vertex="1">
           <mxGeometry height="30" width="372" x="-837" y="248" as="geometry" />
@@ -710,7 +710,10 @@
           <mxGeometry height="118" width="140" x="-322" y="289" as="geometry" />
         </mxCell>
         <mxCell id="U2rX5dGLKtsL1cAguU3J-90" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Currently card authorization and card reversal will incur card transaction fee, and it is currently deducting from main account.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;this is the behaviour of fee_pass_through = &quot;N&quot;, need to ask them to configure to &#39;Y&quot; so customer bare the cost instead of us&lt;/div&gt;" vertex="1">
-          <mxGeometry height="306" width="237" x="-841" y="880" as="geometry" />
+          <mxGeometry height="306" width="237" x="-835" y="1147" as="geometry" />
+        </mxCell>
+        <mxCell id="U2rX5dGLKtsL1cAguU3J-91" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Card Update&lt;div&gt;Card Update Status&lt;/div&gt;&lt;div&gt;Card Activation&lt;br&gt;Card Recharge&lt;br&gt;Card Withdraw&lt;br&gt;&lt;br&gt;All of these need to wait for webhook as final confirmation, cant solely rely on 200 response.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="235" width="329" x="-837" y="735" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
