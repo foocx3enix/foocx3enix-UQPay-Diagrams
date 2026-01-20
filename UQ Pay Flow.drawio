@@ -709,6 +709,9 @@
         <mxCell id="U2rX5dGLKtsL1cAguU3J-89" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="First Name and Last Name cannot be updated" vertex="1">
           <mxGeometry height="118" width="140" x="-322" y="289" as="geometry" />
         </mxCell>
+        <mxCell id="U2rX5dGLKtsL1cAguU3J-90" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Currently card authorization and card reversal will incur card transaction fee, and it is currently deducting from main account.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;this is the behaviour of fee_pass_through = &quot;N&quot;, need to ask them to configure to &#39;Y&quot; so customer bare the cost instead of us&lt;/div&gt;" vertex="1">
+          <mxGeometry height="306" width="237" x="-841" y="880" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
