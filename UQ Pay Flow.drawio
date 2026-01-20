@@ -695,13 +695,19 @@
           <mxGeometry height="118" width="140" x="-843" y="297" as="geometry" />
         </mxCell>
         <mxCell id="U2rX5dGLKtsL1cAguU3J-85" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Update card needs to wait for card.update.succeeded for the change to be effective. Check spending controls guide." vertex="1">
-          <mxGeometry height="118" width="237" x="-843" y="434" as="geometry" />
+          <mxGeometry height="118" width="277" x="-843" y="434" as="geometry" />
         </mxCell>
         <mxCell id="U2rX5dGLKtsL1cAguU3J-86" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="We have endpoints to get card transactions, but no API for card ledger. But we have reports for both." vertex="1">
-          <mxGeometry height="118" width="237" x="-843" y="589" as="geometry" />
+          <mxGeometry height="118" width="237" x="-843" y="731" as="geometry" />
         </mxCell>
         <mxCell id="U2rX5dGLKtsL1cAguU3J-87" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=28;fontStyle=1" value="Side Notes" vertex="1">
           <mxGeometry height="30" width="372" x="-837" y="248" as="geometry" />
+        </mxCell>
+        <mxCell id="U2rX5dGLKtsL1cAguU3J-88" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Update card status needs to wait for card.status.update.succeeded for the change to be effective. Check Update Card Status API." vertex="1">
+          <mxGeometry height="138" width="277" x="-843" y="569" as="geometry" />
+        </mxCell>
+        <mxCell id="U2rX5dGLKtsL1cAguU3J-89" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="First Name and Last Name cannot be updated" vertex="1">
+          <mxGeometry height="118" width="140" x="-322" y="289" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
