@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.2">
   <diagram name="Page-1" id="WOyQN1ahWbcyHxYIAfmB">
-    <mxGraphModel dx="2815" dy="1043" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3946" dy="1191" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -710,10 +710,16 @@
           <mxGeometry height="118" width="140" x="-322" y="289" as="geometry" />
         </mxCell>
         <mxCell id="U2rX5dGLKtsL1cAguU3J-90" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Currently card authorization and card reversal will incur card transaction fee, and it is currently deducting from main account.&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;this is the behaviour of fee_pass_through = &quot;N&quot;, need to ask them to configure to &#39;Y&quot; so customer bare the cost instead of us&lt;/div&gt;" vertex="1">
-          <mxGeometry height="306" width="237" x="-835" y="1147" as="geometry" />
+          <mxGeometry height="306" width="237" x="-1492" y="563" as="geometry" />
         </mxCell>
         <mxCell id="U2rX5dGLKtsL1cAguU3J-91" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Card Update&lt;div&gt;Card Update Status&lt;/div&gt;&lt;div&gt;Card Activation&lt;br&gt;Card Recharge&lt;br&gt;Card Withdraw&lt;br&gt;&lt;br&gt;All of these need to wait for webhook as final confirmation, cant solely rely on 200 response.&lt;/div&gt;" vertex="1">
           <mxGeometry height="235" width="329" x="-837" y="735" as="geometry" />
+        </mxCell>
+        <mxCell id="U2rX5dGLKtsL1cAguU3J-92" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=28;fontStyle=1" value="Potential Fee" vertex="1">
+          <mxGeometry height="30" width="372" x="-1365" y="248" as="geometry" />
+        </mxCell>
+        <mxCell id="U2rX5dGLKtsL1cAguU3J-93" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="1. Transfer from banking account to issuing account : -10 USD from banking account&lt;div&gt;2. Card assignation: -1.5 USD from issuing account&amp;nbsp;&lt;/div&gt;&lt;div&gt;3. Card activation:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;-1.5 USD from card&lt;/span&gt;&lt;/div&gt;&lt;div&gt;4. Card transaction:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;-1.5 USD from issuing account&amp;nbsp;&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="174" width="612" x="-1492" y="340" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
