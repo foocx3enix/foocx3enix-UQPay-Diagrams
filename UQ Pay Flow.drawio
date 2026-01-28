@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.6">
   <diagram name="Page-1" id="WOyQN1ahWbcyHxYIAfmB">
-    <mxGraphModel dx="4844" dy="1668" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3447" dy="927" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -798,6 +798,18 @@
         </mxCell>
         <mxCell id="F2hvbT3MnweWfgcOOfyb-1" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="We have to deposit into banking account first, then only can transfer from banking account into issuing account.&lt;div&gt;There is no API for this transfer, need to manually transfer in webpage&lt;/div&gt;" vertex="1">
           <mxGeometry height="209" width="237" x="-241.5" y="4561" as="geometry" />
+        </mxCell>
+        <mxCell id="wa3cBrdc756TX96e0mzT-23" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Conversion (offramping) charges 0.25%" vertex="1">
+          <mxGeometry height="124" width="192" x="-202" y="4009" as="geometry" />
+        </mxCell>
+        <mxCell id="wa3cBrdc756TX96e0mzT-24" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="INFII charges 1.60%" vertex="1">
+          <mxGeometry height="124" width="192" x="-207" y="3041" as="geometry" />
+        </mxCell>
+        <mxCell id="wa3cBrdc756TX96e0mzT-25" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f8cecc;strokeColor=#b85450;fillStyle=solid;direction=west;gradientDirection=north;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="What is the charges by transferring from ramp account to banking account?" vertex="1">
+          <mxGeometry height="124" width="192" x="-207" y="4252" as="geometry" />
+        </mxCell>
+        <mxCell id="wa3cBrdc756TX96e0mzT-26" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f8cecc;strokeColor=#b85450;fillStyle=solid;direction=west;gradientDirection=north;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Transfer from banking account to issuing account takes 1% or 0.95% charges?" vertex="1">
+          <mxGeometry height="124" width="192" x="-469" y="4603.5" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
