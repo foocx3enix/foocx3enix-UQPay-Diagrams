@@ -477,7 +477,7 @@
         <mxCell id="U2rX5dGLKtsL1cAguU3J-30" parent="U2rX5dGLKtsL1cAguU3J-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=20;" value="Receive UQ Pay Final Amount From&amp;nbsp; Card Top Up Wallet In UQ Pay Zenix Wallet" vertex="1">
           <mxGeometry height="177" width="205.75" x="61.000000000000114" y="1353" as="geometry" />
         </mxCell>
-        <mxCell id="wa3cBrdc756TX96e0mzT-2" parent="U2rX5dGLKtsL1cAguU3J-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=20;" value="Create Conversion" vertex="1">
+        <mxCell id="wa3cBrdc756TX96e0mzT-2" parent="U2rX5dGLKtsL1cAguU3J-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=20;" value="Create Conversion (offramping)" vertex="1">
           <mxGeometry height="137" width="205.75" x="64" y="1637" as="geometry" />
         </mxCell>
         <mxCell id="wa3cBrdc756TX96e0mzT-7" parent="U2rX5dGLKtsL1cAguU3J-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=20;" value="Transfer from ramp account to banking account (VA)" vertex="1">
