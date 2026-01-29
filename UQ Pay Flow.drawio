@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.6">
   <diagram name="Page-1" id="WOyQN1ahWbcyHxYIAfmB">
-    <mxGraphModel dx="3713" dy="1043" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3078" dy="927" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -793,12 +793,6 @@
         <mxCell id="U2rX5dGLKtsL1cAguU3J-91" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Card Update&lt;div&gt;Card Update Status&lt;/div&gt;&lt;div&gt;Card Activation&lt;br&gt;Card Recharge&lt;br&gt;Card Withdraw&lt;br&gt;&lt;br&gt;All of these need to wait for webhook as final confirmation, cant solely rely on 200 response.&lt;/div&gt;" vertex="1">
           <mxGeometry height="235" width="329" x="-837" y="735" as="geometry" />
         </mxCell>
-        <mxCell id="U2rX5dGLKtsL1cAguU3J-92" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=28;fontStyle=1" value="Potential Fee" vertex="1">
-          <mxGeometry height="30" width="372" x="-1365" y="248" as="geometry" />
-        </mxCell>
-        <mxCell id="U2rX5dGLKtsL1cAguU3J-93" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="1. Transfer from banking account to issuing account : deduct 1% of amount from banking account&lt;div&gt;2. Card assignation: No charges&lt;/div&gt;&lt;div&gt;3. Card activation:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;No charges&lt;/span&gt;&lt;/div&gt;&lt;div&gt;4. Card transaction:&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;-0.5 USD from issuing account&amp;nbsp;&lt;/span&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="174" width="612" x="-1492" y="340" as="geometry" />
-        </mxCell>
         <mxCell id="F2hvbT3MnweWfgcOOfyb-1" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="We have to deposit into banking account first, then only can transfer from banking account into issuing account.&lt;div&gt;There is no API for this transfer, need to manually transfer in webpage&lt;/div&gt;" vertex="1">
           <mxGeometry height="209" width="237" x="-241.5" y="4561" as="geometry" />
         </mxCell>
@@ -807,12 +801,6 @@
         </mxCell>
         <mxCell id="wa3cBrdc756TX96e0mzT-24" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="INFII charges 1.60%" vertex="1">
           <mxGeometry height="124" width="192" x="-207" y="3041" as="geometry" />
-        </mxCell>
-        <mxCell id="wa3cBrdc756TX96e0mzT-25" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f8cecc;strokeColor=#b85450;fillStyle=solid;direction=west;gradientDirection=north;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="What is the charges by transferring from ramp account to banking account?" vertex="1">
-          <mxGeometry height="124" width="192" x="-207" y="4252" as="geometry" />
-        </mxCell>
-        <mxCell id="wa3cBrdc756TX96e0mzT-26" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#f8cecc;strokeColor=#b85450;fillStyle=solid;direction=west;gradientDirection=north;shadow=1;size=20;pointerEvents=1;fontSize=18;" value="Transfer from banking account to issuing account takes 1% or 0.95% charges?" vertex="1">
-          <mxGeometry height="124" width="192" x="-469" y="4603.5" as="geometry" />
         </mxCell>
         <mxCell id="wa3cBrdc756TX96e0mzT-28" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=18;startSize=6;strokeWidth=3;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="y97j0olidwcaBL62YXg2-91">
           <mxGeometry relative="1" as="geometry">
@@ -932,7 +920,7 @@
             <mxPoint y="-1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="41_SId2-0jk1pzboNIEl-37" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=24;align=left;" value="Potential Fee (目前已知费用)：&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. INFII Charges: 1.6%&lt;/div&gt;&lt;div&gt;2. Off-ramping (兑换crypto去Fiat): 0.25%&lt;br&gt;&lt;div&gt;3. Banking Account to Issuing Account (从银行账户转账至发卡账户): 1%&lt;/div&gt;&lt;div&gt;4. Card fee per transaction (卡交易费用): 0.5 USD (&amp;gt;50USD)&lt;/div&gt;&lt;/div&gt;&lt;div&gt;5. Ramp Account to Banking Account: No Fee&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Card Assignation (卡片分配): 无费用&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;Card Activation (&lt;/span&gt;卡片激活)&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;: 无费用&lt;/span&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="41_SId2-0jk1pzboNIEl-37" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=24;align=left;" value="Potential Fee (目前已知费用)：&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. INFII Charges: 1.6%&lt;/div&gt;&lt;div&gt;2. Off-ramping (兑换crypto去Fiat): 0.25%&lt;br&gt;&lt;div&gt;3. Banking Account to Issuing Account (从银行账户转账至发卡账户): 1%&lt;/div&gt;&lt;div&gt;4. Card fee per transaction (卡交易费用): 0.5 USD (Only for transaction below 50USD)&lt;/div&gt;&lt;/div&gt;&lt;div&gt;5. Ramp Account to Banking Account: No Fee&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Card Assignation (卡片分配): 无费用&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;Card Activation (&lt;/span&gt;卡片激活)&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;: 无费用&lt;/span&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="398" width="1226" x="1726" y="655" as="geometry" />
         </mxCell>
       </root>
