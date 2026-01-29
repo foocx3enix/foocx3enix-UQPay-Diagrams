@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.6">
   <diagram name="Page-1" id="WOyQN1ahWbcyHxYIAfmB">
-    <mxGraphModel dx="4014" dy="1191" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3713" dy="1043" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -932,8 +932,8 @@
             <mxPoint y="-1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="41_SId2-0jk1pzboNIEl-37" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=24;align=left;" value="Potential Fee (目前已知费用)：&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. INFII Charges: 1.6%&lt;br&gt;&lt;div&gt;2. Banking Account to Issuing Account (从银行账户转账至发卡账户)： 0.95% / 1%&lt;/div&gt;&lt;div&gt;3. Card fee per transaction (卡交易费用): 0.5 USD&lt;/div&gt;&lt;/div&gt;&lt;div&gt;4. Off-ramping (兑换): 0.25%&lt;/div&gt;" vertex="1">
-          <mxGeometry height="253" width="1226" x="1726" y="655" as="geometry" />
+        <mxCell id="41_SId2-0jk1pzboNIEl-37" parent="1" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;fontSize=24;align=left;" value="Potential Fee (目前已知费用)：&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;1. INFII Charges: 1.6%&lt;br&gt;&lt;div&gt;2. Banking Account to Issuing Account (从银行账户转账至发卡账户)： 0.95% / 1%&lt;/div&gt;&lt;div&gt;3. Card fee per transaction (卡交易费用): 0.5 USD&lt;/div&gt;&lt;/div&gt;&lt;div&gt;4. Off-ramping (兑换): 0.25%&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Card Assignation (卡片分配): 无费用&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;Card Activation (&lt;/span&gt;卡片激活)&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(237, 237, 237));&quot;&gt;: 无费用&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="398" width="1226" x="1726" y="655" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
