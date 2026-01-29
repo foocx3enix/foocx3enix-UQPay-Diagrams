@@ -843,7 +843,7 @@
         <mxCell id="41_SId2-0jk1pzboNIEl-9" edge="1" parent="1" source="41_SId2-0jk1pzboNIEl-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="41_SId2-0jk1pzboNIEl-8">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="41_SId2-0jk1pzboNIEl-3" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Customer" vertex="1">
+        <mxCell id="41_SId2-0jk1pzboNIEl-3" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;strokeWidth=2;fontSize=16;" value="Customer" vertex="1">
           <mxGeometry height="60" width="30" x="1739" y="153" as="geometry" />
         </mxCell>
         <mxCell id="41_SId2-0jk1pzboNIEl-10" edge="1" parent="1" source="41_SId2-0jk1pzboNIEl-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FF2D26;strokeWidth=2;" target="41_SId2-0jk1pzboNIEl-4">
