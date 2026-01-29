@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.6">
   <diagram name="Page-1" id="WOyQN1ahWbcyHxYIAfmB">
-    <mxGraphModel dx="4629" dy="1191" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3029" dy="758" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -818,6 +818,113 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="501" y="1310" as="sourcePoint" />
             <mxPoint x="641" y="1365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-1" parent="1" style="swimlane;whiteSpace=wrap;html=1;startSize=44;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;INFII&lt;/font&gt;" vertex="1">
+          <mxGeometry height="509" width="438" x="2057" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-4" parent="41_SId2-0jk1pzboNIEl-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" value="INFII Revenue Wallet&lt;div&gt;(16 USDT)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="150" x="232" y="74" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-5" parent="41_SId2-0jk1pzboNIEl-1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" value="INFII Card Top Up Wallet&lt;div&gt;&lt;span style=&quot;font-size: 16px; text-wrap-mode: nowrap; background-color: rgb(255, 255, 255);&quot;&gt;(995.93 USDT)&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="150" x="232" y="247" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-15" edge="1" parent="41_SId2-0jk1pzboNIEl-1" source="41_SId2-0jk1pzboNIEl-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" target="41_SId2-0jk1pzboNIEl-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="404" y="208" as="sourcePoint" />
+            <mxPoint x="670" y="208" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-16" connectable="0" parent="41_SId2-0jk1pzboNIEl-15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" value="Revenue Revert&lt;div&gt;(11.93 USDT)&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0801" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-9" edge="1" parent="1" source="41_SId2-0jk1pzboNIEl-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="41_SId2-0jk1pzboNIEl-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-3" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Customer" vertex="1">
+          <mxGeometry height="60" width="30" x="1739" y="153" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-10" edge="1" parent="1" source="41_SId2-0jk1pzboNIEl-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FF2D26;strokeWidth=2;" target="41_SId2-0jk1pzboNIEl-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-11" connectable="0" parent="41_SId2-0jk1pzboNIEl-10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" value="Charge 1.6%&amp;nbsp;&lt;div&gt;(16 USDT)&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0801" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=20;" value="Initiate Top Up 1000 USDT" vertex="1">
+          <mxGeometry height="225" width="174" x="1849" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-13" edge="1" parent="1" source="41_SId2-0jk1pzboNIEl-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" target="41_SId2-0jk1pzboNIEl-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2219" y="395" as="sourcePoint" />
+            <mxPoint x="2314" y="299" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-14" connectable="0" parent="41_SId2-0jk1pzboNIEl-13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" value="Remaining amount&amp;nbsp;&lt;div&gt;after INFII charges&lt;/div&gt;&lt;div&gt;（984 USDT)&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0801" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-17" parent="1" style="swimlane;whiteSpace=wrap;html=1;startSize=44;" value="&lt;font style=&quot;font-size: 21px;&quot;&gt;UQ Pay&lt;/font&gt;" vertex="1">
+          <mxGeometry height="509" width="1078" x="2664" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-18" parent="41_SId2-0jk1pzboNIEl-17" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" value="UQ Pay Ramp Account&lt;div&gt;(995.93 USDT)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="150" x="40" y="64" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-24" parent="41_SId2-0jk1pzboNIEl-17" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" value="UQ Pay Ramp Account&lt;div&gt;(993.44 USD)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="150" x="40" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-26" edge="1" parent="41_SId2-0jk1pzboNIEl-17" source="41_SId2-0jk1pzboNIEl-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontColor=#FF0202;strokeColor=#FF2D26;" target="41_SId2-0jk1pzboNIEl-24">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-73" y="653" as="sourcePoint" />
+            <mxPoint x="186" y="208" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-27" connectable="0" parent="41_SId2-0jk1pzboNIEl-26" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" value="Off-ramping&amp;nbsp;&lt;div&gt;by converting&amp;nbsp;&lt;/div&gt;&lt;div&gt;995.93 USDT&lt;/div&gt;&lt;div&gt;&amp;nbsp;to&amp;nbsp;&lt;/div&gt;&lt;div&gt;993.44 USD&lt;div&gt;(Charge 0.25%)&amp;nbsp;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0801" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-29" parent="41_SId2-0jk1pzboNIEl-17" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" value="UQ Pay Banking Account&lt;div&gt;(993.44 USD)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="150" x="449" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-30" edge="1" parent="41_SId2-0jk1pzboNIEl-17" source="41_SId2-0jk1pzboNIEl-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontColor=#FF0202;strokeColor=#FF2D26;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="41_SId2-0jk1pzboNIEl-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="364" y="430" as="sourcePoint" />
+            <mxPoint x="421" y="368" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-31" connectable="0" parent="41_SId2-0jk1pzboNIEl-30" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;fontColor=#FF0202;" value="Transfer From&amp;nbsp;&lt;div&gt;Ramp Account&amp;nbsp;&lt;/div&gt;&lt;div&gt;to&amp;nbsp;&lt;/div&gt;&lt;div&gt;Banking Account&lt;/div&gt;&lt;div&gt;(What are the cost?)&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0801" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-32" parent="41_SId2-0jk1pzboNIEl-17" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" value="UQ Pay Issuing Account&lt;div&gt;(984 USD)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="150" x="872" y="338" as="geometry" />
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-34" edge="1" parent="41_SId2-0jk1pzboNIEl-17" source="41_SId2-0jk1pzboNIEl-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontColor=#FF0202;strokeColor=#FF2D26;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="41_SId2-0jk1pzboNIEl-32">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="728" y="463" as="sourcePoint" />
+            <mxPoint x="752" y="309" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-35" connectable="0" parent="41_SId2-0jk1pzboNIEl-34" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;fontColor=#FF0202;" value="Transfer From&amp;nbsp;&lt;div&gt;Banking Account&amp;nbsp;&lt;/div&gt;&lt;div&gt;to&amp;nbsp;&lt;/div&gt;&lt;div&gt;Issuing&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: light-dark(rgb(255, 2, 2), rgb(255, 143, 143));&quot;&gt;&amp;nbsp;Account&lt;/span&gt;&lt;/div&gt;&lt;div&gt;(Is the cost 0.95% or 1%?)&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0801" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-22" edge="1" parent="1" source="41_SId2-0jk1pzboNIEl-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" target="41_SId2-0jk1pzboNIEl-18">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2635" y="216" as="sourcePoint" />
+            <mxPoint x="2635" y="329" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41_SId2-0jk1pzboNIEl-23" connectable="0" parent="41_SId2-0jk1pzboNIEl-22" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" value="Deposit into&amp;nbsp;&lt;div&gt;UQ Pay&amp;nbsp;&lt;/div&gt;&lt;div&gt;Ramp Account&amp;nbsp;&lt;/div&gt;&lt;div&gt;(995.93 USDT)&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0801" as="geometry">
+            <mxPoint y="-1" as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
