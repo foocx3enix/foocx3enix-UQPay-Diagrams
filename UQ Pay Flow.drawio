@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.7">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="29.3.8">
   <diagram name="Page-1" id="WOyQN1ahWbcyHxYIAfmB">
-    <mxGraphModel dx="6440" dy="2780" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3549" dy="1191" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -10,7 +10,7 @@
         <mxCell id="y97j0olidwcaBL62YXg2-27" parent="y97j0olidwcaBL62YXg2-26" style="swimlane;startSize=40;html=1;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;Customer&lt;/font&gt;" vertex="1">
           <mxGeometry height="2153" width="190" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="y97j0olidwcaBL62YXg2-33" parent="y97j0olidwcaBL62YXg2-27" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=20;" value="Apply For Card&lt;div&gt;(Insert card limit &amp;amp; cardholder details)&lt;/div&gt;" vertex="1">
+        <mxCell id="y97j0olidwcaBL62YXg2-33" parent="y97j0olidwcaBL62YXg2-27" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=20;" value="Apply For Card&lt;div&gt;(Insert cardholder details)&lt;/div&gt;" vertex="1">
           <mxGeometry height="189" width="115" x="37.5" y="129" as="geometry" />
         </mxCell>
         <mxCell id="y97j0olidwcaBL62YXg2-63" parent="y97j0olidwcaBL62YXg2-27" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
