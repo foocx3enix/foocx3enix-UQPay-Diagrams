@@ -229,10 +229,22 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WCPQi5lEkdcVKBAkzerj" name="Flow">
-    <mxGraphModel dx="1414" dy="777" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1664" dy="914" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="BU1D3V5WSKyiYJsGSESY-1" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="Create Card Application (Account holders)" vertex="1">
+          <mxGeometry height="480" width="1852" x="72.00000000000045" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="BU1D3V5WSKyiYJsGSESY-2" parent="BU1D3V5WSKyiYJsGSESY-1" style="swimlane;startSize=20;html=1;" value="Front end" vertex="1">
+          <mxGeometry height="460" width="554" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BU1D3V5WSKyiYJsGSESY-3" parent="BU1D3V5WSKyiYJsGSESY-1" style="swimlane;startSize=20;html=1;" value="Lane 2" vertex="1">
+          <mxGeometry height="460" width="695" x="554" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BU1D3V5WSKyiYJsGSESY-4" parent="BU1D3V5WSKyiYJsGSESY-1" style="swimlane;startSize=20;html=1;" value="Lane 3" vertex="1">
+          <mxGeometry height="460" width="603" x="1249" y="20" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
