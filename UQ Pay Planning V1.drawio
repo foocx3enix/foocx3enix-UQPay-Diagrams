@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" pages="2">
   <diagram name="Tables" id="zHlgq6CwFgONvcef2E9p">
-    <mxGraphModel dx="1260" dy="561" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2500" dy="935" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -751,12 +751,12 @@
           <mxGeometry height="149" width="426" x="869" y="1557" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-14" parent="1" style="shape=table;startSize=37;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;" value="UQPAY_CARDS" vertex="1">
-          <mxGeometry height="427" width="774.6250000000001" x="38" y="1999" as="geometry">
+          <mxGeometry height="427" width="1086.63" x="-274" y="1999" as="geometry">
             <mxRectangle height="37" width="161" x="79" y="121" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-15" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;" value="" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="37" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="37" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-16" parent="7_QbFYXz4KgsArV6x98U-15" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;whiteSpace=wrap;html=1;" value="PK" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -769,12 +769,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-18" parent="7_QbFYXz4KgsArV6x98U-15" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-19" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="67" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="67" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-20" parent="7_QbFYXz4KgsArV6x98U-19" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -787,12 +787,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-22" parent="7_QbFYXz4KgsArV6x98U-19" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-23" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="97" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="97" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-24" parent="7_QbFYXz4KgsArV6x98U-23" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -805,12 +805,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-26" parent="7_QbFYXz4KgsArV6x98U-23" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-27" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="127" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="127" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-28" parent="7_QbFYXz4KgsArV6x98U-27" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="FK" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -823,12 +823,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-30" parent="7_QbFYXz4KgsArV6x98U-27" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-71" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="157" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="157" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-72" parent="7_QbFYXz4KgsArV6x98U-71" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -841,12 +841,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-74" parent="7_QbFYXz4KgsArV6x98U-71" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="the card id in uq pay" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-51" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="187" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="187" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-52" parent="7_QbFYXz4KgsArV6x98U-51" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -859,12 +859,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-54" parent="7_QbFYXz4KgsArV6x98U-51" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="For now all currency will be &#39;USD&#39;" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-55" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="217" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="217" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-56" parent="7_QbFYXz4KgsArV6x98U-55" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -877,12 +877,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-58" parent="7_QbFYXz4KgsArV6x98U-55" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="The card number but masked. We cannot keep card number due to compliance" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="8fv_6Ma1QHBiUUYe8ghG-1" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="247" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="247" as="geometry" />
         </mxCell>
         <mxCell id="8fv_6Ma1QHBiUUYe8ghG-2" parent="8fv_6Ma1QHBiUUYe8ghG-1" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -895,12 +895,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="8fv_6Ma1QHBiUUYe8ghG-4" parent="8fv_6Ma1QHBiUUYe8ghG-1" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="Hashed card number" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-59" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="277" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="277" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-60" parent="7_QbFYXz4KgsArV6x98U-59" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -913,12 +913,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-62" parent="7_QbFYXz4KgsArV6x98U-59" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-31" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="307" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="307" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-32" parent="7_QbFYXz4KgsArV6x98U-31" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -930,13 +930,13 @@
             <mxRectangle height="30" width="158" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="7_QbFYXz4KgsArV6x98U-34" parent="7_QbFYXz4KgsArV6x98U-31" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="pending_assignation, pending_activation, pending_card_init, activate, frozen, pending_close, closed, removed, blocked" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+        <mxCell id="7_QbFYXz4KgsArV6x98U-34" parent="7_QbFYXz4KgsArV6x98U-31" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="pending_assignation, pending_activation, pending_card_init, activate, frozen, pending_close, closed, removed, blocked, frozen_max_otp_attempt_reached" vertex="1">
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-35" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="337" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="337" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-36" parent="7_QbFYXz4KgsArV6x98U-35" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" value="" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -949,12 +949,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-38" parent="7_QbFYXz4KgsArV6x98U-35" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" value="NULL, PENDING, ACTIVE, FROZEN, BLOCKED, PRE_CANCEL, CANCELLED, LOST, STOLEN, FAILED" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-43" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="367" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="367" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-44" parent="7_QbFYXz4KgsArV6x98U-43" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -967,12 +967,12 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-46" parent="7_QbFYXz4KgsArV6x98U-43" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-47" parent="7_QbFYXz4KgsArV6x98U-14" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" vertex="1">
-          <mxGeometry height="30" width="774.6250000000001" y="397" as="geometry" />
+          <mxGeometry height="30" width="1086.63" y="397" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-48" parent="7_QbFYXz4KgsArV6x98U-47" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;editable=1;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
           <mxGeometry height="30" width="30" as="geometry">
@@ -985,24 +985,24 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-50" parent="7_QbFYXz4KgsArV6x98U-47" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;whiteSpace=wrap;html=1;" vertex="1">
-          <mxGeometry height="30" width="586.6250000000001" x="188" as="geometry">
-            <mxRectangle height="30" width="586.6250000000001" as="alternateBounds" />
+          <mxGeometry height="30" width="898.6300000000001" x="188" as="geometry">
+            <mxRectangle height="30" width="898.6300000000001" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-63" parent="1" style="shape=note;whiteSpace=wrap;backgroundOutline=1;autosizeText=0;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;fontSize=12;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;align=left;verticalAlign=top;" value="Rules&#xa;&#xa;1. Admin can only deliver card to cardholder with status = created. If cardholder status is admin_action_required, then we need to contact UQPay to resolve it first. We might need a refresh button to trigger cardholder status checking to UQ Pay. We will also need to build webhook to listen for &quot;&#xa;cardholder.updated&quot; event to update this cardholder status to created." vertex="1">
           <mxGeometry height="150" width="586" x="1149" y="1142" as="geometry" />
         </mxCell>
-        <mxCell id="7_QbFYXz4KgsArV6x98U-68" parent="1" style="shape=note;whiteSpace=wrap;backgroundOutline=1;autosizeText=0;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;fontSize=12;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;align=left;verticalAlign=top;" value="internal_card_status:&#xa;&#xa;pending_assignation - after admin has delivered the card, pending customer to receive the card + initiate the activation process&#xa;pending_activation - customer has initiated the activation process, OTP has been sent to customer.&#xa;pending_card_init - after the card has been activated in UQ Pay, we need to configure some default configuration in UQ Pay for the card&#xa;activate - after we have configure the default configuration in UQ Pay for the card&#xa;frozen - when customer initiate card freeze&#xa;pending_close - when customer initiate card closure. Card status will be PRE_CANCEL in UQ Pay.&#xa;closed - when card is fully closed. Card status will be CANCELLED in UQ Pay.&#xa;removed - when customer wants to remove this card from his view&#xa;blocked - when UQ Pay block this card due to high risk / suspicous activity" vertex="1">
-          <mxGeometry height="217" width="748" x="869" y="1999" as="geometry" />
+        <mxCell id="7_QbFYXz4KgsArV6x98U-68" parent="1" style="shape=note;whiteSpace=wrap;backgroundOutline=1;autosizeText=0;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;fontSize=12;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;align=left;verticalAlign=top;" value="internal_card_status:&#xa;&#xa;pending_assignation - after admin has delivered the card, pending customer to receive the card + initiate the activation process&#xa;pending_activation - customer has initiated the activation process, OTP has been sent to customer.&#xa;pending_card_init - after the card has been activated in UQ Pay, we need to configure some default configuration in UQ Pay for the card&#xa;activate - after we have configure the default configuration in UQ Pay for the card&#xa;frozen - when customer initiate card freeze&#xa;pending_close - when customer initiate card closure. Card status will be PRE_CANCEL in UQ Pay.&#xa;closed - when card is fully closed. Card status will be CANCELLED in UQ Pay.&#xa;removed - when customer wants to remove this card from his view&#xa;blocked - when UQ Pay block this card due to high risk / suspicous activity&#xa;frozen_max_otp_attempt_reached - we internally freeze the card due to OTP max attempt reached. For now we only apply on card activation OTP" vertex="1">
+          <mxGeometry height="217" width="1037" x="869" y="1999" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-70" parent="1" style="shape=note;whiteSpace=wrap;backgroundOutline=1;autosizeText=0;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;fontSize=12;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;align=left;verticalAlign=top;" value="Note / Rules:&#xa;&#xa;1. When customer initiated the activation process, we will listen to UQ Pay webhook to get the OTP, then we will send the OTP to customer directly from our side. The OTP has no expiry time.&#xa;2. After card activation in UQ Pay succeed, we need to update the card to apply for default configuration, such as enabling 3D Secure, MCC configuration, per-transaction limit etc.&#xa;3. When customer initiate close card, in UQ Pay we update the status to PRE_CANCEL. This status is irreversible. The ongoing settlement will still proceed, so we have to wait for 30 days for the card status to turn into CANCELLED before we can get an accurate amount of available balance of the card.&#xa;4. For removing the card, it is just for our internal process to hide the card from customer&#39;s view. UQ Pay does not support for card removal after the card has been assigned to a cardholder.&#xa;5. We cannot update the card status to BLOCKED. This status can only be set by UQ Pay. If the card is blocked, we need to contact UQ Pay to resolve." vertex="1">
-          <mxGeometry height="217" width="748" x="1727" y="1999" as="geometry" />
+          <mxGeometry height="217" width="748" x="2020" y="1999" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-75" parent="1" style="shape=note;whiteSpace=wrap;backgroundOutline=1;autosizeText=0;fontColor=#000000;darkOpacity=0.05;fillColor=#FFF9B2;strokeColor=none;fillStyle=solid;fontSize=12;direction=west;gradientDirection=north;gradientColor=#FFF2A1;shadow=1;size=20;pointerEvents=1;align=left;verticalAlign=top;" value="uqpay_card_status:&#xa;&#xa;PENDING - the card has been assigned to a cardholder but pending activation&#xa;ACTIVE - after the card has been activated and ready for use&#xa;FREEZE - after the card has been frozen. Ongoing &amp; Authrorized transaction will still proceed, but future transaction are declined automatically&#xa;BLOCKED - when UQ Pay block this card due to high risk / suspicous activity&#xa;PRE_CANCEL - when customer initiated card closure in our system. This status is irreversible and will remain for 30 days.&#xa;CANCELLED - after the card has been in PRE_CANCEL status for 30 days, the card status will be CANCELLED.&#xa;LOST - after we report to UQ Pay about the card being lost. But as for now we do not allow customer to report for lost and stolen.&#xa;STOLEN - after we report to UQ Pay about the card being stolen. But as for now we do not allow customer to report for lost and stolen.&#xa;FAILED - this status only for virtual card, unrelated to us" vertex="1">
           <mxGeometry height="217" width="748" x="869" y="2258" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-115" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;strokeColor=default;fontSize=16;" value="Card Status Mapping Table" vertex="1">
-          <mxGeometry height="1184" width="653.3749694824219" x="1908" y="2258" as="geometry" />
+          <mxGeometry height="1184" width="653.3749694824219" x="2201" y="2258" as="geometry" />
         </mxCell>
         <mxCell id="7_QbFYXz4KgsArV6x98U-116" parent="7_QbFYXz4KgsArV6x98U-115" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=16;" value="" vertex="1">
           <mxGeometry height="105" width="653.3749694824219" y="30" as="geometry" />
