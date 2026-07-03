@@ -1206,7 +1206,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WCPQi5lEkdcVKBAkzerj" name="Flow">
-    <mxGraphModel dx="2575" dy="2203" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2943" dy="2403" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1646,12 +1646,12 @@
           <mxGeometry height="30" width="60" x="371" y="-345" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-129" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="Deactivate NAHC (Deactivate by Super Admin)" vertex="1">
-          <mxGeometry height="1191" width="1896" x="72" y="3056" as="geometry">
+          <mxGeometry height="1191" width="2266" x="72" y="3056" as="geometry">
             <mxRectangle height="26" width="259" x="72.00000000000045" y="55" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-130" parent="GlSb9yg3hfNqT-6A2M54-129" style="swimlane;startSize=20;html=1;" vertex="1">
-          <mxGeometry height="1171" width="1896" y="20" as="geometry" />
+          <mxGeometry height="1171" width="2266" y="20" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-131" edge="1" parent="GlSb9yg3hfNqT-6A2M54-130" source="GlSb9yg3hfNqT-6A2M54-132" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GlSb9yg3hfNqT-6A2M54-183">
           <mxGeometry relative="1" as="geometry">
@@ -1754,6 +1754,9 @@
         <mxCell id="GlSb9yg3hfNqT-6A2M54-212" parent="GlSb9yg3hfNqT-6A2M54-130" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Email to notify super admin&amp;nbsp;&lt;div&gt;about deactivation request approved&lt;/div&gt;" vertex="1">
           <mxGeometry height="40" width="60" x="1499" y="284" as="geometry" />
         </mxCell>
+        <mxCell id="GlSb9yg3hfNqT-6A2M54-223" edge="1" parent="GlSb9yg3hfNqT-6A2M54-130" source="GlSb9yg3hfNqT-6A2M54-214" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="GlSb9yg3hfNqT-6A2M54-222">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-214" parent="GlSb9yg3hfNqT-6A2M54-130" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Email to notify NAHC&amp;nbsp;&lt;div&gt;about account deactivated&lt;/div&gt;" vertex="1">
           <mxGeometry height="40" width="60" x="1771" y="284" as="geometry" />
         </mxCell>
@@ -1762,6 +1765,9 @@
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-216" parent="GlSb9yg3hfNqT-6A2M54-130" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Email to notify super admin&amp;nbsp;&lt;div&gt;about deactivation request declined&lt;/div&gt;" vertex="1">
           <mxGeometry height="40" width="60" x="667.5" y="835" as="geometry" />
+        </mxCell>
+        <mxCell id="GlSb9yg3hfNqT-6A2M54-222" parent="GlSb9yg3hfNqT-6A2M54-130" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="2051" y="289" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
