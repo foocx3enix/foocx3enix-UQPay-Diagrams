@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" pages="2">
+<mxfile host="app.diagrams.net" pages="3">
   <diagram name="Tables" id="zHlgq6CwFgONvcef2E9p">
     <mxGraphModel dx="2500" dy="935" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -1205,8 +1205,8 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="WCPQi5lEkdcVKBAkzerj" name="Flow">
-    <mxGraphModel dx="4120" dy="3044" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <diagram id="WCPQi5lEkdcVKBAkzerj" name="Flow (NAHC)">
+    <mxGraphModel dx="6867" dy="4540" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2304,10 +2304,10 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-122" parent="YoD2Qjo7LJYq9kDcyejo-45" style="labelPosition=center;verticalLabelPosition=middle;align=center;html=1;shape=mxgraph.basic.shaded_button;dx=10;fillColor=#E6E6E6;strokeColor=none;whiteSpace=wrap;" value="Approve request" vertex="1">
-          <mxGeometry height="60" width="132.5" x="1225" y="656" as="geometry" />
+          <mxGeometry height="60" width="132.5" x="1692" y="656" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-123" parent="YoD2Qjo7LJYq9kDcyejo-45" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="OTP" vertex="1">
-          <mxGeometry height="40" width="60" x="1543" y="666" as="geometry" />
+          <mxGeometry height="40" width="60" x="2010" y="666" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-124" edge="1" parent="YoD2Qjo7LJYq9kDcyejo-45" source="YoD2Qjo7LJYq9kDcyejo-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="YoD2Qjo7LJYq9kDcyejo-127">
           <mxGeometry relative="1" as="geometry" />
@@ -2330,10 +2330,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-130" parent="YoD2Qjo7LJYq9kDcyejo-45" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="OTP correct?" vertex="1">
-          <mxGeometry height="100" width="100" x="1737.5" y="636" as="geometry" />
+          <mxGeometry height="100" width="100" x="2204.5" y="636" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-131" parent="YoD2Qjo7LJYq9kDcyejo-45" style="rounded=1;whiteSpace=wrap;html=1;" value="Stuck at OTP confirmation" vertex="1">
-          <mxGeometry height="60" width="153" x="1936" y="656" as="geometry" />
+          <mxGeometry height="60" width="153" x="2403" y="656" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-132" edge="1" parent="YoD2Qjo7LJYq9kDcyejo-45" source="YoD2Qjo7LJYq9kDcyejo-123" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="YoD2Qjo7LJYq9kDcyejo-130">
           <mxGeometry relative="1" as="geometry" />
@@ -2345,11 +2345,11 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-136" parent="YoD2Qjo7LJYq9kDcyejo-45" style="rounded=1;whiteSpace=wrap;html=1;" value="Request approved" vertex="1">
-          <mxGeometry height="60" width="153" x="1711" y="874" as="geometry" />
+          <mxGeometry height="60" width="153" x="2178" y="874" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-137" edge="1" parent="YoD2Qjo7LJYq9kDcyejo-45" source="YoD2Qjo7LJYq9kDcyejo-130" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="YoD2Qjo7LJYq9kDcyejo-136">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1801" y="1098" as="targetPoint" />
+            <mxPoint x="2268" y="1098" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-138" connectable="0" parent="YoD2Qjo7LJYq9kDcyejo-137" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Yes" vertex="1">
@@ -2459,7 +2459,7 @@
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-217" parent="YoD2Qjo7LJYq9kDcyejo-45" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to NAHC regarding request approved" vertex="1">
           <mxGeometry height="40" width="60" x="1726" y="1960" as="geometry" />
         </mxCell>
-        <mxCell id="YoD2Qjo7LJYq9kDcyejo-226" edge="1" parent="YoD2Qjo7LJYq9kDcyejo-45" source="YoD2Qjo7LJYq9kDcyejo-224" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="YoD2Qjo7LJYq9kDcyejo-122">
+        <mxCell id="gbI05n4NB60AyJMEpR7m-2" edge="1" parent="YoD2Qjo7LJYq9kDcyejo-45" source="YoD2Qjo7LJYq9kDcyejo-224" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="gbI05n4NB60AyJMEpR7m-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-224" parent="YoD2Qjo7LJYq9kDcyejo-45" style="rounded=1;whiteSpace=wrap;html=1;" value="Enter Top Up details&lt;div&gt;1. Select currency (USDC / USDT)&lt;/div&gt;" vertex="1">
@@ -2477,7 +2477,38 @@
           <mxGeometry height="261" width="582.5" x="1148.25" y="2208" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-233" parent="YoD2Qjo7LJYq9kDcyejo-45" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to all checker regarding pending request" vertex="1">
-          <mxGeometry height="40" width="60" x="2161" y="884" as="geometry" />
+          <mxGeometry height="40" width="60" x="2628" y="884" as="geometry" />
+        </mxCell>
+        <mxCell id="gbI05n4NB60AyJMEpR7m-3" edge="1" parent="YoD2Qjo7LJYq9kDcyejo-45" source="gbI05n4NB60AyJMEpR7m-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="YoD2Qjo7LJYq9kDcyejo-122">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gbI05n4NB60AyJMEpR7m-1" parent="YoD2Qjo7LJYq9kDcyejo-45" style="rounded=1;whiteSpace=wrap;html=1;" value="Create quotation" vertex="1">
+          <mxGeometry height="60" width="153" x="1260" y="656" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="es-QFRtud6bf6VqKiOiQ" name="Flow (SHARED)">
+    <mxGraphModel dx="1185" dy="863" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="peg7Faa_bljCsb_JIir6-1" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="Card Deposit Flow" vertex="1">
+          <mxGeometry height="2851" width="3034" x="480" y="140" as="geometry">
+            <mxRectangle height="26" width="259" x="72.00000000000045" y="55" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="peg7Faa_bljCsb_JIir6-2" parent="peg7Faa_bljCsb_JIir6-1" style="swimlane;startSize=20;html=1;" vertex="1">
+          <mxGeometry height="2831" width="3034" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="RHuOZDOp-sgZLrfw2_ON-3" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="RHuOZDOp-sgZLrfw2_ON-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="RHuOZDOp-sgZLrfw2_ON-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RHuOZDOp-sgZLrfw2_ON-1" parent="peg7Faa_bljCsb_JIir6-2" style="ellipse;shape=doubleEllipse;html=1;dashed=0;whiteSpace=wrap;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="60" width="60" x="85" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="RHuOZDOp-sgZLrfw2_ON-2" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Initiate CTC" vertex="1">
+          <mxGeometry height="60" width="120" x="516" y="180" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
