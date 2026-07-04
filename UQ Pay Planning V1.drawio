@@ -2716,7 +2716,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="es-QFRtud6bf6VqKiOiQ" name="Flow (SHARED)">
-    <mxGraphModel dx="23140" dy="13560" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="7847" dy="13053" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -3223,12 +3223,12 @@
           <mxGeometry height="504" width="2537" x="472" y="-603" as="geometry" />
         </mxCell>
         <mxCell id="Hk8zabLyCdBdiwRQhur0-1" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="Card Application Flow" vertex="1">
-          <mxGeometry height="5894" width="7380" x="503" y="8931" as="geometry">
+          <mxGeometry height="5814" width="7380" x="391" y="-7815" as="geometry">
             <mxRectangle height="26" width="259" x="72.00000000000045" y="55" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Hk8zabLyCdBdiwRQhur0-2" parent="Hk8zabLyCdBdiwRQhur0-1" style="swimlane;startSize=20;html=1;" vertex="1">
-          <mxGeometry height="5874" width="7380" y="20" as="geometry" />
+          <mxGeometry height="5794" width="7380" y="20" as="geometry" />
         </mxCell>
         <mxCell id="Hk8zabLyCdBdiwRQhur0-5" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="Hk8zabLyCdBdiwRQhur0-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Hk8zabLyCdBdiwRQhur0-13">
           <mxGeometry relative="1" as="geometry">
@@ -3412,7 +3412,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="wWEBbpC3fcVFUPzhVsFw-51" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Listen to webhook" vertex="1">
+        <mxCell id="wWEBbpC3fcVFUPzhVsFw-51" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Listen to webhook about cardholder updated" vertex="1">
           <mxGeometry height="60" width="120" x="3099" y="1716" as="geometry" />
         </mxCell>
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-57" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="wWEBbpC3fcVFUPzhVsFw-44">
@@ -3461,8 +3461,8 @@
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-70" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wWEBbpC3fcVFUPzhVsFw-69" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="wWEBbpC3fcVFUPzhVsFw-67" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Check any pending card delivery request" vertex="1">
-          <mxGeometry height="60" width="120" x="1473" y="3607" as="geometry" />
+        <mxCell id="wWEBbpC3fcVFUPzhVsFw-67" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Check any pending card delivery request&lt;div&gt;(1. Cardholder must be SUCCESS)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="133" width="198" x="1422" y="3570.5" as="geometry" />
         </mxCell>
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-72" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wWEBbpC3fcVFUPzhVsFw-71" value="">
           <mxGeometry relative="1" as="geometry" />
@@ -3470,17 +3470,17 @@
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-69" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Deliver the card via logistic" vertex="1">
           <mxGeometry height="74" width="201" x="1833" y="3600" as="geometry" />
         </mxCell>
-        <mxCell id="wWEBbpC3fcVFUPzhVsFw-74" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wWEBbpC3fcVFUPzhVsFw-73">
+        <mxCell id="wWEBbpC3fcVFUPzhVsFw-76" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wWEBbpC3fcVFUPzhVsFw-75">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="wWEBbpC3fcVFUPzhVsFw-76" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wWEBbpC3fcVFUPzhVsFw-75">
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-39" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="YwIoBEZ7nTa_Ah90eQVZ-38">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-71" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Record a card for a cardholder&lt;div&gt;1. Enter the card number&lt;/div&gt;&lt;div&gt;2. Enter the parcel tracking id&lt;/div&gt;" vertex="1">
           <mxGeometry height="74" width="201" x="2233" y="3600" as="geometry" />
         </mxCell>
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-73" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to cardholder to notify the card is OTW" vertex="1">
-          <mxGeometry height="40" width="60" x="2827" y="3617" as="geometry" />
+          <mxGeometry height="40" width="60" x="5031" y="3617" as="geometry" />
         </mxCell>
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-88" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="wWEBbpC3fcVFUPzhVsFw-87">
           <mxGeometry relative="1" as="geometry" />
@@ -3490,7 +3490,7 @@
             <mxPoint x="1" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="wWEBbpC3fcVFUPzhVsFw-75" parent="Hk8zabLyCdBdiwRQhur0-2" style="rhombus;whiteSpace=wrap;html=1;" value="Any modifications required?&lt;div&gt;&lt;br&gt;&lt;div&gt;1. Incorrect card number entered&lt;/div&gt;&lt;div&gt;2. Incorrect parcel tracking id entered&lt;/div&gt;&lt;div&gt;3. Logistic issue causes card damage / card lost&lt;/div&gt;&lt;div&gt;4. Cardholder reports about not receiving the card&lt;/div&gt;&lt;div&gt;&amp;nbsp;(cardholder reports via Email,&amp;nbsp;&lt;/div&gt;&lt;div&gt;we do not have a reporting feature&amp;nbsp;&lt;/div&gt;&lt;div&gt;in Zenix System)&lt;/div&gt;&lt;/div&gt;" vertex="1">
+        <mxCell id="wWEBbpC3fcVFUPzhVsFw-75" parent="Hk8zabLyCdBdiwRQhur0-2" style="rhombus;whiteSpace=wrap;html=1;" value="Any modifications required?&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;1. Incorrect parcel tracking id entered&lt;/span&gt;&lt;/div&gt;&lt;div&gt;3. Logistic issue causes card damage / card lost&lt;/div&gt;&lt;div&gt;4. Cardholder reports about not receiving the card&lt;/div&gt;&lt;div&gt;&amp;nbsp;(cardholder reports via Email,&amp;nbsp;&lt;/div&gt;&lt;div&gt;we do not have a reporting feature&amp;nbsp;&lt;/div&gt;&lt;div&gt;in Zenix System)&lt;/div&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="375" width="389.5" x="2138.75" y="3871" as="geometry" />
         </mxCell>
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-85" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="wWEBbpC3fcVFUPzhVsFw-81">
@@ -3507,17 +3507,216 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="wWEBbpC3fcVFUPzhVsFw-86" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="wWEBbpC3fcVFUPzhVsFw-73">
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-18" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="wWEBbpC3fcVFUPzhVsFw-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="WkGYguV-J5u9SZB3bUCJ-17">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-81" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Update card delivery request" vertex="1">
-          <mxGeometry height="60" width="120" x="2794" y="4388" as="geometry" />
+          <mxGeometry height="60" width="120" x="2671" y="4388" as="geometry" />
         </mxCell>
         <mxCell id="wWEBbpC3fcVFUPzhVsFw-87" parent="Hk8zabLyCdBdiwRQhur0-2" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
           <mxGeometry height="30" width="30" x="1911" y="4043.5" as="geometry" />
         </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-14" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YwIoBEZ7nTa_Ah90eQVZ-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="374" y="5207" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-2" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="User" vertex="1">
+          <mxGeometry height="60" width="30" x="196" y="5177" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-12" parent="Hk8zabLyCdBdiwRQhur0-2" style="labelPosition=center;verticalLabelPosition=middle;align=center;html=1;shape=mxgraph.basic.shaded_button;dx=10;fillColor=#E6E6E6;strokeColor=none;whiteSpace=wrap;" value="Activate Card" vertex="1">
+          <mxGeometry height="60" width="100" x="657" y="5177" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-32" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="YwIoBEZ7nTa_Ah90eQVZ-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-16" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Zenix System" vertex="1">
+          <mxGeometry height="60" width="30" x="908" y="5177" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-17" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="YwIoBEZ7nTa_Ah90eQVZ-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-29" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Provide card number to activate" vertex="1">
+          <mxGeometry height="60" width="165" x="369" y="5177" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-30" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=-0.008;entryY=0.488;entryDx=0;entryDy=0;entryPerimeter=0;" target="YwIoBEZ7nTa_Ah90eQVZ-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-34" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="YwIoBEZ7nTa_Ah90eQVZ-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-35" connectable="0" parent="YwIoBEZ7nTa_Ah90eQVZ-34" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="-0.4868" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-37" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="WkGYguV-J5u9SZB3bUCJ-22">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1764" y="5206.999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-31" parent="Hk8zabLyCdBdiwRQhur0-2" style="rhombus;whiteSpace=wrap;html=1;" value="1. Card number valid?&lt;div&gt;2. Is this card belongs to this user?&lt;/div&gt;" vertex="1">
+          <mxGeometry height="211" width="205" x="1160" y="5101.5" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-36" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="YwIoBEZ7nTa_Ah90eQVZ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-33" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Return error to user" vertex="1">
+          <mxGeometry height="60" width="165" x="1180" y="5422" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-42" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YwIoBEZ7nTa_Ah90eQVZ-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-38" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="Zenix System" vertex="1">
+          <mxGeometry height="60" width="30" x="2820" y="3607" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-12" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="WkGYguV-J5u9SZB3bUCJ-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-15" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YwIoBEZ7nTa_Ah90eQVZ-48">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3242" y="3935" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-40" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Trigger card assignation API" vertex="1">
+          <mxGeometry height="60" width="169" x="3182" y="3607" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-47" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="wWEBbpC3fcVFUPzhVsFw-73">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-45" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Store the OTP internally" vertex="1">
+          <mxGeometry height="60" width="120" x="4631" y="3607" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-52" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YwIoBEZ7nTa_Ah90eQVZ-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-48" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Schuler to query card assignation order until SUCCESS" vertex="1">
+          <mxGeometry height="60" width="141" x="3422" y="3904" as="geometry" />
+        </mxCell>
+        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-51" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to admins for manual actions" vertex="1">
+          <mxGeometry height="40" width="60" x="3811" y="3914" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-7" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="WkGYguV-J5u9SZB3bUCJ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="WkGYguV-J5u9SZB3bUCJ-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-2" parent="Hk8zabLyCdBdiwRQhur0-2" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.web_page;" value="UQPay Production Dashboard" vertex="1">
+          <mxGeometry height="54" width="47" x="4569" y="3907" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-5" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="WkGYguV-J5u9SZB3bUCJ-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="WkGYguV-J5u9SZB3bUCJ-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-1" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="INFII Admin" vertex="1">
+          <mxGeometry height="60" width="30" x="4124" y="3904" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-3" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="WkGYguV-J5u9SZB3bUCJ-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-16" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="WkGYguV-J5u9SZB3bUCJ-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="WkGYguV-J5u9SZB3bUCJ-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-6" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Retrigger the card assignation OTP webhook" vertex="1">
+          <mxGeometry height="60" width="141" x="4976" y="3904" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-13" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="WkGYguV-J5u9SZB3bUCJ-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YwIoBEZ7nTa_Ah90eQVZ-45">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="4174" y="3636.999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-10" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Listen to webhook about card assignation OTP" vertex="1">
+          <mxGeometry height="60" width="120" x="3671" y="3607" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-19" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="WkGYguV-J5u9SZB3bUCJ-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="YwIoBEZ7nTa_Ah90eQVZ-38">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="3072" y="4050" />
+              <mxPoint x="2835" y="4050" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-20" connectable="0" parent="WkGYguV-J5u9SZB3bUCJ-19" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Yes" vertex="1">
+          <mxGeometry relative="1" x="-0.1943" y="4" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-17" parent="Hk8zabLyCdBdiwRQhur0-2" style="rhombus;whiteSpace=wrap;html=1;" value="Does the update includes&amp;nbsp;&lt;div&gt;assigning a new card?&lt;/div&gt;" vertex="1">
+          <mxGeometry height="202" width="184" x="2980" y="4317" as="geometry" />
+        </mxCell>
+        <mxCell id="WkGYguV-J5u9SZB3bUCJ-22" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send card activation OTP to user" vertex="1">
+          <mxGeometry height="40" width="60" x="1667" y="5187" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-17" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="tJ3X_jrJqhQ2U4y0nfMf-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="tJ3X_jrJqhQ2U4y0nfMf-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-1" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Card Activated" vertex="1">
+          <mxGeometry height="60" width="153" x="2483" y="5178" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-2" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="tJ3X_jrJqhQ2U4y0nfMf-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="tJ3X_jrJqhQ2U4y0nfMf-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-3" connectable="0" parent="tJ3X_jrJqhQ2U4y0nfMf-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Yes" vertex="1">
+          <mxGeometry relative="1" x="-0.4878" y="-2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-4" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="tJ3X_jrJqhQ2U4y0nfMf-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tJ3X_jrJqhQ2U4y0nfMf-16">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2187" y="5357.000000000002" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-5" connectable="0" parent="tJ3X_jrJqhQ2U4y0nfMf-4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="-0.3629" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-6" parent="Hk8zabLyCdBdiwRQhur0-2" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="OTP correct?" vertex="1">
+          <mxGeometry height="100" width="100" x="2137" y="5158" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-11" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send Email to user about card successfully activated" vertex="1">
+          <mxGeometry height="40" width="60" x="2908" y="5187" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-15" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="tJ3X_jrJqhQ2U4y0nfMf-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tJ3X_jrJqhQ2U4y0nfMf-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-13" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="User" vertex="1">
+          <mxGeometry height="60" width="30" x="1905" y="5177" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-14" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="WkGYguV-J5u9SZB3bUCJ-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="tJ3X_jrJqhQ2U4y0nfMf-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-16" parent="Hk8zabLyCdBdiwRQhur0-2" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="Maximum attempt reached?" vertex="1">
+          <mxGeometry height="183" width="174" x="2100" y="5468" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-18" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="tJ3X_jrJqhQ2U4y0nfMf-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="tJ3X_jrJqhQ2U4y0nfMf-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-19" connectable="0" parent="tJ3X_jrJqhQ2U4y0nfMf-18" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="-0.7918" y="6" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-21" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="tJ3X_jrJqhQ2U4y0nfMf-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="tJ3X_jrJqhQ2U4y0nfMf-26">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2469" y="5567" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-25" connectable="0" parent="tJ3X_jrJqhQ2U4y0nfMf-21" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Yes" vertex="1">
+          <mxGeometry relative="1" x="-0.015" y="8" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-22" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Block any further activation attempt. User needs to manually contact INFII admin to resolve before can reenter OTP&lt;br&gt;(Card status in UQPay is still PENDING, unable to update to FROZEN)" vertex="1">
+          <mxGeometry height="96.5" width="416" x="2868" y="5511.25" as="geometry" />
+        </mxCell>
+        <mxCell id="1yFZa6T3oTUSJsfTPiTK-1" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="tJ3X_jrJqhQ2U4y0nfMf-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="tJ3X_jrJqhQ2U4y0nfMf-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="tJ3X_jrJqhQ2U4y0nfMf-26" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Update internal card status to frozen_max_otp_attempt_reached" vertex="1">
+          <mxGeometry height="96" width="260" x="2451" y="5511.25" as="geometry" />
+        </mxCell>
         <mxCell id="Hk8zabLyCdBdiwRQhur0-138" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="Card Application Flow" vertex="1">
-          <mxGeometry height="504" width="2537" x="495" y="8188" as="geometry" />
+          <mxGeometry height="504" width="2537" x="281" y="-8559" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
