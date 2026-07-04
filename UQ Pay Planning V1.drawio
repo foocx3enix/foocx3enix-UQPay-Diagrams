@@ -1206,12 +1206,12 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WCPQi5lEkdcVKBAkzerj" name="Flow (NAHC)">
-    <mxGraphModel dx="1962" dy="1863" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="11770" dy="9980" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="BU1D3V5WSKyiYJsGSESY-1" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="NAHC Onboarding (Invited By Super Admin)" vertex="1">
-          <mxGeometry height="932" width="2257" x="72.00000000000045" y="-132" as="geometry">
+          <mxGeometry height="932" width="2257" x="133.00000000000045" y="-3030" as="geometry">
             <mxRectangle height="26" width="259" x="72.00000000000045" y="55" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -1359,7 +1359,7 @@
           <mxGeometry height="30" width="30" x="1201.4999999999995" y="267" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-34" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="NAHC Onboarding (Invited By Maker)" vertex="1">
-          <mxGeometry height="1947" width="2080" x="72" y="879" as="geometry">
+          <mxGeometry height="1947" width="2080" x="125" y="-988" as="geometry">
             <mxRectangle height="26" width="259" x="72.00000000000045" y="55" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -1666,11 +1666,11 @@
         <mxCell id="GlSb9yg3hfNqT-6A2M54-351" parent="GlSb9yg3hfNqT-6A2M54-35" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send invitation email to NAHC" vertex="1">
           <mxGeometry height="40" width="60" x="1410" y="832" as="geometry" />
         </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-128" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="NAHC" vertex="1">
-          <mxGeometry height="30" width="60" x="371" y="-345" as="geometry" />
+        <mxCell id="GlSb9yg3hfNqT-6A2M54-128" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="NAHC Onboarding (Invited by Super Admin)" vertex="1">
+          <mxGeometry height="386" width="4949" x="130" y="-3563" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-129" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="Deactivate NAHC (Deactivate by Super Admin)" vertex="1">
-          <mxGeometry height="1191" width="2266" x="72" y="3056" as="geometry">
+          <mxGeometry height="1191" width="2266" x="179" y="2185" as="geometry">
             <mxRectangle height="26" width="259" x="72.00000000000045" y="55" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2021,7 +2021,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-1" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="NAHC Change Role" vertex="1">
-          <mxGeometry height="1191" width="2266" x="72" y="7059" as="geometry">
+          <mxGeometry height="1191" width="2266" x="43" y="7758" as="geometry">
             <mxRectangle height="26" width="259" x="72.00000000000045" y="55" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2151,7 +2151,7 @@
           <mxGeometry height="60" width="153" x="740" y="56" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-44" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="NAHC Create Card Top Up Request" vertex="1">
-          <mxGeometry height="2851" width="3034" x="77" y="8606" as="geometry">
+          <mxGeometry height="2851" width="3034" x="77" y="10615" as="geometry">
             <mxRectangle height="26" width="259" x="72.00000000000045" y="55" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -2484,6 +2484,21 @@
         </mxCell>
         <mxCell id="gbI05n4NB60AyJMEpR7m-1" parent="YoD2Qjo7LJYq9kDcyejo-45" style="rounded=1;whiteSpace=wrap;html=1;" value="Create quotation" vertex="1">
           <mxGeometry height="60" width="153" x="1260" y="656" as="geometry" />
+        </mxCell>
+        <mxCell id="C52xR6YgbD3fz9lIG24--1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="NAHC Onboarding (Invited by Maker)" vertex="1">
+          <mxGeometry height="386" width="4131" x="125" y="-1463" as="geometry" />
+        </mxCell>
+        <mxCell id="C52xR6YgbD3fz9lIG24--3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="NAHC Deactivation (by Super Admin)" vertex="1">
+          <mxGeometry height="386" width="4096" x="123" y="1666" as="geometry" />
+        </mxCell>
+        <mxCell id="C52xR6YgbD3fz9lIG24--4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="NAHC Deactivation (by Maker)" vertex="1">
+          <mxGeometry height="386" width="3332" x="95" y="4028" as="geometry" />
+        </mxCell>
+        <mxCell id="C52xR6YgbD3fz9lIG24--5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="NAHC Change Role" vertex="1">
+          <mxGeometry height="386" width="2230" x="21" y="7277" as="geometry" />
+        </mxCell>
+        <mxCell id="C52xR6YgbD3fz9lIG24--6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="NAHC Create Top Up Request" vertex="1">
+          <mxGeometry height="386" width="3474" x="77" y="10130" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
