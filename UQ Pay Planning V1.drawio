@@ -2489,17 +2489,17 @@
     </mxGraphModel>
   </diagram>
   <diagram id="es-QFRtud6bf6VqKiOiQ" name="Flow (SHARED)">
-    <mxGraphModel dx="1185" dy="863" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1614" dy="1122" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="peg7Faa_bljCsb_JIir6-1" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="Card Deposit Flow" vertex="1">
-          <mxGeometry height="2851" width="3034" x="480" y="140" as="geometry">
+          <mxGeometry height="2851" width="7380" x="480" y="140" as="geometry">
             <mxRectangle height="26" width="259" x="72.00000000000045" y="55" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="peg7Faa_bljCsb_JIir6-2" parent="peg7Faa_bljCsb_JIir6-1" style="swimlane;startSize=20;html=1;" vertex="1">
-          <mxGeometry height="2831" width="3034" y="20" as="geometry" />
+          <mxGeometry height="2831" width="7380" y="20" as="geometry" />
         </mxCell>
         <mxCell id="RHuOZDOp-sgZLrfw2_ON-3" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="RHuOZDOp-sgZLrfw2_ON-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="RHuOZDOp-sgZLrfw2_ON-2">
           <mxGeometry relative="1" as="geometry" />
@@ -2507,8 +2507,164 @@
         <mxCell id="RHuOZDOp-sgZLrfw2_ON-1" parent="peg7Faa_bljCsb_JIir6-2" style="ellipse;shape=doubleEllipse;html=1;dashed=0;whiteSpace=wrap;aspect=fixed;" value="" vertex="1">
           <mxGeometry height="60" width="60" x="85" y="180" as="geometry" />
         </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-2" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="RHuOZDOp-sgZLrfw2_ON-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="RHuOZDOp-sgZLrfw2_ON-2" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Initiate CTC" vertex="1">
-          <mxGeometry height="60" width="120" x="516" y="180" as="geometry" />
+          <mxGeometry height="60" width="120" x="554" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-4" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-1" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="On-chain dispatch&lt;div&gt;(Hextrust)&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="975" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-8" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-11" connectable="0" parent="D9nLWaeZUsg4BHOaMNIX-8" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Fail" vertex="1">
+          <mxGeometry relative="1" x="0.2237" y="3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-13" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="D9nLWaeZUsg4BHOaMNIX-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-14" connectable="0" parent="D9nLWaeZUsg4BHOaMNIX-13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Success" vertex="1">
+          <mxGeometry relative="1" x="0.29" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-3" parent="peg7Faa_bljCsb_JIir6-2" style="rhombus;whiteSpace=wrap;html=1;" value="On-chain result" vertex="1">
+          <mxGeometry height="80" width="80" x="1396" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-6" parent="peg7Faa_bljCsb_JIir6-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="INFII Admin" vertex="1">
+          <mxGeometry height="60" width="30" x="1421" y="446" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-15" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-9" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Initiate retry until success" vertex="1">
+          <mxGeometry height="60" width="120" x="2183" y="447" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-17" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-12" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Hextrust succeed. Wait for UQ Pay webhook as confirmation" vertex="1">
+          <mxGeometry height="82" width="120" x="2183" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-16" parent="peg7Faa_bljCsb_JIir6-2" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="2624" y="196" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-35" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="D9nLWaeZUsg4BHOaMNIX-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-21" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Ramp account deposit confirmation" vertex="1">
+          <mxGeometry height="60" width="120" x="841" y="1850.2" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-28" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="D9nLWaeZUsg4BHOaMNIX-21">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="248" y="1881" />
+              <mxPoint x="251" y="1881" />
+            </Array>
+            <mxPoint x="251.19999999999982" y="1717.997169811321" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-29" connectable="0" parent="D9nLWaeZUsg4BHOaMNIX-28" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Received by our system" vertex="1">
+          <mxGeometry relative="1" x="0.1816" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-23" parent="peg7Faa_bljCsb_JIir6-2" style="rhombus;whiteSpace=wrap;html=1;" value="UQPay ramp account&lt;div&gt;&amp;nbsp;deposit confirmation&lt;div&gt;webhook&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="215" width="212" x="142" y="1394" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-48" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-47">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-25" parent="peg7Faa_bljCsb_JIir6-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="INFII Admin" vertex="1">
+          <mxGeometry height="60" width="30" x="886" y="1181" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-26" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="D9nLWaeZUsg4BHOaMNIX-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-27" connectable="0" parent="D9nLWaeZUsg4BHOaMNIX-26" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Did not receive by our system" vertex="1">
+          <mxGeometry relative="1" x="0.2466" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-33" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-31" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Retrigger the webhook in UQ Pay dashboard" vertex="1">
+          <mxGeometry height="60" width="120" x="841" y="1645" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-38" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="D9nLWaeZUsg4BHOaMNIX-37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-34" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Initiate off-ramp conversion" vertex="1">
+          <mxGeometry height="60" width="120" x="1351" y="1850.2" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-36" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Off-ramp conversion confirmation" vertex="1">
+          <mxGeometry height="60" width="120" x="2183" y="1850.2" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-39" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-36">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-40" connectable="0" parent="D9nLWaeZUsg4BHOaMNIX-39" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Received by our system" vertex="1">
+          <mxGeometry relative="1" x="0.2625" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-37" parent="peg7Faa_bljCsb_JIir6-2" style="rhombus;whiteSpace=wrap;html=1;" value="UQPay off-ramp conversion&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp;confirmation&lt;/span&gt;&lt;div&gt;&lt;div&gt;webhook&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="215" width="212" x="1672" y="1772.7" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-46" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-44" parent="peg7Faa_bljCsb_JIir6-2" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.web_page;" value="Hextrust Monitoring" vertex="1">
+          <mxGeometry height="54" width="50" x="1834" y="449" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-45" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-44">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-49" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="D9nLWaeZUsg4BHOaMNIX-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-47" parent="peg7Faa_bljCsb_JIir6-2" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.web_page;" value="UQPay Monitoring" vertex="1">
+          <mxGeometry height="54" width="50" x="876" y="1416" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-50" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-51" parent="peg7Faa_bljCsb_JIir6-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="INFII Admin" vertex="1">
+          <mxGeometry height="60" width="30" x="2226" y="1183" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-52" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2241" y="1852" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-53" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Retrigger the webhook in UQ Pay dashboard" vertex="1">
+          <mxGeometry height="60" width="120" x="2181" y="1647" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-54" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="D9nLWaeZUsg4BHOaMNIX-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-55" parent="peg7Faa_bljCsb_JIir6-2" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.web_page;" value="UQPay Monitoring" vertex="1">
+          <mxGeometry height="54" width="50" x="2216" y="1418" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-56" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;" target="D9nLWaeZUsg4BHOaMNIX-51">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1778" y="1203" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-58" connectable="0" parent="D9nLWaeZUsg4BHOaMNIX-56" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Did not receive by our system" vertex="1">
+          <mxGeometry relative="1" x="0.2558" y="1" as="geometry">
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
