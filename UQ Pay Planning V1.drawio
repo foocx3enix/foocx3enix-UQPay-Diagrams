@@ -2489,7 +2489,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="es-QFRtud6bf6VqKiOiQ" name="Flow (SHARED)">
-    <mxGraphModel dx="1411" dy="982" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="11370" dy="6380" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2632,10 +2632,12 @@
         <mxCell id="D9nLWaeZUsg4BHOaMNIX-47" parent="peg7Faa_bljCsb_JIir6-2" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.web_page;" value="UQPay Monitoring" vertex="1">
           <mxGeometry height="54" width="50" x="885" y="1386" as="geometry" />
         </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-50" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-55">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-50" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="D9nLWaeZUsg4BHOaMNIX-53">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="3400" y="2893" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-51" parent="peg7Faa_bljCsb_JIir6-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="INFII Admin" vertex="1">
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-51" parent="peg7Faa_bljCsb_JIir6-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="INFII System" vertex="1">
           <mxGeometry height="60" width="30" x="3385" y="2658" as="geometry" />
         </mxCell>
         <mxCell id="D9nLWaeZUsg4BHOaMNIX-52" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
@@ -2643,14 +2645,8 @@
             <mxPoint x="3400" y="3327" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-53" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Retrigger the webhook in UQ Pay dashboard" vertex="1">
-          <mxGeometry height="60" width="120" x="3340" y="3122" as="geometry" />
-        </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-54" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="D9nLWaeZUsg4BHOaMNIX-53">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-55" parent="peg7Faa_bljCsb_JIir6-2" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.web_page;" value="UQPay Monitoring" vertex="1">
-          <mxGeometry height="54" width="50" x="3375" y="2893" as="geometry" />
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-53" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Scheduler to query the conversion order until it is SUCCESS" vertex="1">
+          <mxGeometry height="60" width="120" x="3340" y="2992" as="geometry" />
         </mxCell>
         <mxCell id="D9nLWaeZUsg4BHOaMNIX-56" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;" target="D9nLWaeZUsg4BHOaMNIX-51">
           <mxGeometry relative="1" as="geometry">
@@ -2686,32 +2682,13 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-66" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-71">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-67" parent="peg7Faa_bljCsb_JIir6-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="INFII Admin" vertex="1">
-          <mxGeometry height="60" width="30" x="4983.5" y="2654" as="geometry" />
-        </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-68" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="D9nLWaeZUsg4BHOaMNIX-63">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="4965" y="3327" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-69" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Retrigger the webhook in UQ Pay dashboard" vertex="1">
-          <mxGeometry height="60" width="120" x="4938.5" y="3118" as="geometry" />
-        </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-70" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-71" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="D9nLWaeZUsg4BHOaMNIX-69">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-71" parent="peg7Faa_bljCsb_JIir6-2" style="sketch=0;pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.concepts.web_page;" value="UQPay Monitoring" vertex="1">
-          <mxGeometry height="54" width="50" x="4973.5" y="2889" as="geometry" />
-        </mxCell>
-        <mxCell id="D9nLWaeZUsg4BHOaMNIX-72" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" target="D9nLWaeZUsg4BHOaMNIX-67">
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-72" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;" target="D9nLWaeZUsg4BHOaMNIX-111">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="4502" y="2678" />
+              <mxPoint x="4502" y="2745" />
             </Array>
             <mxPoint x="4502" y="3248" as="sourcePoint" />
+            <mxPoint x="4983.5" y="2674" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="D9nLWaeZUsg4BHOaMNIX-73" connectable="0" parent="D9nLWaeZUsg4BHOaMNIX-72" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Did not receive by our system" vertex="1">
@@ -2823,6 +2800,18 @@
         </mxCell>
         <mxCell id="D9nLWaeZUsg4BHOaMNIX-108" parent="peg7Faa_bljCsb_JIir6-2" style="html=1;whiteSpace=wrap;strokeColor=none;fillColor=#0079D6;labelPosition=center;verticalLabelPosition=middle;verticalAlign=top;align=center;fontSize=12;outlineConnect=0;spacingTop=-6;fontColor=#FFFFFF;sketch=0;shape=mxgraph.sitemap.faq;" value="FAQ" vertex="1">
           <mxGeometry height="70" width="120" x="1741" y="3135" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-113" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-112">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-111" parent="peg7Faa_bljCsb_JIir6-2" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="INFII System" vertex="1">
+          <mxGeometry height="60" width="30" x="4983.5" y="2726" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-114" edge="1" parent="peg7Faa_bljCsb_JIir6-2" source="D9nLWaeZUsg4BHOaMNIX-112" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="D9nLWaeZUsg4BHOaMNIX-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D9nLWaeZUsg4BHOaMNIX-112" parent="peg7Faa_bljCsb_JIir6-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Scheduler to query the transfer order until it is SUCCESS" vertex="1">
+          <mxGeometry height="60" width="159.5" x="4918.75" y="2978" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
