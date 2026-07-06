@@ -1206,7 +1206,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WCPQi5lEkdcVKBAkzerj" name="Flow (NAHC)">
-    <mxGraphModel dx="2691" dy="4854" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="8420" dy="7990" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1791,7 +1791,7 @@
         <mxCell id="GlSb9yg3hfNqT-6A2M54-211" edge="1" parent="GlSb9yg3hfNqT-6A2M54-130" source="GlSb9yg3hfNqT-6A2M54-209" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GlSb9yg3hfNqT-6A2M54-188">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-209" parent="GlSb9yg3hfNqT-6A2M54-130" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Email to notify INFII admin&amp;nbsp;&lt;div&gt;about pending deactivation request&lt;/div&gt;" vertex="1">
+        <mxCell id="GlSb9yg3hfNqT-6A2M54-209" parent="GlSb9yg3hfNqT-6A2M54-130" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Email to notify all INFII admins&amp;nbsp;&lt;div&gt;about pending deactivation request&lt;/div&gt;" vertex="1">
           <mxGeometry height="40" width="60" x="1304" y="66" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-215" edge="1" parent="GlSb9yg3hfNqT-6A2M54-130" source="GlSb9yg3hfNqT-6A2M54-212" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="GlSb9yg3hfNqT-6A2M54-214">
@@ -2009,20 +2009,16 @@
         <mxCell id="GlSb9yg3hfNqT-6A2M54-357" parent="GlSb9yg3hfNqT-6A2M54-265" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to maker regarding pending request" vertex="1">
           <mxGeometry height="40" width="60" x="1372.5" y="188" as="geometry" />
         </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-358" parent="GlSb9yg3hfNqT-6A2M54-265" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to checker regarding pending request" vertex="1">
+        <mxCell id="GlSb9yg3hfNqT-6A2M54-358" parent="GlSb9yg3hfNqT-6A2M54-265" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to all checkers regarding pending request" vertex="1">
           <mxGeometry height="40" width="60" x="1372.5" y="320" as="geometry" />
         </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-371" edge="1" parent="GlSb9yg3hfNqT-6A2M54-265" source="GlSb9yg3hfNqT-6A2M54-359" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GlSb9yg3hfNqT-6A2M54-360">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="GlSb9yg3hfNqT-6A2M54-371" edge="1" parent="GlSb9yg3hfNqT-6A2M54-265" source="GlSb9yg3hfNqT-6A2M54-359" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="0l7Q0gad62AXu7hVsiJl-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1439.5" y="1029" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-359" parent="GlSb9yg3hfNqT-6A2M54-265" style="rounded=1;whiteSpace=wrap;html=1;" value="Deactivate NAHC" vertex="1">
           <mxGeometry height="60" width="153" x="1363" y="877" as="geometry" />
-        </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-372" edge="1" parent="GlSb9yg3hfNqT-6A2M54-265" source="GlSb9yg3hfNqT-6A2M54-360" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GlSb9yg3hfNqT-6A2M54-370">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-360" parent="GlSb9yg3hfNqT-6A2M54-265" style="rounded=1;whiteSpace=wrap;html=1;" value="Initiate Card Freeze" vertex="1">
-          <mxGeometry height="60" width="153" x="1363" y="1029" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-363" parent="GlSb9yg3hfNqT-6A2M54-265" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to maker regarding request approved" vertex="1">
           <mxGeometry height="40" width="60" x="1726" y="745" as="geometry" />
@@ -2033,14 +2029,8 @@
         <mxCell id="GlSb9yg3hfNqT-6A2M54-368" edge="1" parent="GlSb9yg3hfNqT-6A2M54-265" source="GlSb9yg3hfNqT-6A2M54-359" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="GlSb9yg3hfNqT-6A2M54-366">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-370" parent="GlSb9yg3hfNqT-6A2M54-265" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Email to notify NAHC&amp;nbsp;&lt;div&gt;about card has been frozen&lt;/div&gt;" vertex="1">
-          <mxGeometry height="40" width="60" x="1726" y="1039" as="geometry" />
-        </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-373" parent="GlSb9yg3hfNqT-6A2M54-265" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#ff0000;direction=south;" value="" vertex="1">
-          <mxGeometry height="30" width="30" x="1424.5" y="1187" as="geometry" />
-        </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-374" edge="1" parent="GlSb9yg3hfNqT-6A2M54-265" source="GlSb9yg3hfNqT-6A2M54-360" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="GlSb9yg3hfNqT-6A2M54-373">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="0l7Q0gad62AXu7hVsiJl-1" parent="GlSb9yg3hfNqT-6A2M54-265" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Initiate Card Freeze Flow" vertex="1">
+          <mxGeometry height="60" width="120" x="1379.5" y="1070" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-1" parent="1" style="swimlane;childLayout=stackLayout;resizeParent=1;resizeParentMax=0;startSize=20;html=1;" value="NAHC Change Role" vertex="1">
           <mxGeometry height="1191" width="2266" x="43" y="7758" as="geometry">
@@ -2142,7 +2132,7 @@
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-32" edge="1" parent="YoD2Qjo7LJYq9kDcyejo-2" source="YoD2Qjo7LJYq9kDcyejo-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="YoD2Qjo7LJYq9kDcyejo-11">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="YoD2Qjo7LJYq9kDcyejo-33" parent="YoD2Qjo7LJYq9kDcyejo-2" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Email to notify INFII admin&amp;nbsp;&lt;div&gt;about pending change role request&lt;/div&gt;" vertex="1">
+        <mxCell id="YoD2Qjo7LJYq9kDcyejo-33" parent="YoD2Qjo7LJYq9kDcyejo-2" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Email to notify all INFII admins&amp;nbsp;&lt;div&gt;about pending change role request&lt;/div&gt;" vertex="1">
           <mxGeometry height="40" width="60" x="1705" y="66" as="geometry" />
         </mxCell>
         <mxCell id="YoD2Qjo7LJYq9kDcyejo-34" edge="1" parent="YoD2Qjo7LJYq9kDcyejo-2" source="YoD2Qjo7LJYq9kDcyejo-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YoD2Qjo7LJYq9kDcyejo-37">
