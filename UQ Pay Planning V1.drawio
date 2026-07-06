@@ -1206,7 +1206,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WCPQi5lEkdcVKBAkzerj" name="Flow (NAHC)">
-    <mxGraphModel dx="8420" dy="7990" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="4983" dy="6109" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2703,7 +2703,7 @@
         <mxCell id="C52xR6YgbD3fz9lIG24--63" parent="C52xR6YgbD3fz9lIG24--8" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to maker regarding pending request" vertex="1">
           <mxGeometry height="40" width="60" x="3008.5" y="298" as="geometry" />
         </mxCell>
-        <mxCell id="C52xR6YgbD3fz9lIG24--64" parent="C52xR6YgbD3fz9lIG24--8" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to checkers regarding pending request" vertex="1">
+        <mxCell id="C52xR6YgbD3fz9lIG24--64" parent="C52xR6YgbD3fz9lIG24--8" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to all checkers regarding pending request" vertex="1">
           <mxGeometry height="40" width="60" x="3008.5" y="430" as="geometry" />
         </mxCell>
         <mxCell id="C52xR6YgbD3fz9lIG24--69" parent="C52xR6YgbD3fz9lIG24--8" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to maker regarding request approved" vertex="1">
