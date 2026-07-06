@@ -1539,7 +1539,7 @@
         <mxCell id="GlSb9yg3hfNqT-6A2M54-111" parent="GlSb9yg3hfNqT-6A2M54-35" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" value="NAHC" vertex="1">
           <mxGeometry height="60" width="30" x="31" y="1513" as="geometry" />
         </mxCell>
-        <mxCell id="GlSb9yg3hfNqT-6A2M54-112" edge="1" parent="GlSb9yg3hfNqT-6A2M54-35" source="GlSb9yg3hfNqT-6A2M54-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="GlSb9yg3hfNqT-6A2M54-115">
+        <mxCell id="1StFH2ozkoSIERHSYdwh-2" edge="1" parent="GlSb9yg3hfNqT-6A2M54-35" source="GlSb9yg3hfNqT-6A2M54-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="1StFH2ozkoSIERHSYdwh-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-113" parent="GlSb9yg3hfNqT-6A2M54-35" style="labelPosition=center;verticalLabelPosition=middle;align=center;html=1;shape=mxgraph.basic.shaded_button;dx=10;fillColor=#E6E6E6;strokeColor=none;whiteSpace=wrap;" value="Click Invitation Link" vertex="1">
@@ -1549,13 +1549,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-115" parent="GlSb9yg3hfNqT-6A2M54-35" style="rounded=1;whiteSpace=wrap;html=1;" value="Enter personal details &amp;amp; password" vertex="1">
-          <mxGeometry height="60" width="153" x="326" y="1513" as="geometry" />
+          <mxGeometry height="60" width="153" x="868" y="1513" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-116" edge="1" parent="GlSb9yg3hfNqT-6A2M54-35" source="GlSb9yg3hfNqT-6A2M54-117" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GlSb9yg3hfNqT-6A2M54-122">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-117" parent="GlSb9yg3hfNqT-6A2M54-35" style="rounded=1;whiteSpace=wrap;html=1;" value="Initiate SumSub identity verification" vertex="1">
-          <mxGeometry height="60" width="153" x="541.5" y="1513" as="geometry" />
+          <mxGeometry height="60" width="153" x="1083.5" y="1513" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-118" edge="1" parent="GlSb9yg3hfNqT-6A2M54-35" source="GlSb9yg3hfNqT-6A2M54-122" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="GlSb9yg3hfNqT-6A2M54-123">
           <mxGeometry relative="1" as="geometry" />
@@ -1574,13 +1574,13 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-122" parent="GlSb9yg3hfNqT-6A2M54-35" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.decision;whiteSpace=wrap;" value="Verification&amp;nbsp;&lt;div&gt;Result&lt;/div&gt;" vertex="1">
-          <mxGeometry height="100" width="100" x="806" y="1493" as="geometry" />
+          <mxGeometry height="100" width="100" x="1348" y="1493" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-123" parent="GlSb9yg3hfNqT-6A2M54-35" style="rounded=1;whiteSpace=wrap;html=1;" value="Account ready to use" vertex="1">
-          <mxGeometry height="60" width="153" x="779.5" y="1711" as="geometry" />
+          <mxGeometry height="60" width="153" x="1321.5" y="1711" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-124" parent="GlSb9yg3hfNqT-6A2M54-35" style="rounded=1;whiteSpace=wrap;html=1;" value="Stuck at verification. Login will redirect to verification again" vertex="1">
-          <mxGeometry height="60" width="153" x="1066" y="1513" as="geometry" />
+          <mxGeometry height="60" width="153" x="1608" y="1513" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-125" edge="1" parent="GlSb9yg3hfNqT-6A2M54-35" source="GlSb9yg3hfNqT-6A2M54-109" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="GlSb9yg3hfNqT-6A2M54-111">
           <mxGeometry relative="1" as="geometry">
@@ -1665,6 +1665,28 @@
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-351" parent="GlSb9yg3hfNqT-6A2M54-35" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send invitation email to NAHC" vertex="1">
           <mxGeometry height="40" width="60" x="1410" y="832" as="geometry" />
+        </mxCell>
+        <mxCell id="1StFH2ozkoSIERHSYdwh-4" edge="1" parent="GlSb9yg3hfNqT-6A2M54-35" source="1StFH2ozkoSIERHSYdwh-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="1StFH2ozkoSIERHSYdwh-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1StFH2ozkoSIERHSYdwh-6" connectable="0" parent="1StFH2ozkoSIERHSYdwh-4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Yes" vertex="1">
+          <mxGeometry relative="1" x="-0.2063" y="2" as="geometry">
+            <mxPoint y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1StFH2ozkoSIERHSYdwh-5" edge="1" parent="GlSb9yg3hfNqT-6A2M54-35" source="1StFH2ozkoSIERHSYdwh-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="GlSb9yg3hfNqT-6A2M54-115">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1StFH2ozkoSIERHSYdwh-7" connectable="0" parent="1StFH2ozkoSIERHSYdwh-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="-0.1434" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1StFH2ozkoSIERHSYdwh-1" parent="GlSb9yg3hfNqT-6A2M54-35" style="rhombus;whiteSpace=wrap;html=1;" value="Is invitation link expired?" vertex="1">
+          <mxGeometry height="171" width="179" x="456" y="1457.5" as="geometry" />
+        </mxCell>
+        <mxCell id="1StFH2ozkoSIERHSYdwh-3" parent="GlSb9yg3hfNqT-6A2M54-35" style="rounded=1;whiteSpace=wrap;html=1;" value="NAHC have to contact maker / checker / owner to resend invitation" vertex="1">
+          <mxGeometry height="60" width="153" x="469" y="1720" as="geometry" />
         </mxCell>
         <mxCell id="GlSb9yg3hfNqT-6A2M54-128" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="NAHC Onboarding (Invited by Super Admin)" vertex="1">
           <mxGeometry height="386" width="4949" x="130" y="-3563" as="geometry" />
