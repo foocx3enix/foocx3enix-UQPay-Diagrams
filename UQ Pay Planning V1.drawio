@@ -3902,7 +3902,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="es-QFRtud6bf6VqKiOiQ" name="Flow (SHARED)">
-    <mxGraphModel dx="5890" dy="11990" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2916" dy="10396" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -5075,13 +5075,13 @@
         <mxCell id="XObT8gIqzjrM_Gke778G-28" parent="pvq2G1mTTjZCN_D8_QqQ-54" style="rounded=1;whiteSpace=wrap;html=1;" value="Trigger card status update API" vertex="1">
           <mxGeometry height="60" width="169" x="1797" y="133" as="geometry" />
         </mxCell>
-        <mxCell id="nKngrhdY_4SYMgMEPoUs-2" edge="1" parent="pvq2G1mTTjZCN_D8_QqQ-54" source="XObT8gIqzjrM_Gke778G-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="XObT8gIqzjrM_Gke778G-47">
+        <mxCell id="k5BGiVXHzz5J_f0Xhlh--3" edge="1" parent="pvq2G1mTTjZCN_D8_QqQ-54" source="XObT8gIqzjrM_Gke778G-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="k5BGiVXHzz5J_f0Xhlh--1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="XObT8gIqzjrM_Gke778G-32" parent="pvq2G1mTTjZCN_D8_QqQ-54" style="rounded=1;whiteSpace=wrap;html=1;" value="Schuler to query card status update order until SUCCESS" vertex="1">
-          <mxGeometry height="60" width="141" x="2037" y="430" as="geometry" />
+        <mxCell id="XObT8gIqzjrM_Gke778G-32" parent="pvq2G1mTTjZCN_D8_QqQ-54" style="rounded=1;whiteSpace=wrap;html=1;" value="Schuler to query card status update order" vertex="1">
+          <mxGeometry height="60" width="141" x="2275.5" y="433" as="geometry" />
         </mxCell>
-        <mxCell id="nKngrhdY_4SYMgMEPoUs-1" edge="1" parent="pvq2G1mTTjZCN_D8_QqQ-54" source="XObT8gIqzjrM_Gke778G-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="XObT8gIqzjrM_Gke778G-47">
+        <mxCell id="k5BGiVXHzz5J_f0Xhlh--2" edge="1" parent="pvq2G1mTTjZCN_D8_QqQ-54" source="XObT8gIqzjrM_Gke778G-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="k5BGiVXHzz5J_f0Xhlh--1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="XObT8gIqzjrM_Gke778G-42" parent="pvq2G1mTTjZCN_D8_QqQ-54" style="rounded=1;whiteSpace=wrap;html=1;" value="Listen to webhook about card status updated" vertex="1">
@@ -5090,14 +5090,40 @@
         <mxCell id="XObT8gIqzjrM_Gke778G-43" edge="1" parent="pvq2G1mTTjZCN_D8_QqQ-54" source="XObT8gIqzjrM_Gke778G-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" target="XObT8gIqzjrM_Gke778G-25">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="XObT8gIqzjrM_Gke778G-45" parent="pvq2G1mTTjZCN_D8_QqQ-54" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to cardholder regarding card frozen" vertex="1">
-          <mxGeometry height="40" width="60" x="3084" y="144.5" as="geometry" />
+        <mxCell id="XObT8gIqzjrM_Gke778G-45" parent="pvq2G1mTTjZCN_D8_QqQ-54" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to cardholder regarding card frozen succeed" vertex="1">
+          <mxGeometry height="40" width="60" x="3469" y="149" as="geometry" />
         </mxCell>
         <mxCell id="XObT8gIqzjrM_Gke778G-46" edge="1" parent="pvq2G1mTTjZCN_D8_QqQ-54" source="XObT8gIqzjrM_Gke778G-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="XObT8gIqzjrM_Gke778G-45">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="XObT8gIqzjrM_Gke778G-47" parent="pvq2G1mTTjZCN_D8_QqQ-54" style="rounded=1;whiteSpace=wrap;html=1;" value="Update card internal status to frozen" vertex="1">
-          <mxGeometry height="60" width="153" x="2656" y="133" as="geometry" />
+          <mxGeometry height="60" width="153" x="3041" y="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="k5BGiVXHzz5J_f0Xhlh--9" edge="1" parent="pvq2G1mTTjZCN_D8_QqQ-54" source="k5BGiVXHzz5J_f0Xhlh--1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="XObT8gIqzjrM_Gke778G-47">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2730" y="168" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k5BGiVXHzz5J_f0Xhlh--11" connectable="0" parent="k5BGiVXHzz5J_f0Xhlh--9" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Success" vertex="1">
+          <mxGeometry relative="1" x="-0.1217" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k5BGiVXHzz5J_f0Xhlh--10" edge="1" parent="pvq2G1mTTjZCN_D8_QqQ-54" source="k5BGiVXHzz5J_f0Xhlh--1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="k5BGiVXHzz5J_f0Xhlh--6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="k5BGiVXHzz5J_f0Xhlh--12" connectable="0" parent="k5BGiVXHzz5J_f0Xhlh--10" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Fail" vertex="1">
+          <mxGeometry relative="1" x="0.1624" y="-2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="k5BGiVXHzz5J_f0Xhlh--1" parent="pvq2G1mTTjZCN_D8_QqQ-54" style="rhombus;whiteSpace=wrap;html=1;" value="Update Success?" vertex="1">
+          <mxGeometry height="80" width="80" x="2690" y="273" as="geometry" />
+        </mxCell>
+        <mxCell id="k5BGiVXHzz5J_f0Xhlh--6" parent="pvq2G1mTTjZCN_D8_QqQ-54" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to cardholder regarding card frozen failed" vertex="1">
+          <mxGeometry height="40" width="60" x="3469" y="387" as="geometry" />
         </mxCell>
         <mxCell id="pvq2G1mTTjZCN_D8_QqQ-78" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="User freeze card" vertex="1">
           <mxGeometry height="386" width="1842" x="502" y="8136" as="geometry" />
