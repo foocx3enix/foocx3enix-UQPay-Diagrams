@@ -3931,7 +3931,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="es-QFRtud6bf6VqKiOiQ" name="Flow (SHARED)">
-    <mxGraphModel dx="10693" dy="14653" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1963" dy="9863" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -4825,16 +4825,6 @@
         <mxCell id="WkGYguV-J5u9SZB3bUCJ-12" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="WkGYguV-J5u9SZB3bUCJ-10">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="WkGYguV-J5u9SZB3bUCJ-15" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YwIoBEZ7nTa_Ah90eQVZ-48">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="3242" y="3935" />
-              <mxPoint x="3529" y="3935" />
-              <mxPoint x="3529" y="3937" />
-            </Array>
-            <mxPoint x="3511" y="3985" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-40" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Trigger card assignation API" vertex="1">
           <mxGeometry height="60" width="169" x="3182" y="3607" as="geometry" />
         </mxCell>
@@ -4843,12 +4833,6 @@
         </mxCell>
         <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-45" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Store the OTP internally" vertex="1">
           <mxGeometry height="60" width="120" x="5368" y="3607" as="geometry" />
-        </mxCell>
-        <mxCell id="w3JmYpkZOgZsjTr17PUX-21" edge="1" parent="Hk8zabLyCdBdiwRQhur0-2" source="YwIoBEZ7nTa_Ah90eQVZ-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="w3JmYpkZOgZsjTr17PUX-19">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-48" parent="Hk8zabLyCdBdiwRQhur0-2" style="rounded=1;whiteSpace=wrap;html=1;" value="Schuler to query card assignation order" vertex="1">
-          <mxGeometry height="60" width="141" x="3567.5" y="3907" as="geometry" />
         </mxCell>
         <mxCell id="YwIoBEZ7nTa_Ah90eQVZ-51" parent="Hk8zabLyCdBdiwRQhur0-2" style="shape=message;html=1;html=1;outlineConnect=0;labelPosition=center;verticalLabelPosition=bottom;align=center;verticalAlign=top;" value="Send email to admins for manual actions" vertex="1">
           <mxGeometry height="40" width="60" x="4322" y="3914" as="geometry" />
