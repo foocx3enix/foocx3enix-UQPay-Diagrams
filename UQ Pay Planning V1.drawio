@@ -1206,7 +1206,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="WCPQi5lEkdcVKBAkzerj" name="Flow (NAHC)">
-    <mxGraphModel dx="1928" dy="4436" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1588" dy="4250" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2720,8 +2720,8 @@
         <mxCell id="C52xR6YgbD3fz9lIG24--79" edge="1" parent="C52xR6YgbD3fz9lIG24--8" source="C52xR6YgbD3fz9lIG24--77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="C52xR6YgbD3fz9lIG24--14">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="C52xR6YgbD3fz9lIG24--77" parent="C52xR6YgbD3fz9lIG24--8" style="rounded=1;whiteSpace=wrap;html=1;" value="Select wallet to to pay for additional card cost" vertex="1">
-          <mxGeometry height="60" width="153" x="1887" y="169" as="geometry" />
+        <mxCell id="C52xR6YgbD3fz9lIG24--77" parent="C52xR6YgbD3fz9lIG24--8" style="rounded=1;whiteSpace=wrap;html=1;" value="1. Select wallet to to pay for additional card cost&lt;br&gt;2. Select which address to use / new delivery address" vertex="1">
+          <mxGeometry height="84" width="153" x="1887" y="169" as="geometry" />
         </mxCell>
         <mxCell id="C52xR6YgbD3fz9lIG24--80" parent="C52xR6YgbD3fz9lIG24--8" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Initiate Card Application Flow" vertex="1">
           <mxGeometry height="261" width="582.5" x="1166.25" y="1390" as="geometry" />
