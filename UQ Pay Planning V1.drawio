@@ -3561,7 +3561,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="es-QFRtud6bf6VqKiOiQ" name="Flow (SHARED)">
-    <mxGraphModel dx="1604" dy="9678" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="5890" dy="11990" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -4935,8 +4935,8 @@
         <mxCell id="EpaTQqMNiTLB_SDeNNzX-13" parent="pvq2G1mTTjZCN_D8_QqQ-83" style="rounded=1;whiteSpace=wrap;html=1;" value="Update card internal status to pending_uq_unfreeze" vertex="1">
           <mxGeometry height="60" width="153" x="2093" y="139" as="geometry" />
         </mxCell>
-        <mxCell id="pvq2G1mTTjZCN_D8_QqQ-100" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="User unfreeze card" vertex="1">
-          <mxGeometry height="386" width="2077" x="489" y="10371" as="geometry" />
+        <mxCell id="pvq2G1mTTjZCN_D8_QqQ-100" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=240;" value="User unfreeze card (Exclude NAHC)" vertex="1">
+          <mxGeometry height="386" width="3917" x="489" y="10371" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
