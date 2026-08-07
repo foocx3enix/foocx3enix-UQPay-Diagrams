@@ -1,0 +1,149 @@
+<mxfile host="app.diagrams.net" agent="claude-code">
+  <diagram name="01 - Card Lifecycle" id="card-lifecycle">
+    <mxGraphModel dx="3512" dy="1752" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="YJgR6R1OERao_C9EPfJk-402" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=18;fontStyle=1;" value="Card Lifecycle — cards.internal_status state machine" vertex="1">
+          <mxGeometry height="34" width="1000" x="1202.079345703125" y="876.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-403" parent="1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fontColor=#555555;" value="Scope: this diagram shows only the card row&#39;s internal_status (with the UQPay uqpay_status it mirrors). Earlier phases (pending_issuance_charge → pending_cardholder → pending_delivery) live on card_applications.status; the card row does not exist until delivery. Cardholder-creation outcomes (pending_review / admin_action_required / failed) live on cardholders.status. Both belong in separate diagrams." vertex="1">
+          <mxGeometry height="120" width="1040" x="1202.079345703125" y="956.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-404" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=none;" value="" vertex="1">
+          <mxGeometry height="40" width="40" x="1202.079345703125" y="1281.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-405" parent="1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=54;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#6c8ebf;strokeColor=#6c8ebf;swimlaneFillColor=#ffffff;" value="internal_status = pending_assignation&#xa;uqpay_status = NULL" vertex="1">
+          <mxGeometry height="210" width="280" x="1562.079345703125" y="1196.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-406" parent="YJgR6R1OERao_C9EPfJk-405" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=12;spacingLeft=10;spacingRight=10;spacingTop=6;spacingBottom=6;" value="The card row is created at delivery: the admin picked a physical card, shipped it, and saved the card number (stored hashed + masked; raw never stored) and tracking id. No UQPay call yet, so uqpay_status is NULL and the card number can still be edited." vertex="1">
+          <mxGeometry height="156" width="280" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-407" parent="1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=54;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#6c8ebf;strokeColor=#6c8ebf;swimlaneFillColor=#ffffff;" value="internal_status = pending_activation&#xa;uqpay_status = PENDING" vertex="1">
+          <mxGeometry height="210" width="280" x="2242.079345703125" y="1196.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-408" parent="YJgR6R1OERao_C9EPfJk-407" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=12;spacingLeft=10;spacingRight=10;spacingTop=6;spacingBottom=6;" value="The card is assigned at UQPay (uqpay_card_id set) and the activation OTP has been emailed to the user. The user now sets a card PIN and enters the OTP to activate. uqpay_status stays PENDING until activation." vertex="1">
+          <mxGeometry height="156" width="280" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-409" parent="1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=54;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#82b366;strokeColor=#82b366;swimlaneFillColor=#ffffff;" value="internal_status = active&#xa;uqpay_status = ACTIVE" vertex="1">
+          <mxGeometry height="150" width="240" x="3002.079345703125" y="1216.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-410" parent="YJgR6R1OERao_C9EPfJk-409" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=12;spacingLeft=10;spacingRight=10;spacingTop=6;spacingBottom=6;" value="The card works normally — transactions are allowed." vertex="1">
+          <mxGeometry height="96" width="240" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-411" parent="1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=54;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#d6b656;strokeColor=#d6b656;swimlaneFillColor=#ffffff;" value="internal_status = activation_locked&#xa;uqpay_status = PENDING (internal lock)" vertex="1">
+          <mxGeometry height="190" width="280" x="2242.079345703125" y="1596.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-412" parent="YJgR6R1OERao_C9EPfJk-411" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=12;spacingLeft=10;spacingRight=10;spacingTop=6;spacingBottom=6;" value="The card is locked after 5 failed activation OTP attempts. It is still PENDING at UQPay (a PENDING card cannot be frozen there), so the lock is internal-only." vertex="1">
+          <mxGeometry height="136" width="280" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-413" parent="1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=54;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#d79b00;strokeColor=#d79b00;swimlaneFillColor=#ffffff;" value="internal_status = frozen&#xa;uqpay_status = FROZEN" vertex="1">
+          <mxGeometry height="190" width="240" x="3002.079345703125" y="876.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-414" parent="YJgR6R1OERao_C9EPfJk-413" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=12;spacingLeft=10;spacingRight=10;spacingTop=6;spacingBottom=6;" value="All authorizations are declined. The status is set on our side first (internal-first), then pushed to UQPay best-effort." vertex="1">
+          <mxGeometry height="136" width="240" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-415" parent="1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=54;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#b85450;strokeColor=#b85450;swimlaneFillColor=#ffffff;" value="internal_status = blocked&#xa;uqpay_status = BLOCKED / LOST / STOLEN" vertex="1">
+          <mxGeometry height="220" width="300" x="3562.079345703125" y="1186.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-416" parent="YJgR6R1OERao_C9EPfJk-415" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=12;spacingLeft=10;spacingRight=10;spacingTop=6;spacingBottom=6;" value="UQPay blocked the card (suspicious activity, or reported lost/stolen). Mirrored as internal_status = blocked; the authorization decision reads internal_status, so the block applies as soon as we ingest it. There is no in-system unblock." vertex="1">
+          <mxGeometry height="166" width="300" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-417" parent="1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=54;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#999999;strokeColor=#999999;swimlaneFillColor=#ffffff;" value="internal_status = ongoing_close&#xa;uqpay_status = PRE_CANCEL" vertex="1">
+          <mxGeometry height="210" width="300" x="2982.079345703125" y="1596.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-418" parent="YJgR6R1OERao_C9EPfJk-417" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=12;spacingLeft=10;spacingRight=10;spacingTop=6;spacingBottom=6;" value="Closure has started (internal-first); spending is declined. UQPay runs a ~30-day settlement window. Counts as &quot;no active card&quot;, so the user may already apply for a new card." vertex="1">
+          <mxGeometry height="156" width="300" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-419" parent="1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=54;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#999999;strokeColor=#999999;swimlaneFillColor=#ffffff;" value="internal_status = closed&#xa;uqpay_status = CANCELLED" vertex="1">
+          <mxGeometry height="190" width="300" x="2982.079345703125" y="1956.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-420" parent="YJgR6R1OERao_C9EPfJk-419" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=12;spacingLeft=10;spacingRight=10;spacingTop=6;spacingBottom=6;" value="The card is fully closed. final_card_balance is captured from the full-close webhook (feeds the replacement rollover); the live balance is zeroed to match UQPay." vertex="1">
+          <mxGeometry height="136" width="300" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-421" parent="1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=54;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#9673a6;strokeColor=#9673a6;swimlaneFillColor=#ffffff;" value="internal_status = removed&#xa;uqpay_status = unchanged (internal hide)" vertex="1">
+          <mxGeometry height="180" width="300" x="2982.079345703125" y="2306.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-422" parent="YJgR6R1OERao_C9EPfJk-421" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=12;spacingLeft=10;spacingRight=10;spacingTop=6;spacingBottom=6;" value="The card is hidden from the user&#39;s screen; the UQPay status is unchanged. Reached only from closed. Irreversible; the row is retained for audit." vertex="1">
+          <mxGeometry height="126" width="300" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-423" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-404" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;" target="YJgR6R1OERao_C9EPfJk-405" value="card row is created at delivery&#xa;(admin records the card number&#xa;+ tracking id)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-424" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-405" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;" target="YJgR6R1OERao_C9EPfJk-407" value="user receives the card  →&lt;br&gt;enters the card number  →&lt;br&gt;system calls UQPay Assign Card API  →&lt;br&gt;card assigned (uqpay_card_id set)  →&lt;br&gt;UQPay sends the activation code via webhook&amp;nbsp; →&lt;br&gt;system emails the OTP to the user">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-425" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-407" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;" target="YJgR6R1OERao_C9EPfJk-409" value="user sets a card PIN + enters the OTP  →&lt;br&gt;system calls UQPay Activate Card API  →&lt;br&gt;internal limits seeded; one-time provisioning pushed&lt;br&gt;(enable 3DS, per-txn limit max 20,000 USD, no-PIN payment 250 USD)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-426" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-407" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;" target="YJgR6R1OERao_C9EPfJk-411" value="5 failed activation&#xa;OTP attempts">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-427" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-411" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.8;entryDx=0;entryDy=0;" target="YJgR6R1OERao_C9EPfJk-407" value="an admin resets the lock&#xa;(maker → checker approval);&#xa;attempt count reset to zero">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2672.079345703125" y="1643.6190185546875" />
+              <mxPoint x="2672.079345703125" y="1364.6190185546875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-428" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-409" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="YJgR6R1OERao_C9EPfJk-413" value="user initiates card freeze&#xa;— no OTP, no approval">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2942.079345703125" y="1253.6190185546875" />
+              <mxPoint x="2942.079345703125" y="1018.6190185546875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-429" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-413" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0.8;entryY=0;entryDx=0;entryDy=0;" target="YJgR6R1OERao_C9EPfJk-409" value="user initiates unfreeze — email OTP;&#xa;corporate cardholder (NAHC) also&#xa;needs checker approval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-430" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-409" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" target="YJgR6R1OERao_C9EPfJk-415" value="UQPay sets the card&#xa;status to BLOCKED /&#xa;LOST / STOLEN">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-431" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-415" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;" target="YJgR6R1OERao_C9EPfJk-409" value="UQPay sets the card status&#xa;back to ACTIVE (admin resolves&#xa;it directly with UQPay)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-432" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-409" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;" target="YJgR6R1OERao_C9EPfJk-417" value="user initiates card close (internal-first) — email OTP;&#xa;corporate cardholder (NAHC) also needs checker approval.&#xa;Also reachable from frozen.">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-433" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-417" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;" target="YJgR6R1OERao_C9EPfJk-419" value="UQPay completes the&#xa;~30-day settlement window">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-434" edge="1" parent="1" source="YJgR6R1OERao_C9EPfJk-419" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;" target="YJgR6R1OERao_C9EPfJk-421" value="user removes the card — email OTP;&#xa;corporate cardholder (NAHC) also&#xa;needs checker approval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-435" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Developer notes" vertex="1">
+          <mxGeometry height="30" width="500" x="1202.079345703125" y="1846.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-436" parent="1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• Internal-first ops (freeze, close) flip internal_status up front, then push to UQPay best-effort; a failed push queues a card_status_sync_retry worklist.&lt;br&gt;&lt;br&gt;• Max 1 active card per user. The reapply gate treats internal_status ∈ {ongoing_close, closed, removed} as &quot;no active card&quot;, so it opens at ongoing_close, not only at closed.&lt;br&gt;&lt;br&gt;• Replacement (CARD_REPLACE_SELF / CARD_REPLACE_NAHC) = close old + issue new, linked via card_applications.replaces_card_id. The new card is usable immediately and can be topped up during the 30-day wait. Once the old card is closed, its final_card_balance is recharged onto the new card (by us, no fee).&lt;br&gt;&lt;br&gt;• NAHC = &quot;Corporate Cardholder&quot; (the user-facing name for the same role).&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;• Customer approvals run on card_tasks + card_task_approvals; admin approvals run on permissions_tasks (maker → checker). Freeze is the only action exempt from both OTP and approval.&lt;br&gt;&lt;br&gt;• uqpay_status&amp;nbsp;to internal_status mapping: PENDING↔pending_activation · ACTIVE↔active · FROZEN↔frozen · BLOCKED/LOST/STOLEN↔blocked · PRE_CANCEL↔ongoing_close · CANCELLED↔closed. activation_locked and removed are internal-only, with no UQPay equivalent.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="380" width="1360" x="1202.079345703125" y="1881.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-437" parent="1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Colour key (header band)" vertex="1">
+          <mxGeometry height="30" width="300" x="3562.079345703125" y="1476.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-438" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#6c8ebf;strokeColor=#6c8ebf;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Provisioning (getting the card ready)" vertex="1">
+          <mxGeometry height="34" width="300" x="3562.079345703125" y="1511.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-439" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#82b366;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Active (working)" vertex="1">
+          <mxGeometry height="34" width="300" x="3562.079345703125" y="1555.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-440" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d79b00;strokeColor=#d79b00;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Paused (freeze)" vertex="1">
+          <mxGeometry height="34" width="300" x="3562.079345703125" y="1599.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-441" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d6b656;strokeColor=#d6b656;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Locked (internal, needs admin reset)" vertex="1">
+          <mxGeometry height="34" width="300" x="3562.079345703125" y="1643.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-442" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=#b85450;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Blocked by UQPay" vertex="1">
+          <mxGeometry height="34" width="300" x="3562.079345703125" y="1687.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-443" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=#999999;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Closing down" vertex="1">
+          <mxGeometry height="34" width="300" x="3562.079345703125" y="1731.6190185546875" as="geometry" />
+        </mxCell>
+        <mxCell id="YJgR6R1OERao_C9EPfJk-444" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Removed (hidden, terminal)" vertex="1">
+          <mxGeometry height="34" width="300" x="3562.079345703125" y="1775.6190185546875" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
