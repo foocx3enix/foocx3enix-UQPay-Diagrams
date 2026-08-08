@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="claude-code" pages="2">
+<mxfile host="app.diagrams.net" agent="claude-code" pages="3">
   <diagram name="01 - Card Lifecycle" id="card-lifecycle">
     <mxGraphModel dx="3512" dy="1752" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
@@ -308,6 +308,230 @@
         </mxCell>
         <mxCell id="NdQ8E3cr2_pZKo9tdT5M-93" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingRight=12;spacingTop=10;" value="DEVELOPER NOTES&lt;br&gt;&lt;br&gt;• Internal OTP applies to every subject EXCEPT freeze. A wrong or expired code changes nothing — the person is simply re-prompted, within the attempt cap.&lt;br&gt;&lt;br&gt;• The initiator can only ever CANCEL their own request — never approve it.&lt;br&gt;&lt;br&gt;• ApprovalFlows[subject] is a Go map, not a DB table; it is copied into card_task_approvals rows when the request is created.&lt;br&gt;&lt;br&gt;• Roles are matched POSITIVELY, by permission:&amp;nbsp;&lt;div&gt;account_holder = user that holds make_transfer_by_client or check_transfer_by_client;&amp;nbsp;&lt;/div&gt;&lt;div&gt;NAHC = holds initiate_card_top_up_without_wallet.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Never inferred from the absence of the other.&lt;br&gt;&lt;br&gt;&lt;br&gt;• Admin card actions (unfreeze / close / remove / limit-update / activation-reset) run on the SEPARATE permissions_tasks maker→checker engine — different tables, out of scope here.&lt;/div&gt;" vertex="1">
           <mxGeometry height="306.15" width="746.1" x="2185.9" y="1856" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="03 - CARD_APPLY_SELF" id="a3xqDQAERRA9CxUWalrg">
+    <mxGraphModel dx="2145" dy="1195" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="2O8ujgf83aNJrRguQMIG-0" />
+        <mxCell id="2O8ujgf83aNJrRguQMIG-1" parent="2O8ujgf83aNJrRguQMIG-0" />
+        <mxCell id="y9uYIQu13606sEp-yqzD-144" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;" value="CARD_APPLY_SELF — an account holder applies for their own card (end-to-end)" vertex="1">
+          <mxGeometry height="30" width="1000" x="1091.7777458639707" y="753.4444364659928" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-145" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=12;spacing=2;" value="Four phases connect top to bottom: Approval → Issuance charge → Cardholder creation → Delivery / assign / activate. NAHC applies via the maker path (CARD_APPLY_NAHC), not here." vertex="1">
+          <mxGeometry height="60" width="1000" x="1091.7777458639707" y="787.4444364659928" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-146" parent="2O8ujgf83aNJrRguQMIG-1" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="1616.7777458639707" y="873.4444364659928" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-147" parent="2O8ujgf83aNJrRguQMIG-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 1 · APPROVAL — CARD_APPLY_SELF" vertex="1">
+          <mxGeometry height="800" width="640" x="1311.7777458639707" y="933.4444364659928" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-148" parent="y9uYIQu13606sEp-yqzD-147" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;①&amp;nbsp; Create — the account holder applies for their own card&lt;/b&gt;&lt;br&gt;&lt;br&gt;• pick the funding wallet (company cold or cold-plus)&lt;br&gt;• pick the coin to pay in: USDC or USDT&lt;br&gt;• pick the delivery address&lt;br&gt;• confirm with a one-time code (OTP)" vertex="1">
+          <mxGeometry height="130" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-149" parent="y9uYIQu13606sEp-yqzD-147" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;②&amp;nbsp; Save the request and hold the funds&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;card_tasks ← insert { subject = CARD_APPLY_SELF, status = &#39;pending&#39; }&lt;/span&gt;&lt;div&gt;•&amp;nbsp;&lt;span style=&quot;background-color: transparent;&quot;&gt;&lt;font color=&quot;#7a3b9c&quot; face=&quot;Courier New, monospace&quot;&gt;card_task_approvals ← insert { task_id, stage = 1, required_approval_role = &#39;account_holder&#39;, decision = &#39;pending&#39;, assigned_to = NULL }&lt;/font&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;• hold (lock) the issuance cost on the chosen wallet&lt;br&gt;• notify the company&#39;s other account holders&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="580" x="30" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-150" parent="y9uYIQu13606sEp-yqzD-147" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;spacing=6;" value="&lt;b&gt;③&amp;nbsp; Another account holder decides&lt;/b&gt;&lt;br&gt;&lt;br&gt;one-time code on approve;&lt;br&gt;re-checked applicant user.status as still active" vertex="1">
+          <mxGeometry height="190" width="440" x="100" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-151" parent="y9uYIQu13606sEp-yqzD-147" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;spacingRight=10;" value="&lt;b&gt;④&amp;nbsp; Approved&lt;/b&gt; — &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_tasks.status ← &#39;approved&#39;&lt;/span&gt; → start execution" vertex="1">
+          <mxGeometry height="70" width="580" x="30" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-152" parent="2O8ujgf83aNJrRguQMIG-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 2 · ISSUANCE CHARGE — customer wallet → card top-up wallet" vertex="1">
+          <mxGeometry height="566" width="640" x="1311.7777458639707" y="1793.4444364659928" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-153" parent="y9uYIQu13606sEp-yqzD-152" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑤&amp;nbsp; Charge the issuance cost&lt;/b&gt; &lt;i&gt;(before the cardholder is created)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• check the wallet still has enough balance of the chosen coin &amp;amp; gas fee&lt;br&gt;• &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;create card_applications { status = &#39;pending_issuance_charge&#39; }&lt;/span&gt;&lt;br&gt;• move the coins: customer wallet → card top-up wallet&lt;br&gt;&amp;nbsp;&amp;nbsp; &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;transaction_history + transaction_request&lt;/span&gt;&lt;br&gt;• release the earlier hold on the funds" vertex="1">
+          <mxGeometry height="180" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-154" parent="y9uYIQu13606sEp-yqzD-152" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑥&amp;nbsp; Wait for the transfer to finish on the blockchain&lt;/b&gt;&lt;br&gt;&lt;br&gt;• a confirmed success is what lets the flow continue — not merely sending it" vertex="1">
+          <mxGeometry height="90" width="580" x="30" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-155" parent="y9uYIQu13606sEp-yqzD-152" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑦&amp;nbsp; Charge confirmed&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.status:  pending_issuance_charge → pending_cardholder&lt;/span&gt;" vertex="1">
+          <mxGeometry height="100" width="580" x="30" y="436" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-156" parent="2O8ujgf83aNJrRguQMIG-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 3 · CARDHOLDER CREATION (Stage 1 · reuse or create)" vertex="1">
+          <mxGeometry height="536" width="640" x="1311.7777458639707" y="2419.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-157" parent="y9uYIQu13606sEp-yqzD-156" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑧&amp;nbsp; Cardholder — reuse or create&lt;/b&gt;&lt;br&gt;&lt;br&gt;• look the person up by user_id, then by email / phone&lt;br&gt;• if an active cardholder already exists, reuse it (no UQPay call)" vertex="1">
+          <mxGeometry height="110" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-158" parent="y9uYIQu13606sEp-yqzD-156" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑨&amp;nbsp; Create the cardholder at UQPay&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;POST /v1/issuing/cardholders&lt;/span&gt; (waits for the reply)&lt;br&gt;• Simplified KYC — basic profile only, no documents" vertex="1">
+          <mxGeometry height="110" width="580" x="30" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-159" parent="y9uYIQu13606sEp-yqzD-156" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑩&amp;nbsp; Cardholder is active&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cardholders.status = &#39;active&#39;&lt;/span&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.status:  pending_cardholder → pending_delivery&lt;/span&gt;" vertex="1">
+          <mxGeometry height="120" width="580" x="30" y="386" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-160" parent="2O8ujgf83aNJrRguQMIG-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 4 · EXECUTION — delivery → assign → activate (Stages 2–4)" vertex="1">
+          <mxGeometry height="1204" width="640" x="1311.7777458639707" y="3015.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-161" parent="y9uYIQu13606sEp-yqzD-160" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑪&amp;nbsp; Stage 2 — Delivery&lt;/b&gt; &lt;i&gt;(INFII admin, card-delivery page)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• admin ships the card and records the tracking id + card number&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards ← insert { internal_status = &#39;pending_assignation&#39;, uqpay_status = NULL, hashed + masked number }&lt;/span&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.status:  pending_delivery → delivered&lt;/span&gt;" vertex="1">
+          <mxGeometry height="160" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-162" parent="y9uYIQu13606sEp-yqzD-160" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑫&amp;nbsp; Stage 3 — Assign&lt;/b&gt; &lt;i&gt;(the card owner)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• owner types in the card number&lt;br&gt;• if another card action is already running (inflight_operation NOT NULL)&amp;nbsp; → error &lt;span style=&quot;font-family:Courier New,monospace;&quot;&gt;409 card_operation_in_progress&lt;/span&gt;&lt;br&gt;• &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(0, 73, 156);&quot;&gt;POST /v1/issuing/cards/assign&lt;/span&gt; (Assign Card)&lt;br&gt;• saves uqpay_card_id; the card stays pending_assignation" vertex="1">
+          <mxGeometry height="160" width="580" x="30" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-163" parent="y9uYIQu13606sEp-yqzD-160" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑬&amp;nbsp; Activation code delivered&lt;/b&gt;&lt;br&gt;&lt;br&gt;• UQPay sends the &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;card.activation.code&lt;/span&gt; webhook → we email the code&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.internal_status:  pending_assignation → pending_activation&lt;/span&gt;" vertex="1">
+          <mxGeometry height="120" width="580" x="30" y="486" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-164" parent="y9uYIQu13606sEp-yqzD-160" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑭&amp;nbsp; Stage 4 — Activate&lt;/b&gt; &lt;i&gt;(the card owner)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• owner sets a 6-digit PIN and types the activation code&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;POST /v1/issuing/cards/activate&lt;/span&gt; (Activate Card — waits for the reply)" vertex="1">
+          <mxGeometry height="120" width="580" x="30" y="662" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-165" parent="y9uYIQu13606sEp-yqzD-160" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑮&amp;nbsp; Set the spending limits&lt;/b&gt; &lt;i&gt;(our side first, then one push to UQPay)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;card_limits + card_channel_limits&lt;/span&gt; — these are the ones we actually enforce&lt;br&gt;• &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(0, 73, 156);&quot;&gt;one Update Card push&lt;/span&gt; — turn on 3DS, per-payment max 20,000 USD, no-PIN 250 USD&lt;br&gt;• runs in the background; if it fails → card_config_sync_retry admin worklist" vertex="1">
+          <mxGeometry height="160" width="580" x="30" y="838" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-166" parent="y9uYIQu13606sEp-yqzD-160" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑯&amp;nbsp; Card is active  🎉&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards ← { uqpay_status = &#39;ACTIVE&#39;, internal_status = &#39;active&#39; }&lt;/span&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.status:  delivered → activated&lt;/span&gt;&lt;br&gt;• email the user — the card is ready" vertex="1">
+          <mxGeometry height="120" width="580" x="30" y="1054" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-167" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Precondition not met → no request created&lt;/b&gt;&lt;br&gt;• at most 1 active card AND at most 1 active application (per user)&lt;br&gt;• the chosen wallet must have enough funds&lt;br&gt;• otherwise refused right away — no card_tasks row, no hold" vertex="1">
+          <mxGeometry height="120" width="360" x="2031.7777458639707" y="987.4444364659928" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-168" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Cancel (applicant only)&lt;/b&gt;&lt;br&gt;• allowed only before anyone picks it up&lt;br&gt;• status = &#39;cancelled&#39;, release the hold" vertex="1">
+          <mxGeometry height="90" width="360" x="2031.7777458639707" y="1183.4444364659928" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-169" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Rejected, or applicant no longer active&lt;/b&gt;&lt;br&gt;• status = &#39;rejected&#39;, release the hold&lt;br&gt;• notify the applicant and stop&lt;br&gt;• nothing was charged" vertex="1">
+          <mxGeometry height="120" width="360" x="2031.7777458639707" y="1393.4444364659928" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-170" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Charge fails (can&#39;t send, or fails on the blockchain)&lt;/b&gt;&lt;br&gt;• the application stays stuck in &#39;pending_issuance_charge&#39;&lt;br&gt;• retried through the existing Hextrust Monitoring" vertex="1">
+          <mxGeometry height="120" width="360" x="2031.7777458639707" y="2093.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-171" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Reuse — this person already has an active cardholder&lt;/b&gt;&lt;br&gt;(matched by email / phone)&lt;br&gt;• no UQPay call → jump straight to Stage 2 (delivery)" vertex="1">
+          <mxGeometry height="100" width="360" x="2031.7777458639707" y="2473.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-172" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;PENDING — UQPay is still reviewing&lt;/b&gt;&lt;br&gt;• cardholders.status = &#39;pending_review&#39; (no admin task)&lt;br&gt;• the application waits; a webhook / scheduler later moves it to active, or to admin_action_required" vertex="1">
+          <mxGeometry height="110" width="360" x="2031.7777458639707" y="2639.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-173" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;INCOMPLETE / hard reject&lt;/b&gt;&lt;br&gt;• cardholders.status = &#39;admin_action_required&#39; + admin task &#39;cardholder_creation&#39;&lt;br&gt;• a hard reject needs the INFII tech team to fix the data and re-run (the admin escalates)" vertex="1">
+          <mxGeometry height="120" width="360" x="2031.7777458639707" y="2773.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-174" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Assign / code problems&lt;/b&gt;&lt;br&gt;• order FAILED → email the owner to try again&lt;br&gt;• code email fails / webhook never arrives → card_activation_otp_webhook_retrigger admin worklist" vertex="1">
+          <mxGeometry height="120" width="360" x="2031.7777458639707" y="3501.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-175" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Wrong activation code&lt;/b&gt;&lt;br&gt;• each wrong try: activation_attempts + 1; at 5 → internal_status = &#39;activation_locked&#39;&lt;br&gt;• User has to contact INFII admin for resetting activation attempts" vertex="1">
+          <mxGeometry height="120" width="360" x="2031.7777458639707" y="3677.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-176" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-147">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-177" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-149" value="OTP ok">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-178" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-149" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-150">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-179" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-150" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-151" value="approve">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-180" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-147" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="y9uYIQu13606sEp-yqzD-152">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-181" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-153" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-154">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-182" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-154" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-155" value="confirmed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-183" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-152" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="y9uYIQu13606sEp-yqzD-156">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-184" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-157" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-158" value="no reuse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-185" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-158" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-159" value="SUCCESS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-186" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-156" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="y9uYIQu13606sEp-yqzD-160">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-187" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-161" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-162">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-188" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-162" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-163">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-189" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-163" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-164">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-190" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-164" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-165" value="SUCCESS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-191" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-165" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="y9uYIQu13606sEp-yqzD-166">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-192" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="y9uYIQu13606sEp-yqzD-167" value="fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-193" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-149" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="y9uYIQu13606sEp-yqzD-168" value="cancel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-194" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-150" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="y9uYIQu13606sEp-yqzD-169" value="reject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-195" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-154" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="y9uYIQu13606sEp-yqzD-170" value="fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-196" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-157" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="y9uYIQu13606sEp-yqzD-171" value="reuse">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-197" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-158" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.35;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="y9uYIQu13606sEp-yqzD-172" value="PENDING">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-198" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-158" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="y9uYIQu13606sEp-yqzD-173" value="INCOMPLETE">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-199" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-163" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="y9uYIQu13606sEp-yqzD-174" value="issue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-200" edge="1" parent="2O8ujgf83aNJrRguQMIG-1" source="y9uYIQu13606sEp-yqzD-164" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="y9uYIQu13606sEp-yqzD-175" value="wrong code">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-201" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef4fb;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=12;spacingTop=10;" value="&lt;b&gt;Status fields that move through the flow&lt;/b&gt;&lt;br&gt;&lt;br&gt;card_tasks.status:&amp;nbsp; pending → approved&amp;nbsp; (or rejected / cancelled)&lt;br&gt;&lt;br&gt;card_applications.status:&amp;nbsp; pending_issuance_charge → pending_cardholder&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; → pending_delivery → delivered → activated&lt;br&gt;&lt;br&gt;cards.internal_status:&amp;nbsp; pending_assignation&amp;nbsp;→ pending_activation → active" vertex="1">
+          <mxGeometry height="200" width="640" x="1091.7777458639707" y="4293.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-202" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;" value="Legend" vertex="1">
+          <mxGeometry height="24" width="285" x="1091.7777458639707" y="4515.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-203" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1101.7777458639707" y="4547.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-204" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="system / engine action" vertex="1">
+          <mxGeometry height="22" width="240" x="1133.7777458639707" y="4547.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-205" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1101.7777458639707" y="4577.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-206" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="success / status advance / card active" vertex="1">
+          <mxGeometry height="22" width="320" x="1133.7777458639707" y="4577.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-207" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1101.7777458639707" y="4607.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-208" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="waiting / needs attention" vertex="1">
+          <mxGeometry height="22" width="320" x="1133.7777458639707" y="4607.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-209" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1101.7777458639707" y="4637.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-210" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="failure / reject / exception" vertex="1">
+          <mxGeometry height="22" width="320" x="1133.7777458639707" y="4637.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-211" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1101.7777458639707" y="4667.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-212" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="admin / manual step" vertex="1">
+          <mxGeometry height="22" width="320" x="1133.7777458639707" y="4667.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-213" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="&lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;table ← insert&lt;/span&gt;&amp;nbsp;&amp;nbsp;=&amp;nbsp; a database write / read" vertex="1">
+          <mxGeometry height="22" width="420" x="1101.7777458639707" y="4699.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-214" parent="2O8ujgf83aNJrRguQMIG-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="&lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;POST /v1/...&lt;/span&gt;&amp;nbsp;&amp;nbsp;=&amp;nbsp; a UQPay API call" vertex="1">
+          <mxGeometry height="22" width="420" x="1101.7777458639707" y="4727.444436465993" as="geometry" />
+        </mxCell>
+        <mxCell id="y9uYIQu13606sEp-yqzD-215" parent="2O8ujgf83aNJrRguQMIG-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingRight=12;spacingTop=10;" value="&lt;b&gt;DEVELOPER NOTES&lt;/b&gt;&lt;br&gt;&lt;br&gt;• Self-service path: an account_holder (holds make_transfer_by_client or check_transfer_by_client) applies for their OWN card; another account_holder approves. An NAHC applies via the maker path (CARD_APPLY_NAHC), not here.&lt;br&gt;&lt;br&gt;• The issuance cost is a currency-agnostic number from enix-biz-settings, paid 1:1 in the chosen coin (50 = 50 USDC or 50 USDT), plus the network&#39;s transfer fee.&lt;br&gt;&lt;br&gt;• The onboarding first card is FREE — it skips Phases 1–2 entirely (no card_tasks, no charge) and enters at Phase 3 already in &#39;pending_cardholder&#39;.&lt;br&gt;&lt;br&gt;• An application is invisible to admins until &#39;pending_delivery&#39; — a stuck charge (Phase 2) or a cardholder hold (Phase 3) never appears on the INFII admin pending delivery page.&lt;br&gt;&lt;br&gt;• Our card_limits are the ones we actually enforce at the real-time authorization check — UQPay is only ever told the per-payment max (20,000 USD) and the no-PIN amount." vertex="1">
+          <mxGeometry height="321.44" width="560" x="1771.78" y="4572" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
