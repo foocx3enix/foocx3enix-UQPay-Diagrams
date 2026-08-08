@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="claude-code">
+<mxfile host="app.diagrams.net" agent="claude-code" pages="2">
   <diagram name="01 - Card Lifecycle" id="card-lifecycle">
     <mxGraphModel dx="3512" dy="1752" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
@@ -142,6 +142,172 @@
         </mxCell>
         <mxCell id="YJgR6R1OERao_C9EPfJk-444" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontColor=#ffffff;fontSize=11;fontStyle=1;" value="Removed (hidden, terminal)" vertex="1">
           <mxGeometry height="34" width="300" x="3562.079345703125" y="1775.6190185546875" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="02 - Approval Engine" id="6Jshq-47sH3dEm6p25bc">
+    <mxGraphModel dx="2566" dy="1023" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="UZv5MCVZXhOqA6S8-3Av-0" />
+        <mxCell id="UZv5MCVZXhOqA6S8-3Av-1" parent="UZv5MCVZXhOqA6S8-3Av-0" />
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-43" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;" value="Card approval engine — card_tasks + card_task_approvals (generic client-side flow)" vertex="1">
+          <mxGeometry height="30" width="980" x="1145.8953929227941" y="918.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-44" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=12;spacing=2;" value="• One card_tasks row per request; one card_task_approvals row per required stage.&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="690" x="1145.8953929227941" y="952.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-45" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;" value="Legend" vertex="1">
+          <mxGeometry height="24" width="285" x="1125.8953929227941" y="1218.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-46" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1135.8953929227941" y="1250.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-47" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="engine action step" vertex="1">
+          <mxGeometry height="22" width="230" x="1167.8953929227941" y="1250.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-48" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1135.8953929227941" y="1280.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-49" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="OTP / attention step" vertex="1">
+          <mxGeometry height="22" width="230" x="1167.8953929227941" y="1280.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-50" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1135.8953929227941" y="1310.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-51" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="approved → execute" vertex="1">
+          <mxGeometry height="22" width="230" x="1167.8953929227941" y="1310.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-52" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1135.8953929227941" y="1340.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-53" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="rejected" vertex="1">
+          <mxGeometry height="22" width="230" x="1167.8953929227941" y="1340.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-54" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;html=1;fillColor=#f5f5f5;strokeColor=#999999;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1135.8953929227941" y="1370.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-55" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="cancelled" vertex="1">
+          <mxGeometry height="22" width="230" x="1167.8953929227941" y="1370.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-56" parent="UZv5MCVZXhOqA6S8-3Av-1" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="1560.8953929227941" y="1048.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-57" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;align=center;verticalAlign=middle;spacing=8;" value="①  CREATE — the initiator submits the request" vertex="1">
+          <mxGeometry height="60" width="340" x="1405.8953929227941" y="1138.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-58" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;align=center;verticalAlign=middle;spacing=8;" value="②  INTERNAL OTP — the initiator confirms&#xa;with a one-time code" vertex="1">
+          <mxGeometry height="60" width="340" x="1405.8953929227941" y="1288.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-59" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;align=center;verticalAlign=middle;spacing=8;" value="③  SAVE THE REQUEST — the engine writes&#xa;two rows, one in each of two tables:" vertex="1">
+          <mxGeometry height="60" width="340" x="1405.8953929227941" y="1438.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-60" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef4fb;strokeColor=#6c8ebf;fontSize=12;align=center;verticalAlign=middle;spacing=8;" value="card_tasks&#xa;one row for the whole request&#xa;&#xa;{ subject, company_id, initiator_id,&#xa;subject_user_id, card_id?, payload,&#xa;status = &#39;pending&#39; }" vertex="1">
+          <mxGeometry height="120" width="340" x="1405.8953929227941" y="1548.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-61" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef4fb;strokeColor=#6c8ebf;fontSize=12;align=center;verticalAlign=middle;spacing=8;" value="card_task_approvals&#xa;one row per approval stage&#xa;&#xa;a row is inserted for each stage listed in&#xa;ApprovalFlows[subject], each starting as&#xa;{ stage, required_approval_role,&#xa;decision = &#39;pending&#39;, assigned_to = NULL }" vertex="1">
+          <mxGeometry height="135" width="340" x="1405.8953929227941" y="1728.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-62" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;align=center;verticalAlign=middle;spacing=8;" value="④  NOTIFY — every approver whose role matches&#xa;the lowest pending stage is alerted" vertex="1">
+          <mxGeometry height="70" width="340" x="1405.8953929227941" y="1953.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-63" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;align=center;verticalAlign=middle;spacing=8;" value="⑤  ASSIGN — an approver picks up the stage&lt;br&gt;&lt;br&gt;must match the role, and must not be the initiator" vertex="1">
+          <mxGeometry height="110" width="340" x="1405.8953929227941" y="2113.1503188189336" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-64" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;" value="⑥  DECIDE&#xa;(one-time code&#xa;on approve)" vertex="1">
+          <mxGeometry height="130" width="240" x="1455.8953929227941" y="2313.1503188189336" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-65" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;align=center;verticalAlign=middle;spacing=8;" value="⑦  FINAL STAGE APPROVED&lt;br&gt;card_tasks.status ← &#39;approved&#39;&lt;br&gt;→ start the request&#39;s execution flow" vertex="1">
+          <mxGeometry height="110" width="340" x="1405.8953929227941" y="2533.1503188189336" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-66" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacing=6;" value="CANCEL (initiator only)&#xa;allowed only while no stage has been&#xa;picked up or decided&#xa;status ← &#39;cancelled&#39;" vertex="1">
+          <mxGeometry height="110" width="270" x="1845.8953929227941" y="1933.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-67" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacing=6;" value="REASSIGN on role change&#xa;if the assigned approver loses the required&#xa;role, assigned_to ← NULL (decision stays&#xa;&#39;pending&#39;) so another approver can pick it up" vertex="1">
+          <mxGeometry height="120" width="270" x="974.9953929227942" y="2108.1503188189336" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-68" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacing=6;" value="REJECT (any stage)&#xa;status ← &#39;rejected&#39; → notify the initiator&#xa;→ STOP&#xa;one rejection ends the whole request" vertex="1">
+          <mxGeometry height="110" width="270" x="1115.8953929227941" y="2323.1503188189336" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-69" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;spacing=6;" value="APPROVE — more stages remain&#xa;notify the next stage&#39;s approvers;&#xa;the engine advances to that stage&#xa;(loops back to ⑤ ASSIGN)" vertex="1">
+          <mxGeometry height="120" width="270" x="1865.8953929227941" y="2318.1503188189336" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-70" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="NdQ8E3cr2_pZKo9tdT5M-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-71" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="NdQ8E3cr2_pZKo9tdT5M-58" value="submit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-72" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="NdQ8E3cr2_pZKo9tdT5M-59" value="OTP ok">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-73" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="NdQ8E3cr2_pZKo9tdT5M-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-74" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="NdQ8E3cr2_pZKo9tdT5M-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-75" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="NdQ8E3cr2_pZKo9tdT5M-62">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-76" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="NdQ8E3cr2_pZKo9tdT5M-63">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-77" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="NdQ8E3cr2_pZKo9tdT5M-64">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-78" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="NdQ8E3cr2_pZKo9tdT5M-68" value="reject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-79" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="NdQ8E3cr2_pZKo9tdT5M-65" value="approve — final stage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-80" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="NdQ8E3cr2_pZKo9tdT5M-69" value="approve —&#xa;more stages">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-81" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="NdQ8E3cr2_pZKo9tdT5M-63" value="next stage">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2000.92" y="2168.17" />
+            </Array>
+            <mxPoint x="1797.35" y="2176.33" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-82" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-62" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="NdQ8E3cr2_pZKo9tdT5M-66" value="cancel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-83" edge="1" parent="UZv5MCVZXhOqA6S8-3Av-1" source="NdQ8E3cr2_pZKo9tdT5M-63" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="NdQ8E3cr2_pZKo9tdT5M-67" value="role change">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-84" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=13;fontStyle=1;" value="STAGE CONFIGURATIONS  ·  ApprovalFlows[subject]" vertex="1">
+          <mxGeometry height="26" width="460" x="2185.895392922794" y="1048.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-85" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=11;fontStyle=2;" value="Reference for the reader — the three stage shapes the engine uses. The subject determines which shape applies and who initiates it." vertex="1">
+          <mxGeometry height="46" width="460" x="2185.895392922794" y="1076.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-86" parent="UZv5MCVZXhOqA6S8-3Av-1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=30;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#82b366;strokeColor=#82b366;swimlaneFillColor=#ffffff;" value="SINGLE STAGE  ·  [ account_holder ]" vertex="1">
+          <mxGeometry height="150" width="460" x="2185.895392922794" y="1132.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-87" parent="NdQ8E3cr2_pZKo9tdT5M-86" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=11;spacingLeft=12;spacingRight=12;spacingTop=8;" value="Initiator: an Account Holder&#xa;Approver: another Account Holder holding&#xa;make_transfer_by_client (maker) or&#xa;check_transfer_by_client (checker) — never the initiator&#xa;&#xa;Subjects: CARD_APPLY_SELF, CARD_REPLACE_SELF,&#xa;CARD_TOPUP_SELF" vertex="1">
+          <mxGeometry height="120" width="460" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-88" parent="UZv5MCVZXhOqA6S8-3Av-1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=30;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#6c8ebf;strokeColor=#6c8ebf;swimlaneFillColor=#ffffff;" value="SINGLE STAGE  ·  [ checker ]" vertex="1">
+          <mxGeometry height="220" width="460" x="2185.895392922794" y="1302.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-89" parent="NdQ8E3cr2_pZKo9tdT5M-88" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=11;spacingLeft=12;spacingRight=12;spacingTop=8;" value="Initiator: a Maker, OR a corporate cardholder (NAHC)&#xa;Approver: a Checker&#xa;&#xa;Maker-initiated: NAHC_INVITE, NAHC_SUSPEND,&#xa;NAHC_UNSUSPEND, CARD_APPLY_NAHC,&#xa;CARD_REPLACE_NAHC, CARD_TOPUP_NAHC_BY_MAKER&#xa;&#xa;NAHC-initiated: CARD_UNFREEZE_NAHC,&#xa;CARD_LIMIT_UPDATE_NAHC, CARD_CLOSE_NAHC,&#xa;CARD_REMOVE_NAHC" vertex="1">
+          <mxGeometry height="190" width="460" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-90" parent="UZv5MCVZXhOqA6S8-3Av-1" style="swimlane;html=1;rounded=1;arcSize=6;startSize=30;fontSize=12;fontStyle=1;fontColor=#ffffff;align=center;verticalAlign=middle;fillColor=#d79b00;strokeColor=#d79b00;swimlaneFillColor=#ffffff;" value="TWO STAGES  ·  [ maker → checker ]" vertex="1">
+          <mxGeometry height="205" width="460" x="2185.895392922794" y="1542.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-91" parent="NdQ8E3cr2_pZKo9tdT5M-90" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=11;spacingLeft=12;spacingRight=12;spacingTop=8;" value="Initiator: a corporate cardholder (NAHC)&#xa;&#xa;Stage 1 — maker: ENRICHES the request (selects&#xa;USDC / USDT, locks the top-up quotation), then approves&#xa;&#xa;Stage 2 — checker: final decision against the&#xa;locked amounts&#xa;&#xa;Subject: CARD_TOPUP_NAHC" vertex="1">
+          <mxGeometry height="175" width="460" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-92" parent="UZv5MCVZXhOqA6S8-3Av-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;fontStyle=2;" value="NAHC = &quot;Corporate Cardholder&quot; — the user-facing name for the same backend role." vertex="1">
+          <mxGeometry height="30" width="460" x="2185.895392922794" y="1756.1503188189338" as="geometry" />
+        </mxCell>
+        <mxCell id="NdQ8E3cr2_pZKo9tdT5M-93" parent="UZv5MCVZXhOqA6S8-3Av-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingRight=12;spacingTop=10;" value="DEVELOPER NOTES&lt;br&gt;&lt;br&gt;• Internal OTP applies to every subject EXCEPT freeze. A wrong or expired code changes nothing — the person is simply re-prompted, within the attempt cap.&lt;br&gt;&lt;br&gt;• The initiator can only ever CANCEL their own request — never approve it.&lt;br&gt;&lt;br&gt;• ApprovalFlows[subject] is a Go map, not a DB table; it is copied into card_task_approvals rows when the request is created.&lt;br&gt;&lt;br&gt;• Roles are matched POSITIVELY, by permission:&amp;nbsp;&lt;div&gt;account_holder = user that holds make_transfer_by_client or check_transfer_by_client;&amp;nbsp;&lt;/div&gt;&lt;div&gt;NAHC = holds initiate_card_top_up_without_wallet.&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Never inferred from the absence of the other.&lt;br&gt;&lt;br&gt;&lt;br&gt;• Admin card actions (unfreeze / close / remove / limit-update / activation-reset) run on the SEPARATE permissions_tasks maker→checker engine — different tables, out of scope here.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="306.15" width="746.1" x="2185.9" y="1856" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
