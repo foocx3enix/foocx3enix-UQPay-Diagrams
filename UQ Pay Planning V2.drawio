@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="claude-code" pages="8">
+<mxfile host="app.diagrams.net" agent="claude-code" pages="9">
   <diagram name="01 - Card Lifecycle" id="card-lifecycle">
     <mxGraphModel dx="3512" dy="1752" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
@@ -1510,7 +1510,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="08 - CARD_REPLACE_SELF" id="RltORoW30tLfBJRG2rJ6">
-    <mxGraphModel dx="-3045" dy="-2835" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="-1215" dy="-2137" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="UGrVtaiaCgaz2CvJc4yu-0" />
         <mxCell id="UGrVtaiaCgaz2CvJc4yu-1" parent="UGrVtaiaCgaz2CvJc4yu-0" />
@@ -1708,6 +1708,215 @@
         </mxCell>
         <mxCell id="2sb_w9JU7IRoKLnbps9l-64" parent="UGrVtaiaCgaz2CvJc4yu-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• Card replacement = a fresh application PLUS two legs: (1) close the old card first, (2) roll the old card&#39;s leftover balance onto the new card after it fully closes. The apply middle (charge → cardholder reuse → deliver/assign/activate) is the same machinery as a fresh application — but here the cardholder always RESOLVES TO A REUSE (the initiator already has one), so no UQPay create-cardholder call runs.&lt;br&gt;&lt;br&gt;• Close-first ordering is what keeps the ≤1-active-card invariant true (see the inverted-gate panel): the old card moves to ongoing_close before the new application is created, so there are never two active cards at once.&lt;br&gt;&lt;br&gt;• Close is internal-first: cards.internal_status → ongoing_close stops spend and opens the reapply slot immediately; the UQPay CANCELLED push is async and, if it fails, drives the card_status_sync_retry worklist WITHOUT un-closing the card.&lt;br&gt;&lt;br&gt;• The balance rollover has its OWN concurrency guard on the application (balance_rollover_status compare-and-set) because it changes no card state — there is no cards.inflight_operation for it. It is re-evaluated at both completion points and runs exactly once (balance_rolled_over_at). A definitive failure raises the card_balance_rollover_retry worklist; a still-&#39;pending&#39; order is never auto-retried.&lt;br&gt;&lt;br&gt;• The rollover recharge is confirmed by matching the card.recharge.succeeded webhook&#39;s source_id to the stored reference_id (card_order_id) — the same handle we saved when calling Card Recharge.&lt;br&gt;&lt;br&gt;• An NAHC&#39;s card is replaced via the maker → checker path (CARD_REPLACE_NAHC), which reuses this exact close + apply + rollover execution." vertex="1">
           <mxGeometry height="960" width="600" x="4998.88929605484" y="6482" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="09 - CARD_REPLACE_NAHC" id="aNKGMb-4d8xSnbp2w5BI">
+    <mxGraphModel dx="-3929" dy="-2162" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="fdiY78E_wBlVqpb2p_Ax-0" />
+        <mxCell id="fdiY78E_wBlVqpb2p_Ax-1" parent="fdiY78E_wBlVqpb2p_Ax-0" />
+        <mxCell id="daHSXicIUf_iNyanYbEl-0" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;" value="CARD_REPLACE_NAHC — a Maker replaces a corporate cardholder (NAHC)&#39;s card (end-to-end)" vertex="1">
+          <mxGeometry height="30" width="1200" x="5868.88925075531" y="2806.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-1" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=12;spacing=2;" value="The maker-initiated replacement for a corporate cardholder (NAHC = the user-facing name for the same backend role). A Maker replaces a target NAHC&#39;s live card, a Checker approves, and the replacement fee is charged from a company wallet the maker chooses (an NAHC has no wallet of their own)." vertex="1">
+          <mxGeometry height="118" width="1060" x="5868.88925075531" y="2840.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-2" parent="fdiY78E_wBlVqpb2p_Ax-1" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="6393.88925075531" y="2976.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-3" parent="fdiY78E_wBlVqpb2p_Ax-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 1 · APPROVAL — CARD_REPLACE_NAHC (one stage · checker · maker → checker)" vertex="1">
+          <mxGeometry height="810" width="640" x="6088.88925075531" y="3036.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-4" parent="daHSXicIUf_iNyanYbEl-3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;①&amp;nbsp; Create — the Maker requests the replacement&lt;/b&gt; &lt;i&gt;(a client maker — holds make_transfer_by_client)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• select the target NAHC (only active NAHC that hold a live card are shown) and the OLD card being replaced (cards.internal_status ∈ {active, frozen})&lt;br&gt;• pick the funding wallet (company cold or cold-plus) and coin (USDC/USDT) for the replacement fee — the NAHC has no wallet of their own&lt;br&gt;• pick the delivery address; confirm with a one-time code (OTP)" vertex="1">
+          <mxGeometry height="170" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-5" parent="daHSXicIUf_iNyanYbEl-3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;②&amp;nbsp; Save the request and hold the fee&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_tasks ← insert { subject = CARD_REPLACE_NAHC, subject_user_id = the target NAHC, card_id = the NAHC&#39;s OLD card, payload = { source_wallet, issuance_cost_currency/amount, delivery_address }, status = &#39;pending&#39; }&lt;/span&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_task_approvals ← insert { stage 1, required_approval_role = &#39;checker&#39;, decision = &#39;pending&#39; }&lt;/span&gt;&lt;br&gt;• hold (lock) the replacement fee + gas on the chosen wallet&lt;br&gt;• notify the maker + all of the company&#39;s checkers" vertex="1">
+          <mxGeometry height="190" width="580" x="30" y="244" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-6" parent="daHSXicIUf_iNyanYbEl-3" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;spacing=6;" value="&lt;b&gt;③&amp;nbsp; A Checker decides&lt;/b&gt;&lt;br&gt;&lt;br&gt;OTP on approve. Re-check TWO things&lt;br&gt;(status only, never the NAHC role):&lt;br&gt;• the NAHC is still active&lt;br&gt;• the OLD card is still replaceable — cards.internal_status ∈ {active, frozen} and no cards.inflight_operation" vertex="1">
+          <mxGeometry height="190" width="480" x="80" y="464" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-7" parent="daHSXicIUf_iNyanYbEl-3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;spacingRight=10;" value="&lt;b&gt;④&amp;nbsp; Approved&lt;/b&gt; — &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_tasks.status ← &#39;approved&#39;&lt;/span&gt; → start execution (close the old card, then issue the new one)" vertex="1">
+          <mxGeometry height="70" width="580" x="30" y="704" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-8" parent="fdiY78E_wBlVqpb2p_Ax-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 2 · EXECUTION — close the OLD card, then issue the NEW one (on approval, in order)" vertex="1">
+          <mxGeometry height="1060" width="640" x="6088.88925075531" y="3906.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-9" parent="daHSXicIUf_iNyanYbEl-8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑤&amp;nbsp; Re-confirm the wallet is still funded&lt;/b&gt; &lt;i&gt;(before anything is closed)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• re-check the maker-chosen wallet still holds the fee + gas&lt;br&gt;• this runs BEFORE the old card is closed, so a funding shortfall never strands a closed card" vertex="1">
+          <mxGeometry height="120" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-10" parent="daHSXicIUf_iNyanYbEl-8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑥&amp;nbsp; Close the OLD card&lt;/b&gt; &lt;i&gt;(the shared close op — internal-first)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.internal_status → &#39;ongoing_close&#39;&lt;/span&gt; on the NAHC&#39;s old card at once: spend is denied immediately, the reapply slot opens, the NAHC is notified &#39;card closing&#39;&lt;br&gt;• then an async CANCELLED push to UQPay: &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pending_operations ← insert { operation = &#39;uq_close&#39; }&lt;/span&gt;&lt;br&gt;• the old card walks ongoing_close → closed over the ~30-day settlement tail; its leftover balance is captured on the full-close webhook into &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.final_card_balance&lt;/span&gt;" vertex="1">
+          <mxGeometry height="200" width="580" x="30" y="204" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-11" parent="daHSXicIUf_iNyanYbEl-8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑦&amp;nbsp; Create the NEW application&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications ← insert { user_id = the NAHC, status = &#39;pending_issuance_charge&#39;, replaces_card_id = the old card, balance_rollover_status = NULL }&lt;/span&gt;&lt;br&gt;• replaces_card_id links the new card back to the closing one — the rollover (Phase 3) keys on it" vertex="1">
+          <mxGeometry height="130" width="580" x="30" y="434" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-12" parent="daHSXicIUf_iNyanYbEl-8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑧&amp;nbsp; Charge the replacement fee&lt;/b&gt; &lt;i&gt;(the maker-chosen company wallet → card top-up wallet)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• move the fee on-chain (a Hextrust transfer); on confirmed success → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.status: pending_issuance_charge → pending_cardholder&lt;/span&gt;&lt;br&gt;• the fee is always charged, exactly like a fresh application" vertex="1">
+          <mxGeometry height="120" width="580" x="30" y="594" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-13" parent="daHSXicIUf_iNyanYbEl-8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑨&amp;nbsp; Cardholder — reuse&lt;/b&gt;&lt;br&gt;&lt;br&gt;• the NAHC already has an active cardholder from the old card → pure reuse, NO UQPay create-cardholder call&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.status → pending_delivery&lt;/span&gt;" vertex="1">
+          <mxGeometry height="110" width="580" x="30" y="744" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-14" parent="daHSXicIUf_iNyanYbEl-8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑩&amp;nbsp; Deliver → assign → activate&lt;/b&gt; &lt;i&gt;(Stages 2–4, same as a fresh application)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• admin delivers the new card; the NAHC assigns it (Assign Card) and activates it (Activate Card) on their own device; limits are pushed once&lt;br&gt;• the NEW card reaches &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.internal_status = &#39;active&#39;&lt;/span&gt; and &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.status = &#39;activated&#39;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="150" width="580" x="30" y="884" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-15" parent="fdiY78E_wBlVqpb2p_Ax-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 3 · BALANCE ROLLOVER — move the old card&#39;s leftover balance to the new card (net-new leg)" vertex="1">
+          <mxGeometry height="630" width="743.11" x="6088.89" y="5026.26" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-16" parent="daHSXicIUf_iNyanYbEl-15" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑪&amp;nbsp; Wait until BOTH are true&lt;/b&gt; &lt;i&gt;(they can finish in either order)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• the OLD card is fully closed: &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.internal_status = &#39;closed&#39;&lt;/span&gt; (UQPay CANCELLED) AND &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.final_card_balance IS NOT NULL&lt;/span&gt;&lt;br&gt;• the NEW card is &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.internal_status = &#39;active&#39;&lt;/span&gt;&lt;br&gt;• eligibility is re-checked at BOTH completion points (old card CANCELLED via the close reconcile; new card active at Stage 4)" vertex="1">
+          <mxGeometry height="150" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-17" parent="daHSXicIUf_iNyanYbEl-15" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑫&amp;nbsp; Dispatch the rollover&lt;/b&gt; &lt;i&gt;(by us — no fee, no revenue, no customer-wallet movement)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• concurrency guard (no worklist): compare-and-set &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.balance_rollover_status = &#39;pending&#39; WHERE balance_rollover_status IN (NULL, &#39;failed&#39;)&lt;/span&gt; — a duplicate dispatch from the two trigger points is a no-op (there is no cards.inflight_operation; the guard lives on the application)&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pending_operations ← insert { entity_type=&#39;card&#39;, entity_id = new card, operation = &#39;balance_rollover&#39;, reference_type = &#39;card_order_id&#39; }&lt;/span&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;POST /v1/issuing/cards/{new card}/recharge&lt;/span&gt; (Card Recharge, amount = the old card&#39;s final_card_balance read live, fresh idempotency key) → store &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;reference_id = card_order_id&lt;/span&gt; from the response" vertex="1">
+          <mxGeometry height="200" width="580" x="30" y="234" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-18" parent="daHSXicIUf_iNyanYbEl-15" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑬&amp;nbsp; Rolled over  🎉&lt;/b&gt;&lt;br&gt;&lt;br&gt;• confirmed by the &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;card.recharge.succeeded&lt;/span&gt; webhook, matched to the op by &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;source_id = the stored reference_id (card_order_id)&lt;/span&gt; (or the Retrieve Card Order poll)&lt;br&gt;• set the new card balance from &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;data.card_available_balance&lt;/span&gt;&lt;br&gt;• delete the op row → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.balance_rollover_status = &#39;rolled_over&#39;, balance_rolled_over_at = now&lt;/span&gt; (reached from the op&#39;s new card via cards.card_application_id) — the stamp makes the rollover run exactly once&lt;br&gt;• notify the NAHC &#39;balance moved to your new card&#39;" vertex="1">
+          <mxGeometry height="160" width="580" x="30" y="464" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-19" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Precondition not met → no request created&lt;/b&gt;&lt;br&gt;• the target must be a valid, active NAHC (holds initiate_card_top_up_without_wallet) — else 403 invalid_target_user&lt;br&gt;• the named card must be the NAHC&#39;s OWN live card — cards.internal_status ∈ {active, frozen}; anything else → 403 invalid_card_action&lt;br&gt;• no cards.inflight_operation, and no pending customer close/replacement on it (a card_tasks row, status=&#39;pending&#39;, subject ∈ {CARD_CLOSE_NAHC, CARD_REPLACE_SELF, CARD_REPLACE_NAHC})&lt;br&gt;• ≤ 1 active application for the NAHC; the chosen wallet must cover the fee + gas&lt;br&gt;• otherwise refused right away — no card_tasks row, no hold, the old card untouched" vertex="1">
+          <mxGeometry height="200" width="360" x="6808.88925075531" y="3086.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-20" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Cancel (maker only)&lt;/b&gt;&lt;br&gt;• allowed only before a checker picks it up&lt;br&gt;• card_tasks.status = &#39;cancelled&#39;, release the hold; the NAHC&#39;s old card is untouched" vertex="1">
+          <mxGeometry height="100" width="360" x="6808.88925075531" y="3306.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-21" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Rejected, or the checks fail at approval&lt;/b&gt;&lt;br&gt;• NAHC blocked → 403 invalid_target_user&lt;br&gt;• old card no longer replaceable: already ongoing_close/closed/removed → 403 invalid_card_action; an op in flight → 409 card_operation_in_progress&lt;br&gt;• the checker rejects → card_tasks.status = &#39;rejected&#39;, release the hold, notify the maker — the OLD CARD IS UNTOUCHED, nothing was charged" vertex="1">
+          <mxGeometry height="180" width="360" x="6808.88925075531" y="3486.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-22" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Subject switched NAHC → account holder mid-request? Still replaced.&lt;/b&gt;&lt;br&gt;• the NAHC role is checked ONCE, at creation, and never again&lt;br&gt;• the request is NOT cancelled and no stage is cleared — the checker still approves and the card is replaced for that user&lt;br&gt;• only the subject&#39;s status (active / blocked) is re-checked, at the checker&#39;s approval" vertex="1">
+          <mxGeometry height="150" width="360" x="6808.88925075531" y="3686.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-23" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Wallet short at the approval re-check&lt;/b&gt;&lt;br&gt;• the chosen wallet no longer holds the fee + gas → the approval is rejected&lt;br&gt;• because this re-check runs BEFORE the close, nothing is closed and nothing is charged — a shortfall never strands a closed card" vertex="1">
+          <mxGeometry height="140" width="360" x="6808.88925075531" y="3950.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-24" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Old-card close push fails&lt;/b&gt; &lt;i&gt;(sync 4xx / card.status.update.failed / poll FAILED)&lt;/i&gt;&lt;br&gt;• the old card STAYS cards.internal_status = &#39;ongoing_close&#39; — it is never un-closed&lt;br&gt;• follow-up: the card_status_sync_retry admin worklist drives the retry to UQPay; the new application proceeds regardless (spend is denied on the old card locally while UQPay lags)" vertex="1">
+          <mxGeometry height="170" width="360" x="6808.88925075531" y="4120.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-25" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Replacement-fee charge stuck / fails on-chain&lt;/b&gt;&lt;br&gt;• the new application holds at card_applications.status = &#39;pending_issuance_charge&#39;&lt;br&gt;• follow-up: retried via Hextrust Monitoring; once it confirms, execution auto-continues&lt;br&gt;• note: the OLD card is already &#39;ongoing_close&#39; (closed in ⑥, before the charge) — the replacement is in progress; the stuck charge only delays the new card" vertex="1">
+          <mxGeometry height="170" width="360" x="6808.88925075531" y="4500.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-26" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Balance rollover fails definitively&lt;/b&gt; &lt;i&gt;(card.recharge.failed / poll FAILED)&lt;/i&gt;&lt;br&gt;• delete the op row → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_applications.balance_rollover_status = &#39;failed&#39;&lt;/span&gt;&lt;br&gt;• follow-up: create the card_balance_rollover_retry admin worklist (if none exists); an admin retries, which re-runs the compare-and-set (failed → pending) and re-dispatches the Card Recharge&lt;br&gt;• a still-&#39;pending&#39; order is NEVER auto-retried (a succeeded-but-unconfirmed recharge must not double); the new card is fully usable meanwhile — only the old balance is pending" vertex="1">
+          <mxGeometry height="200" width="360" x="7005.99925075531" y="5220.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-27" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-28" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-5" value="OTP ok">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-29" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-30" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-7" value="the checker approves">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-31" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="daHSXicIUf_iNyanYbEl-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-32" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-10" value="still funded">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-33" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-34" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-35" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-13" value="charge confirmed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-36" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-37" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="daHSXicIUf_iNyanYbEl-15" value="new card active — now wait for the old card to finish closing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-38" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-17" value="both conditions met">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-39" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="daHSXicIUf_iNyanYbEl-18" value="received the card.recharge.succeeded webhook">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-40" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="daHSXicIUf_iNyanYbEl-19" value="fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-41" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="daHSXicIUf_iNyanYbEl-20" value="cancel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-42" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="daHSXicIUf_iNyanYbEl-21" value="reject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-43" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="daHSXicIUf_iNyanYbEl-22" value="role change">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-44" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="daHSXicIUf_iNyanYbEl-23" value="short">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-45" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="daHSXicIUf_iNyanYbEl-24" value="push fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-46" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="daHSXicIUf_iNyanYbEl-25" value="stuck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-47" edge="1" parent="fdiY78E_wBlVqpb2p_Ax-1" source="daHSXicIUf_iNyanYbEl-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="daHSXicIUf_iNyanYbEl-26" value="fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-48" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="The reapply gate is INVERTED versus a fresh application" vertex="1">
+          <mxGeometry height="26" width="680" x="5868.88925075531" y="5720.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-49" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• a fresh apply requires NO active card.&#xa;• a replacement requires EXACTLY the one live card it names (card_tasks.card_id) — the target NAHC&#39;s card, which IS the thing being replaced.&#xa;&#xa;The ≤1-active-application half still holds (no other application in flight for the NAHC). The ≤1-active-card invariant is preserved by ORDERING — close the old card first (→ ongoing_close), create the new application second — never by holding two active cards at once." vertex="1">
+          <mxGeometry height="160" width="680" x="5868.88925075531" y="5752.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-50" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Balance-rollover eligibility" vertex="1">
+          <mxGeometry height="26" width="680" x="5868.88925075531" y="5940.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-51" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="Runs only when ALL THREE hold (never at ongoing_close — UQPay is still settling):&#xa;• old card cards.internal_status = &#39;closed&#39; (UQPay CANCELLED)&#xa;• old card cards.final_card_balance IS NOT NULL&#xa;• new card cards.internal_status = &#39;active&#39;&#xa;&#xa;Re-checked at both points that can satisfy it last (old card CANCELLED; new card active) — they finish in either order. balance_rolled_over_at stamps the one-time success; a still-&#39;pending&#39; order is never auto-retried. By us: no fee, no revenue, no customer-wallet movement (contrast a paid top-up)." vertex="1">
+          <mxGeometry height="190" width="680" x="5868.88925075531" y="5972.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-52" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Status fields that move through the flow" vertex="1">
+          <mxGeometry height="26" width="680" x="5868.88925075531" y="6190.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-53" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="card_tasks.status:  pending → approved  (or rejected / cancelled)&#xa;&#xa;card_applications.status:  pending_issuance_charge → pending_cardholder → pending_delivery → delivered → activated&#xa;   (+ replaces_card_id = the old card;  balance_rollover_status: NULL → pending → rolled_over / failed;  balance_rolled_over_at)&#xa;&#xa;cards.internal_status (OLD card):  active / frozen → ongoing_close → closed → (removed)   ·   final_card_balance captured at &#39;closed&#39;&#xa;cards.internal_status (NEW card):  (none) → pending_assignation → pending_activation → active" vertex="1">
+          <mxGeometry height="220" width="680" x="5868.88925075531" y="6222.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-54" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;" value="Legend" vertex="1">
+          <mxGeometry height="24" width="285" x="5868.88925075531" y="6470.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-55" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="5878.88925075531" y="6502.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-56" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="system / engine action" vertex="1">
+          <mxGeometry height="22" width="360" x="5910.88925075531" y="6502.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-57" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="5878.88925075531" y="6532.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-58" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="success / status advance / card active / no-op accepted" vertex="1">
+          <mxGeometry height="22" width="360" x="5910.88925075531" y="6532.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-59" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="5878.88925075531" y="6562.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-60" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="decision / waiting" vertex="1">
+          <mxGeometry height="22" width="360" x="5910.88925075531" y="6562.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-61" parent="fdiY78E_wBlVqpb2p_Ax-1" style="rounded=1;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="5878.88925075531" y="6592.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-62" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="failure / exception (with its follow-up)" vertex="1">
+          <mxGeometry height="22" width="360" x="5910.88925075531" y="6592.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-63" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="&lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;table ← insert&lt;/span&gt;&amp;nbsp;&amp;nbsp;=&amp;nbsp; a database write / read" vertex="1">
+          <mxGeometry height="22" width="440" x="5878.88925075531" y="6624.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-64" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="&lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;POST /v1/... , webhook.name&lt;/span&gt;&amp;nbsp;&amp;nbsp;=&amp;nbsp; a UQPay API call / webhook" vertex="1">
+          <mxGeometry height="22" width="480" x="5878.88925075531" y="6652.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-65" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Developer notes" vertex="1">
+          <mxGeometry height="26" width="600" x="6588.88925075531" y="5720.259440104167" as="geometry" />
+        </mxCell>
+        <mxCell id="daHSXicIUf_iNyanYbEl-66" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• The NAHC role is checked ONCE, at creation, and never again. A subject switched NAHC → account_holder between create and approval is still replaced (they still own the card). Only the subject&#39;s status (active / blocked) is re-checked, immediately before the checker&#39;s approval.&lt;br&gt;&lt;br&gt;• Execution is IDENTICAL to CARD_REPLACE_SELF: close the old card first (internal-first → ongoing_close; the async CANCELLED push, on failure, drives card_status_sync_retry without un-closing), then the apply chain (cardholder always a REUSE — no UQPay create-cardholder call), then the balance rollover once the old card is &#39;closed&#39; with final_card_balance and the new card is &#39;active&#39;.&lt;br&gt;&lt;br&gt;• Close-first ordering keeps the ≤1-active-card invariant true." vertex="1">
+          <mxGeometry height="960" width="600" x="6576.99925075531" y="5746.259440104167" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
