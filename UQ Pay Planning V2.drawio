@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="claude-code" pages="10">
+<mxfile host="app.diagrams.net" agent="claude-code" pages="11">
   <diagram name="01 - Card Lifecycle" id="card-lifecycle">
     <mxGraphModel dx="3512" dy="1752" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
@@ -2096,6 +2096,152 @@
         </mxCell>
         <mxCell id="agpYlHxNuCScjSGtOT75-170" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• Close is INTERNAL-FIRST + best-effort push (fail-safe toward closed), exactly like freeze: cards.internal_status → ongoing_close commits first, so real-time authorization denies spend and the reapply slot opens at once, and the owner is notified &#39;card closed&#39; immediately — regardless of the UQPay result. A failed push does NOT un-close the card; it raises the card_status_sync_retry admin worklist.&lt;br&gt;&lt;br&gt;• Close uses NO cards.inflight_operation — like freeze, it deliberately changes internal_status, so that change is itself the transition and the concurrency guard.&lt;br&gt;&lt;br&gt;• Final balance is WEBHOOK-ONLY. UQPay resets the card&#39;s available balance to 0 once fully closed, so a Get-Card read after CANCELLED returns 0. If the reconcile POLL (not the webhook) detects CANCELLED, we raise card_close_webhook_retrigger to reproduce the webhook — never a Get-Card read.&lt;br&gt;&lt;br&gt;• Balance on a plain close is FORFEITED — no refund, no wallet/ledger movement; the customer is warned before confirming. final_card_balance is kept for audit. Only a REPLACEMENT (CARD_REPLACE_SELF / CARD_REPLACE_NAHC) rolls that balance onto the new card, and that rollover is owned by the replacement flow, not here.&lt;br&gt;&lt;br&gt;• The ~30-day PRE_CANCEL → CANCELLED tail is NOT a pending_operations row (a 30-day in-flight op doesn&#39;t fit the tracking model) — it rides the card-status reconcile scheduler.&lt;br&gt;&lt;br&gt;• CARD_CLOSE_NAHC is NAHC → checker (one stage): the NAHC initiates the close of their OWN card and a single checker approves. This differs from apply-NAHC (maker → checker) and top-up-NAHC (NAHC → maker → checker). subject_user_id = the NAHC." vertex="1">
           <mxGeometry height="640" width="620" x="2221.6666395664215" y="3238" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="11 - CARD_REMOVE_SELF &amp; CARD_REMOVE_NAHC" id="LoWMWAiY3JoWSVeGu_06">
+    <mxGraphModel dx="-245" dy="-435" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="s8BpsQROjUBt6LhPLKzM-0" />
+        <mxCell id="s8BpsQROjUBt6LhPLKzM-1" parent="s8BpsQROjUBt6LhPLKzM-0" />
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-46" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;" value="Customer card remove — CARD_REMOVE_SELF (OTP only) and CARD_REMOVE_NAHC (one checker stage) → the internal-only closed → removed write" vertex="1">
+          <mxGeometry height="30" width="1380" x="1461.1895265579224" y="816.9738482306986" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-47" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=12;spacing=2;" value="Permanently HIDE a fully-closed card (and its transaction history) from every client screen by flipping cards.internal_status from &#39;closed&#39; to &#39;removed&#39;. Remove is a post-close declutter, NOT a lifecycle transition — a card can only be removed AFTER it is fully closed (UQPay CANCELLED). It is entirely internal, makes NO UQPay API call, and is irreversible for everyone (user, NAHC, and admin). Two customer doors reach the same single write: an Account Holder removes their own closed card with just an internal OTP (CARD_REMOVE_SELF), and a corporate cardholder (NAHC = the user-facing &#39;Corporate Cardholder&#39;) removes their own closed card via a one-stage checker approval (CARD_REMOVE_NAHC). The admin door (permissions_tasks maker/checker) is a separate flow." vertex="1">
+          <mxGeometry height="98" width="1180" x="1461.1895265579224" y="850.9738482306986" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-48" parent="s8BpsQROjUBt6LhPLKzM-1" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="1996.1895265579224" y="978.9738482306986" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-49" parent="s8BpsQROjUBt6LhPLKzM-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 1 · GATE — two customer doors, one internal write" vertex="1">
+          <mxGeometry height="850" width="700" x="1661.1895265579224" y="1038.9738482306986" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-50" parent="rfTysgrFG4jkMNhYTv2y-49" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaeef5;strokeColor=#9aa7bf;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;spacingRight=10;" value="&lt;b&gt;Two ways a customer removes a card — both hide an ALREADY-CLOSED card from every client screen.&lt;/b&gt; Remove is a post-close declutter, NOT a lifecycle transition: a card can only be removed AFTER it is fully closed. Irreversible for everyone." vertex="1">
+          <mxGeometry height="54" width="660" x="20" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-51" parent="rfTysgrFG4jkMNhYTv2y-49" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;CARD_REMOVE_SELF&lt;/b&gt; &lt;i&gt;(an Account Holder removing their OWN fully-closed card)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• internal OTP only — NO approval&lt;br&gt;• the client shows the IRREVERSIBLE warning first: the card and its transaction history will be hidden from view for good&lt;br&gt;• on OTP ok the internal write runs directly&lt;br&gt;• writes NO card_tasks row" vertex="1">
+          <mxGeometry height="290" width="320" x="20" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-52" parent="rfTysgrFG4jkMNhYTv2y-49" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;CARD_REMOVE_NAHC&lt;/b&gt; &lt;i&gt;(a corporate cardholder (NAHC) removing their OWN fully-closed card — one checker stage)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• the NAHC passes internal OTP first (a precondition to creating the request)&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_tasks ← insert { subject = CARD_REMOVE_NAHC, card_id = the NAHC&#39;s closed card, subject_user_id = the NAHC, status = &#39;pending&#39; }&lt;/span&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_task_approvals ← insert { stage 1, required_approval_role = &#39;checker&#39;, decision = &#39;pending&#39; }&lt;/span&gt; → notify checkers&lt;br&gt;• a checker decides (OTP on approve; re-check the card still fully closed) → on approve &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_tasks.status = &#39;approved&#39;&lt;/span&gt; triggers the internal write&lt;br&gt;• the NAHC is the INITIATOR here — NOT a company maker" vertex="1">
+          <mxGeometry height="290" width="320" x="360" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-53" parent="rfTysgrFG4jkMNhYTv2y-49" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Shared preconditions&lt;/b&gt; &lt;i&gt;(checked at self initiation, and at CARD_REMOVE_NAHC creation + re-checked at the checker&#39;s approval)&lt;/i&gt;&lt;br&gt;• the card is FULLY CLOSED: &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.internal_status = &#39;closed&#39;&lt;/span&gt; (and correspondingly &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.uqpay_status = &#39;CANCELLED&#39;&lt;/span&gt;) — any non-closed card → 403 invalid_card_action (active / frozen / ongoing_close → &#39;close it first&#39;; pending_* / activation_locked → still provisioning; blocked → UQPay-initiated, admin domain)&lt;br&gt;• ownership (self &amp; NAHC only): the card&#39;s owning user_id matches the CALLER (self remove) or &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_tasks.subject_user_id&lt;/span&gt; (the NAHC) — the ADMIN variant skips this check&lt;br&gt;• an already-&#39;removed&#39; card is a NO-OP (idempotent — return current state; it is already hidden)" vertex="1">
+          <mxGeometry height="180" width="660" x="20" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-54" parent="rfTysgrFG4jkMNhYTv2y-49" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;spacingRight=10;" value="&lt;b&gt;Gate passed → perform the single internal write&lt;/b&gt; — CARD_REMOVE_SELF (OTP ok) or CARD_REMOVE_NAHC (final checker approval). There is NO provider call — the gate is the only thing between the request and the write." vertex="1">
+          <mxGeometry height="64" width="660" x="20" y="756" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-55" parent="s8BpsQROjUBt6LhPLKzM-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 2 · REMOVE — a single synchronous internal write (no provider leg)" vertex="1">
+          <mxGeometry height="340" width="700" x="1661.1895265579224" y="1948.9738482306986" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-56" parent="rfTysgrFG4jkMNhYTv2y-55" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;①&amp;nbsp; Flip our side (commits now) — this is the whole action&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards ← update { internal_status = &#39;removed&#39; }&lt;/span&gt; — &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.uqpay_status&lt;/span&gt; is LEFT &#39;CANCELLED&#39; (no UQPay call, and it already records the close)&lt;br&gt;• every client card-list / card-detail / reveal-PAN / transaction-history query now EXCLUDES this card (a read-filter on internal_status = &#39;removed&#39;)&lt;br&gt;• the reapply gate is unaffected — a &#39;closed&#39; card already counted as &#39;no active card&#39;, so remove changes nothing there&lt;br&gt;• notify the owner &#39;card removed&#39; — there is no provider confirmation to wait for; the action is COMPLETE at the write&lt;br&gt;• the underlying rows are RETAINED in the DB for audit" vertex="1">
+          <mxGeometry height="250" width="660" x="20" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-57" parent="s8BpsQROjUBt6LhPLKzM-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;OTP wrong / expired&lt;/b&gt; &lt;i&gt;(CARD_REMOVE_SELF, or CARD_REMOVE_NAHC creation)&lt;/i&gt;&lt;br&gt;• no state change, no write&lt;br&gt;• re-prompt within the attempt cap; the closed card is untouched and still visible in the list" vertex="1">
+          <mxGeometry height="110" width="400" x="2451.1895265579224" y="1241.9738482306986" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-58" parent="s8BpsQROjUBt6LhPLKzM-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;CARD_REMOVE_NAHC rejected at the checker stage&lt;/b&gt;&lt;br&gt;• handled entirely by the approval engine → card_tasks.status = &#39;rejected&#39;, notify the initiator&lt;br&gt;• the internal write NEVER runs — the closed card stays fully intact and still visible in the list" vertex="1">
+          <mxGeometry height="120" width="400" x="2451.1895265579224" y="1381.9738482306986" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-59" parent="s8BpsQROjUBt6LhPLKzM-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Precondition not met → nothing happens&lt;/b&gt;&lt;br&gt;• NOT fully closed (active / frozen / ongoing_close) → 403 invalid_card_action — CLOSE IT FIRST (a live or mid-close card cannot be removed; this is what prevents a hidden-but-spendable card and a stranded balance)&lt;br&gt;• pending_* / activation_locked → still being provisioned; blocked → UQPay-initiated, admin domain&lt;br&gt;• already &#39;removed&#39; → idempotent NO-OP (return current state — it is already hidden)" vertex="1">
+          <mxGeometry height="180" width="400" x="2451.1895265579224" y="1543.9738482306986" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-60" parent="s8BpsQROjUBt6LhPLKzM-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;The defining difference: there is NO provider leg&lt;/b&gt;&lt;br&gt;• remove makes NO UQPay call, so there is no sync-error, webhook-failed, or push-stuck branch — the ONLY failures are at the gate (OTP wrong, task rejected)&lt;br&gt;• touches no pending_operations, no webhook_events, no admin worklist, no uqpay_api_logs, no cards.inflight_operation&lt;br&gt;• NO restore path — remove is terminal and irreversible for the user, the NAHC, AND an admin; a mistaken remove can only be corrected by an out-of-band DB fix (the rows remain in the DB)" vertex="1">
+          <mxGeometry height="250" width="400" x="2451.1895265579224" y="1996.9738482306986" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-61" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="rfTysgrFG4jkMNhYTv2y-49">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-62" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="rfTysgrFG4jkMNhYTv2y-51" value="CARD_REMOVE_SELF">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-63" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="rfTysgrFG4jkMNhYTv2y-52" value="CARD_REMOVE_NAHC">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-64" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="rfTysgrFG4jkMNhYTv2y-53" value="OTP ok">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-65" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="rfTysgrFG4jkMNhYTv2y-53" value="OTP ok + checker approves">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-66" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="rfTysgrFG4jkMNhYTv2y-54" value="all preconditions hold">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-67" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="rfTysgrFG4jkMNhYTv2y-55" value="gate passed — perform the write">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-68" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="rfTysgrFG4jkMNhYTv2y-57" value="OTP wrong">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-69" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="rfTysgrFG4jkMNhYTv2y-58" value="reject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-70" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="rfTysgrFG4jkMNhYTv2y-59" value="fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-71" edge="1" parent="s8BpsQROjUBt6LhPLKzM-1" source="rfTysgrFG4jkMNhYTv2y-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;dashed=1;endArrow=none;startArrow=none;strokeColor=#999999;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="rfTysgrFG4jkMNhYTv2y-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-72" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Three gating models for REMOVE — one write, three doors" vertex="1">
+          <mxGeometry height="26" width="700" x="1461.1895265579224" y="2356.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-73" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="Remove is gated and irreversible. This diagram shows the two CUSTOMER doors; the admin door is a separate flow.&#xa;&#xa;• CARD_REMOVE_SELF (Account Holder, own closed card) — internal OTP, NO approval. Writes no card_tasks row.&#xa;• CARD_REMOVE_NAHC (the NAHC, own closed card) — internal OTP, then card_tasks ONE checker stage (NAHC → checker; the NAHC is the initiator, not a company maker).&#xa;• ADMIN (separate flow) — permissions_tasks maker → checker (the view_/edit_/approve_remove_card triple, task ACTION_ID = edit_remove_card); the enix-biz-uqpay executor performs the SAME internal write. The admin variant also SKIPS the ownership check.&#xa;&#xa;All three converge on the one internal-only closed → removed write." vertex="1">
+          <mxGeometry height="210" width="700" x="1461.1895265579224" y="2388.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-74" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Close vs Remove — the governing contrast" vertex="1">
+          <mxGeometry height="26" width="700" x="1461.1895265579224" y="2616.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-75" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="CLOSE (the prior action) is the real ~30-day provider cancellation: it drives UQPay to CANCELLED and forfeits — or, on a replacement, rolls over — the card balance.&#xa;&#xa;REMOVE runs AFTER close has finished and is a pure INTERNAL hide: it leaves cards.uqpay_status = &#39;CANCELLED&#39; exactly as it was and sets cards.internal_status = &#39;removed&#39;. Because the card is already dead (balance forfeited or rolled over at close, non-spendable), remove carries NO balance, ledger, or authorization concern — it is purely cosmetic: hide the row and its history from view.&#xa;&#xa;Requiring &#39;closed&#39; first is exactly what prevents a hidden-but-spendable card and a stranded balance." vertex="1">
+          <mxGeometry height="220" width="700" x="1461.1895265579224" y="2648.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-76" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Status fields that move through the flow" vertex="1">
+          <mxGeometry height="26" width="700" x="1461.1895265579224" y="2888.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-77" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="cards.internal_status:  closed → removed   (remove is the ONLY writer of &#39;removed&#39;, and it only ever writes it OVER &#39;closed&#39;)&#xa;cards.uqpay_status:  CANCELLED  (LEFT UNCHANGED — it already records the close; no prior-status column is needed because remove is irreversible)&#xa;&#xa;card_tasks.status (CARD_REMOVE_NAHC only):  pending → approved  (or rejected)&#xa;&#xa;NO new column. NO cards.inflight_operation. NO pending_operations / webhook_events / uqpay_api_logs / admin_action_requests — none of the async / tracking / logging infra is touched." vertex="1">
+          <mxGeometry height="180" width="700" x="1461.1895265579224" y="2920.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-78" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;" value="Legend" vertex="1">
+          <mxGeometry height="24" width="285" x="2201.1895265579224" y="2356.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-79" parent="s8BpsQROjUBt6LhPLKzM-1" style="rounded=1;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="2211.1895265579224" y="2388.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-80" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="system / engine action" vertex="1">
+          <mxGeometry height="22" width="420" x="2243.1895265579224" y="2388.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-81" parent="s8BpsQROjUBt6LhPLKzM-1" style="rounded=1;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="2211.1895265579224" y="2418.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-82" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="the whole action / terminal (removed)" vertex="1">
+          <mxGeometry height="22" width="420" x="2243.1895265579224" y="2418.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-83" parent="s8BpsQROjUBt6LhPLKzM-1" style="rounded=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="2211.1895265579224" y="2448.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-84" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="preconditions / gate check" vertex="1">
+          <mxGeometry height="22" width="420" x="2243.1895265579224" y="2448.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-85" parent="s8BpsQROjUBt6LhPLKzM-1" style="rounded=1;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="2211.1895265579224" y="2478.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-86" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="failure / exception (only at the gate)" vertex="1">
+          <mxGeometry height="22" width="420" x="2243.1895265579224" y="2478.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-87" parent="s8BpsQROjUBt6LhPLKzM-1" style="rounded=1;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="2211.1895265579224" y="2508.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-88" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="design note — the defining trait (no provider leg)" vertex="1">
+          <mxGeometry height="22" width="420" x="2243.1895265579224" y="2508.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-89" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="&lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;table ← update&lt;/span&gt;&amp;nbsp;&amp;nbsp;=&amp;nbsp; a database write / read  ·  there are NO UQPay API calls in this flow" vertex="1">
+          <mxGeometry height="22" width="600" x="2211.1895265579224" y="2540.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-90" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Developer notes" vertex="1">
+          <mxGeometry height="26" width="620" x="2201.1895265579224" y="2582.9738482306984" as="geometry" />
+        </mxCell>
+        <mxCell id="rfTysgrFG4jkMNhYTv2y-91" parent="s8BpsQROjUBt6LhPLKzM-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• Remove is the SIMPLEST card action in the module — a single synchronous internal write on a card that is already terminal. There is no in-flight window, no failure-to-push, and no reconcile tail.&lt;br&gt;&lt;br&gt;• A card can only be removed AFTER it is fully closed (cards.internal_status = &#39;closed&#39;, i.e. UQPay CANCELLED). Closed cards otherwise still appear in the card list; remove is what hides them.&lt;br&gt;&lt;br&gt;• cards.uqpay_status is left &#39;CANCELLED&#39; — it both records the prior close and means no separate prior-status column is needed (remove is irreversible, so nothing is ever restored).&lt;br&gt;&lt;br&gt;• Client read paths (card list, card detail, reveal PAN, transaction history) all filter out internal_status = &#39;removed&#39;. No new table — a read-filter rule.&lt;br&gt;&lt;br&gt;• NO restore path — a mistaken remove cannot be undone from the product (there is no admin un-remove); the rows remain in the DB, so a manual DB correction is the only recourse, out of band.&lt;div&gt;&lt;br/&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="720" width="620" x="2201.1895265579224" y="2614.9738482306984" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
