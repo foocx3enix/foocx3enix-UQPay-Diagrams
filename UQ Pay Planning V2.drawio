@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="claude-code" pages="6">
+<mxfile host="app.diagrams.net" agent="claude-code" pages="7">
   <diagram name="01 - Card Lifecycle" id="card-lifecycle">
     <mxGraphModel dx="3512" dy="1752" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
@@ -1020,7 +1020,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="06 - CARD_TOPUP_NAHC" id="bfAns28QkYdd1YENhvaB">
-    <mxGraphModel dx="555" dy="1565" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="1566" dy="1951" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0BOv6G7DclFDWjEQHEvZ-0" />
         <mxCell id="0BOv6G7DclFDWjEQHEvZ-1" parent="0BOv6G7DclFDWjEQHEvZ-0" />
@@ -1272,6 +1272,239 @@
         </mxCell>
         <mxCell id="l6hcsCRDCBBhjLUVyptU-82" parent="0BOv6G7DclFDWjEQHEvZ-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• An NAHC (corporate cardholder) has no wallet of their own (the &#39;top up without wallet&#39; role, initiate_card_top_up_without_wallet), so they cannot self-fund.&amp;nbsp;&lt;br&gt;&lt;br&gt;• The NAHC role is checked ONCE, at creation, and never again. A subject switched NAHC → account_holder between create and approval is still topped up (they still own the card). Only the subject&#39;s status (active / blocked) is re-checked, immediately before the checker&#39;s approval.&lt;br&gt;&lt;br&gt;• Ramp config (GET /api/v1/ramp/config/assets) is validated at the maker&#39;s selection AND re-validated before the checker&#39;s approval (deposit_enabled = true and G ≥ min_deposit_amount).&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;• The card balance after recharge is set from the webhook&#39;s card_available_balance (authoritative), not increment based on our internal records.&lt;br&gt;&lt;/div&gt;" vertex="1">
           <mxGeometry height="900" width="560" x="1088.8894319534302" y="2551.555419921875" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="07 - Deposit Pipeline Detail" id="gk0Q0MX0TDo4_y96cR0R">
+    <mxGraphModel dx="1187" dy="511" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="mC95enJp4ef7IGxJOfpS-0" />
+        <mxCell id="mC95enJp4ef7IGxJOfpS-1" parent="mC95enJp4ef7IGxJOfpS-0" />
+        <mxCell id="n0w2AsphbZHuvDeErsv3-150" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;" value="Deposit pipeline — detailed (the shared top-up execution)" vertex="1">
+          <mxGeometry height="30" width="1000" x="1369.6666395664215" y="685.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-151" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=12;spacing=2;" value="The execution that CARD_TOPUP_SELF / CARD_TOPUP_NAHC hand off to on final approval — the same pipeline for every top-up. It moves the customer&#39;s crypto onto their card through five legs: customer wallet → card top-up wallet → UQPay ramp → off-ramp to USD → banking → issuing → card. Amounts were locked upstream and are executed as locked, never recomputed. The card top-up wallet is one of OUR Hextrust system wallets; the ramp / banking / issuing accounts are all on UQPay. Legs 1–2 are on-chain Hextrust transfers we run; legs 3–5 are UQPay operations. deposit_requests.pipeline_status is the single source of truth for where a request is — and its concurrency guard (there is no inflight_operation on deposit_requests)." vertex="1">
+          <mxGeometry height="104" width="1060" x="1369.6666395664215" y="719.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-152" parent="mC95enJp4ef7IGxJOfpS-1" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="1894.6666395664215" y="841.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-153" parent="mC95enJp4ef7IGxJOfpS-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="ENTRY — on final approval of the top-up" vertex="1">
+          <mxGeometry height="200" width="640" x="1589.6666395664215" y="901.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-154" parent="n0w2AsphbZHuvDeErsv3-153" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Create the deposit request&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests ← insert { …locked waterfall F/D/G/I/K/net_revenue…, status = &#39;pending&#39;, pipeline_status = &#39;pending_deposit_into_topup_wallet&#39; }&lt;/span&gt;&lt;br&gt;• every amount is copied from the locked card_tasks.payload — never recomputed&lt;br&gt;• approval is independent of the pipeline: an approved top-up stays approved no matter how the pipeline goes" vertex="1">
+          <mxGeometry height="130" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-155" parent="mC95enJp4ef7IGxJOfpS-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="LEG 1 — customer wallet → card top-up wallet (move D)" vertex="1">
+          <mxGeometry height="610" width="640" x="1589.6666395664215" y="1161.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-156" parent="n0w2AsphbZHuvDeErsv3-155" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;① Dispatch the transfer&lt;/b&gt; &lt;i&gt;(the issuance-charge building block: a Hextrust transfer, type card_topup, amount = D)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• two-phase lock → dispatch of D from the customer (company) wallet&lt;br&gt;• records: &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;transaction_history + transaction_request (pending_initiate → … → checking → success)&lt;/span&gt;, then &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;balance_snapshot ×2&lt;/span&gt; on the customer wallet (stablecoin out + native-token gas out)&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.cwc_to_card_top_up_tr_id = the ROOT transaction_request&lt;/span&gt; (Hextrust retries add children via parent_id; the root never moves). The leg-1 ledger key is derived: cwc_to_card_top_up_tr_id → transaction_history_id" vertex="1">
+          <mxGeometry height="210" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-157" parent="n0w2AsphbZHuvDeErsv3-155" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;② Wait for confirmed on-chain success&lt;/b&gt;&lt;br&gt;&lt;br&gt;• trace success via cwc_to_card_top_up_tr_id — the Hextrust success webhook + the 15-minute &#39;Checking&#39; poll&lt;br&gt;• advance on CONFIRMED success only — never on dispatch/broadcast (pending_initiate / initiating)&lt;br&gt;• card_topup has no transaction_fee sibling leg, so transaction_history → success gates on the single transfer alone" vertex="1">
+          <mxGeometry height="150" width="580" x="30" y="284" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-158" parent="n0w2AsphbZHuvDeErsv3-155" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;③ Confirmed → book revenue &amp; advance&lt;/b&gt;&lt;br&gt;&lt;br&gt;• the net revenue (D − G) has landed and stays in the card top-up wallet&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;revenue_records ← insert { entry_type=&#39;earn&#39;, source_type=&#39;card_deposit&#39;, source_amount = E = D−F, uqpay_cost = H = G−F, net_revenue = D−G, conversion_rate (stablecoin→USD, from enix-biz-currencies) }&lt;/span&gt;&lt;br&gt;• booking at confirmed success (not dispatch) means a failed leg never books phantom revenue&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.pipeline_status → pending_deposit_into_ramp_account&lt;/span&gt;" vertex="1">
+          <mxGeometry height="140" width="580" x="30" y="454" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-159" parent="mC95enJp4ef7IGxJOfpS-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="LEG 2 — card top-up wallet → UQPay ramp (forward G) + ramp-deposit confirmation" vertex="1">
+          <mxGeometry height="680" width="640" x="1589.6666395664215" y="1831.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-160" parent="n0w2AsphbZHuvDeErsv3-159" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;④ Dispatch to the ramp&lt;/b&gt; &lt;i&gt;(a Hextrust system-wallet transfer, type deposit_to_ramp)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• Phase 1 forwards 100% of G to UQPay&#39;s ramp deposit address; gas paid from the system wallet&lt;br&gt;• on dispatch: &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;transaction_request ×1 + system_wallet_history ×1&lt;/span&gt;; set &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.card_top_up_to_ramp_tr_id = the ROOT transaction_request&lt;/span&gt;&lt;br&gt;• on broadcast: set &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.blockchain_hash = the on-chain hash&lt;/span&gt;; on confirm: &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;balance_snapshot ×2&lt;/span&gt; (token out + gas out)" vertex="1">
+          <mxGeometry height="210" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-161" parent="n0w2AsphbZHuvDeErsv3-159" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑤ Track the ramp deposit (poll-only) + confirm&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pending_operations ← insert { operation=&#39;ramp_deposit&#39;, reference_type=&#39;blockchain_hash&#39;, reference_id = the hash }&lt;/span&gt; — poll-only (an on-chain deposit can&#39;t be re-POSTed)&lt;br&gt;• a scheduler polls &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;List Deposits (GET /api/v1/ramp/deposit)&lt;/span&gt; and matches our hash to the response txid to find the order → backfill &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.ramp_deposit_order_id&lt;/span&gt;&lt;br&gt;• the &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;ramp.deposit.pending / .success / .failed&lt;/span&gt; webhooks are matched by data.txid = deposit_requests.blockchain_hash (deduped on event_id); any status update deletes the op row" vertex="1">
+          <mxGeometry height="200" width="580" x="30" y="284" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-162" parent="n0w2AsphbZHuvDeErsv3-159" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑥ Ramp deposit cleared → advance&lt;/b&gt;&lt;br&gt;&lt;br&gt;• on &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;ramp.deposit.success&lt;/span&gt; (order Success) → delete the ramp_deposit op row&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.pipeline_status → pending_offramp_conversion&lt;/span&gt;" vertex="1">
+          <mxGeometry height="120" width="580" x="30" y="504" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-163" parent="mC95enJp4ef7IGxJOfpS-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="LEG 3 — off-ramp to USD, then ramp account → banking account" vertex="1">
+          <mxGeometry height="440" width="640" x="1589.6666395664215" y="2571.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-164" parent="n0w2AsphbZHuvDeErsv3-163" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑦ Leg 3a — create quote → off-ramp crypto → USD&lt;/b&gt;&lt;br&gt;&lt;br&gt;• create a quotation (instant; consumed immediately, NOT persisted — a retry just makes a fresh quote, so it can never off-ramp against a stale one)&lt;br&gt;• off-ramp (A = 0.25%) → I = G × (1 − A) sits in the UQPay ramp account&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pending_operations ← insert { operation=&#39;offramp&#39; }&lt;/span&gt;; store offramp_order_id; confirm via &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;ramp.conversion.trade.*&lt;/span&gt; webhook + poll" vertex="1">
+          <mxGeometry height="190" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-165" parent="n0w2AsphbZHuvDeErsv3-163" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑧ Leg 3b — ramp account → banking account&lt;/b&gt;&lt;br&gt;&lt;br&gt;• on off-ramp success → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.pipeline_status → pending_ramp_to_banking_transfer&lt;/span&gt;&lt;br&gt;• transfer ramp → banking; &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pending_operations ← insert { operation=&#39;ramp_transfer&#39; }&lt;/span&gt;; store ramp_transfer_order_id; confirm via &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;ramp.transfer.*&lt;/span&gt; webhook + poll&lt;br&gt;• on success → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.pipeline_status → pending_bank_to_issuing_settlement&lt;/span&gt;" vertex="1">
+          <mxGeometry height="160" width="580" x="30" y="264" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-166" parent="mC95enJp4ef7IGxJOfpS-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="LEG 4 — banking → issuing settlement (admin maker → admin checker · permissions_tasks)" vertex="1">
+          <mxGeometry height="620" width="640" x="1589.6666395664215" y="3071.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-167" parent="n0w2AsphbZHuvDeErsv3-166" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑨ Leg 4a — admin maker records the settlement&lt;/b&gt; &lt;i&gt;(admin maker/checker on permissions_tasks — NOT the client approver upstream)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• the admin maker moves banking → issuing in the UQPay dashboard (VA-to-card cost C = 1%), then inputs the short ref id + datetime + amount&lt;br&gt;• validate now: query UQPay by ref id + datetime and check the input amount = the actual transfer (the only check — no sufficiency check)&lt;br&gt;• on pass → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;permissions_tasks ← insert { ACTION_ID = edit_record_card_deposit_settlement, REQUEST_DATA = {deposit_request_id, short_ref_id, transfer_datetime, amount}, STATUS=&#39;pending&#39; }&lt;/span&gt; → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pipeline_status → pending_bank_to_issuing_settlement_approval&lt;/span&gt;" vertex="1">
+          <mxGeometry height="210" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-168" parent="n0w2AsphbZHuvDeErsv3-166" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;spacing=6;" value="&lt;b&gt;⑩ An admin checker decides&lt;/b&gt;&lt;br&gt;&lt;br&gt;on the permissions_tasks engine&lt;br&gt;(a different maker/checker&lt;br&gt;from the client approver)" vertex="1">
+          <mxGeometry height="170" width="440" x="100" y="284" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-169" parent="n0w2AsphbZHuvDeErsv3-166" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑪ Approved → the executor runs atomically&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;issuing_transfers ← insert { deposit_request_id, short_ref_id, transfer_datetime, amount, admin_id }&lt;/span&gt; (1:1 — row exists ⇒ validated + approved)&lt;br&gt;• write a fresh &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;treasury_snapshots&lt;/span&gt; tick: read issuing_balance from the UQPay balance API, tcl = SUM of per-card balances, reserve_threshold = issuing_balance / tcl (1 header + 1 detail row per stablecoin)&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.pipeline_status → pending_card_recharge&lt;/span&gt;" vertex="1">
+          <mxGeometry height="140" width="580" x="30" y="474" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-170" parent="mC95enJp4ef7IGxJOfpS-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="LEG 5 — per-card recharge (send the full locked F)" vertex="1">
+          <mxGeometry height="470" width="640" x="1589.6666395664215" y="3751.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-171" parent="n0w2AsphbZHuvDeErsv3-170" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑫ Recharge the card&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pending_operations ← insert { operation=&#39;recharge&#39;, reference_type=&#39;recharge_order_id&#39; }&lt;/span&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;POST /v1/issuing/cards/{id}/recharge&lt;/span&gt; (Card Recharge, amount = F, fresh x-idempotency-key) → store &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.recharge_order_id&lt;/span&gt;&lt;br&gt;• confirm via &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;card.recharge.succeeded / .failed&lt;/span&gt; (matched by source_id = recharge_order_id) or the Retrieve Card Order poll" vertex="1">
+          <mxGeometry height="200" width="580" x="30" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-172" parent="n0w2AsphbZHuvDeErsv3-170" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑬ Recharged  🎉&lt;/b&gt;&lt;br&gt;&lt;br&gt;• on order SUCCESS → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.pipeline_status → recharged, status → success&lt;/span&gt;; delete the op row&lt;br&gt;• set the card balance from the webhook&#39;s data.card_available_balance (authoritative — not a blind + F; if the webhook never arrives, poll Retrieve Card Order then Get Card)&lt;br&gt;• email the cardholder — the top-up is complete" vertex="1">
+          <mxGeometry height="180" width="580" x="30" y="274" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-173" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Leg 1 fails (Hextrust)&lt;/b&gt;&lt;br&gt;• the transfer can&#39;t broadcast, or fails on-chain → the request holds at pending_deposit_into_topup_wallet; no revenue is booked, no *_failed status&lt;br&gt;• follow-up: retried in Hextrust Monitoring (a redirect link on the Deposit Requests list; no retry button here). Once it confirms, the pipeline resumes" vertex="1">
+          <mxGeometry height="160" width="360" x="2309.6666395664215" y="1405.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-174" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Leg 2 fails (Hextrust dispatch / on-chain)&lt;/b&gt;&lt;br&gt;• the funds never left → the request holds at pending_deposit_into_ramp_account (no *_failed status)&lt;br&gt;• follow-up: retried in Hextrust Monitoring (redirect link; no retry button here). This is distinct from a UQPay deposit rejection — see below" vertex="1">
+          <mxGeometry height="150" width="360" x="2309.6666395664215" y="1875.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-175" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Travel rule required&lt;/b&gt; &lt;i&gt;(ramp.deposit.pending carried need_travel_rule = true — sent only when needed, omitted otherwise)&lt;/i&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;deposit_requests.pipeline_status = pending_travel_rule&lt;/span&gt;&lt;br&gt;• submit sender data via Submit Deposit Sender Travel Rule (POST /api/v1/ramp/wallet_address/deposit-sender — async; a sync 200 is not success)&lt;br&gt;• the deposit stays Pending at UQPay until verified, then reaches Success and continues to leg 3" vertex="1">
+          <mxGeometry height="160" width="360" x="2309.6666395664215" y="2035.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-176" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;UQPay rejects the deposit &amp;amp; returns the funds (ramp_deposit_failed)&lt;/b&gt;&lt;br&gt;• &lt;b&gt;the failure notice&lt;/b&gt; — the &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(0, 73, 156);&quot;&gt;ramp.deposit.failed&lt;/span&gt; webhook (or the Retrieve Deposit poll returning Failed) is matched to THIS request by &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;data.txid = deposit_requests.blockchain_hash&lt;/span&gt; (the leg-2 transfer hash we stored at broadcast — the same key as the pending/success webhooks) → &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;pipeline_status = ramp_deposit_failed&lt;/span&gt;, store last_failure_response, delete the pending_operation row; status stays &#39;pending&#39;&lt;br&gt;• &lt;b&gt;the returned money is a SEPARATE, later on-chain credit&lt;/b&gt; (a different tx — so it CANNOT be found by that txid). It is detected by our system-wallet deposit monitor: &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;transaction_request ×1 (transaction_history_id = NULL) + system_wallet_history ×1 + balance_snapshot ×1&lt;/span&gt; (token credit-in; no gas — UQPay bears it)&lt;br&gt;• &lt;b&gt;how we know that credit is a refund:&lt;/b&gt; it arrives FROM a known UQPay ramp deposit address we only send to and never withdraw from → treated as a returned deposit&lt;br&gt;• &lt;b&gt;which request it belongs to:&lt;/b&gt; claim the OLDEST &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;WHERE pipeline_status=&#39;ramp_deposit_failed&#39; AND refund_blockchain_hash IS NULL AND stablecoin = ? AND amount = G ORDER BY created_at ASC LIMIT 1&lt;/span&gt; (matched by count over the pooled wallet; the failure notice already fired first, so a target exists — arrival-only), then stamp its &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;refund_blockchain_hash&lt;/span&gt;. No match → leave as an ordinary wallet credit, no alert&lt;br&gt;• follow-up: retry from the Deposit Requests list — enabled only once refund_blockchain_hash is set — which re-dispatches leg 2 (new root TR + hash) and clears refund_blockchain_hash back to NULL; the pipeline resumes" vertex="1">
+          <mxGeometry height="410" width="594.33" x="2309.67" y="2225.33" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-177" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Off-ramp or ramp → banking fails&lt;/b&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pipeline_status = offramp_failed / ramp_to_banking_transfer_failed&lt;/span&gt;, store last_failure_response, delete the op row; status stays &#39;pending&#39;&lt;br&gt;• follow-up: on the Deposit Requests list, View (the raw UQPay error) → Retry safely re-runs that leg (the funds are still in the ramp account) → the pipeline resumes" vertex="1">
+          <mxGeometry height="180" width="360" x="2309.6666395664215" y="2675.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-178" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Admin maker validation fails&lt;/b&gt;&lt;br&gt;• the input amount ≠ the actual UQPay transfer, or the ref/datetime finds nothing&lt;br&gt;• reject and persist nothing (no permissions_tasks row, no issuing_transfers row) — the admin maker re-inputs; stays at pending_bank_to_issuing_settlement" vertex="1">
+          <mxGeometry height="150" width="360" x="2309.6666395664215" y="3115.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-179" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Admin checker rejects&lt;/b&gt;&lt;br&gt;• revert &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pipeline_status → pending_bank_to_issuing_settlement&lt;/span&gt; (the admin maker re-records)&lt;br&gt;• nothing to unwind — issuing_transfers + the treasury tick are written only on approval; the banking→issuing money already moved and is re-recorded 1:1" vertex="1">
+          <mxGeometry height="140" width="360" x="2309.6666395664215" y="3295.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-180" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Card recharge fails (card_recharge_failed)&lt;/b&gt;&lt;br&gt;• delete the pending operations row; store the raw UQPay error on last_failure_response; status stays &#39;pending&#39; (never &#39;failed&#39;); the customer is NOT notified&lt;br&gt;• the funds are safe at the issuing account — only the card is uncredited (a safe point to retry from)&lt;br&gt;• follow-up: an admin opens the Deposit Requests list → View → Retry → re-runs Card Recharge under a fresh idempotency key → on success the request completes (recharged / success)" vertex="1">
+          <mxGeometry height="210" width="360" x="2309.6666395664215" y="3795.3333129882812" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-181" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-152" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="n0w2AsphbZHuvDeErsv3-153">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-182" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-153" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="n0w2AsphbZHuvDeErsv3-155">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-183" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-156" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="n0w2AsphbZHuvDeErsv3-157" value="dispatched">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-184" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-157" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="n0w2AsphbZHuvDeErsv3-158" value="confirmed on-chain success">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-185" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-155" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="n0w2AsphbZHuvDeErsv3-159">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-186" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-160" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="n0w2AsphbZHuvDeErsv3-161" value="broadcast (hash assigned)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-187" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-161" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="n0w2AsphbZHuvDeErsv3-162" value="received the ramp.deposit.success webhook">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-188" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-159" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="n0w2AsphbZHuvDeErsv3-163">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-189" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-164" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="n0w2AsphbZHuvDeErsv3-165" value="off-ramp confirmed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-190" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-163" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="n0w2AsphbZHuvDeErsv3-166">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-191" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="n0w2AsphbZHuvDeErsv3-168" value="amount validated against UQPay">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-192" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-168" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="n0w2AsphbZHuvDeErsv3-169" value="the admin checker approves">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-193" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-166" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="n0w2AsphbZHuvDeErsv3-170">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-194" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-171" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="n0w2AsphbZHuvDeErsv3-172" value="received the card.recharge.succeeded webhook">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-195" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-157" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n0w2AsphbZHuvDeErsv3-173" value="fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-196" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-160" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n0w2AsphbZHuvDeErsv3-174" value="fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-197" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-161" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.35;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n0w2AsphbZHuvDeErsv3-175" value="travel rule">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-198" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-161" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n0w2AsphbZHuvDeErsv3-176" value="UQPay rejects">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-199" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-164" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;" target="n0w2AsphbZHuvDeErsv3-177" value="off-ramp fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-200" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-165" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;" target="n0w2AsphbZHuvDeErsv3-177" value="transfer fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-201" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n0w2AsphbZHuvDeErsv3-178" value="invalid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-202" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-168" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n0w2AsphbZHuvDeErsv3-179" value="reject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-203" edge="1" parent="mC95enJp4ef7IGxJOfpS-1" source="n0w2AsphbZHuvDeErsv3-171" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="n0w2AsphbZHuvDeErsv3-180" value="fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-204" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Two statuses on the request" vertex="1">
+          <mxGeometry height="26" width="680" x="1369.6666395664215" y="4285.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-205" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="deposit_requests carries TWO statuses:&#xa;&#xa;• status — customer-facing: pending → success. Stays &#39;pending&#39; through the WHOLE pipeline, including any *_failed step awaiting admin retry. &#39;failed&#39; is reserved for a non-retryable request and NO step sets it today.&#xa;• pipeline_status — the detailed internal stage AND the concurrency guard (there is no inflight_operation column on deposit_requests).&#xa;&#xa;pipeline_status rail:&#xa;   pending_deposit_into_topup_wallet → pending_deposit_into_ramp_account&#xa;   → (pending_travel_rule) → pending_offramp_conversion → pending_ramp_to_banking_transfer&#xa;   → pending_bank_to_issuing_settlement → pending_bank_to_issuing_settlement_approval&#xa;   → pending_card_recharge → recharged&#xa;   failure states (status stays &#39;pending&#39;):  ramp_deposit_failed · offramp_failed · ramp_to_banking_transfer_failed · card_recharge_failed" vertex="1">
+          <mxGeometry height="270" width="680" x="1369.6666395664215" y="4317.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-206" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Who owns each failure (there is no auto-retry anywhere)" vertex="1">
+          <mxGeometry height="26" width="680" x="1369.6666395664215" y="4615.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-207" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• Hextrust legs 1 &amp; 2 → retried in Hextrust Monitoring. On the Deposit Requests list they show only a redirect link into it — no retry button, no *_failed status (the request just holds at its pending_* stage).&#xa;• UQPay legs (ramp_deposit_failed / offramp_failed / ramp_to_banking_transfer_failed / card_recharge_failed) → retried inline from the Deposit Requests list: a View modal shows the raw error (deposit_requests.last_failure_response — one column, overwritten per failure) + an inline Retry button.&#xa;• Leg 4 settlement → the permissions_tasks admin maker/checker engine.&#xa;&#xa;Notifications: every *_failed step alerts an ADMIN. The CUSTOMER is never notified mid-pipeline — status stays &#39;pending&#39; throughout; a customer failure email would fire only if status=&#39;failed&#39;, which no step sets." vertex="1">
+          <mxGeometry height="220" width="680" x="1369.6666395664215" y="4647.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-208" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Where the money sits at each leg" vertex="1">
+          <mxGeometry height="26" width="680" x="1369.6666395664215" y="4895.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-209" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• customer wallet — the company cold / cold-plus wallet the top-up is funded from (our Hextrust wallet)&#xa;• card top-up wallet — one of OUR Hextrust system wallets; the net revenue (D − G) stays here&#xa;• ramp account / banking account / issuing account — all UQPay-side accounts&#xa;• the card — the cardholder&#39;s card, credited by the final recharge" vertex="1">
+          <mxGeometry height="140" width="680" x="1369.6666395664215" y="4927.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-210" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;" value="Legend" vertex="1">
+          <mxGeometry height="24" width="285" x="1369.6666395664215" y="5095.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-211" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1379.6666395664215" y="5127.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-212" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="system / engine action (Hextrust &amp; UQPay legs)" vertex="1">
+          <mxGeometry height="22" width="360" x="1411.6666395664215" y="5127.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-213" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1379.6666395664215" y="5157.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-214" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="success / status advance" vertex="1">
+          <mxGeometry height="22" width="360" x="1411.6666395664215" y="5157.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-215" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1379.6666395664215" y="5187.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-216" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="waiting on a webhook/poll, or a decision" vertex="1">
+          <mxGeometry height="22" width="360" x="1411.6666395664215" y="5187.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-217" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1379.6666395664215" y="5217.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-218" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="failure / exception (with its follow-up)" vertex="1">
+          <mxGeometry height="22" width="360" x="1411.6666395664215" y="5217.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-219" parent="mC95enJp4ef7IGxJOfpS-1" style="rounded=1;html=1;fillColor=#f5f5f5;strokeColor=#666666;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="1379.6666395664215" y="5247.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-220" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="admin / manual step" vertex="1">
+          <mxGeometry height="22" width="360" x="1411.6666395664215" y="5247.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-221" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="&lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;table ← insert&lt;/span&gt;&amp;nbsp;&amp;nbsp;=&amp;nbsp; a database write / read" vertex="1">
+          <mxGeometry height="22" width="440" x="1379.6666395664215" y="5279.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-222" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="&lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;POST /v1/... , webhook.name&lt;/span&gt;&amp;nbsp;&amp;nbsp;=&amp;nbsp; a UQPay API call / webhook" vertex="1">
+          <mxGeometry height="22" width="480" x="1379.6666395664215" y="5307.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-223" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Developer notes" vertex="1">
+          <mxGeometry height="26" width="600" x="2089.6666395664215" y="4285.333312988281" as="geometry" />
+        </mxCell>
+        <mxCell id="n0w2AsphbZHuvDeErsv3-224" parent="mC95enJp4ef7IGxJOfpS-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• This is the shared execution both top-up entry actions hand off to. It is also reused (legs 2–4, no customer leg) by the Phase-2 auto-top-up funding, whose leg-2 outflow uses a distinct Hextrust type auto_funding_to_ramp so treasury can tell them apart.&lt;br&gt;&lt;br&gt;• The two transfer handles (cwc_to_card_top_up_tr_id, card_top_up_to_ramp_tr_id) hold the ROOT transaction_request; Hextrust retries hang off it via parent_id, so status is read from the latest child. Leg 2&#39;s handle + blockchain_hash are re-pointed only on a ramp_deposit_failed re-dispatch (a brand-new transfer).&lt;br&gt;&lt;br&gt;• create-quote is folded into pending_offramp_conversion — there is no pending_create_quote stage and no persisted uqpay_quote_id (the quote is consumed immediately; a retry makes a fresh one).&lt;br&gt;&lt;br&gt;&lt;br&gt;• The card balance after recharge is set from the webhook&#39;s card_available_balance (authoritative), not increment based on our internal records.&lt;div&gt;&lt;br&gt;• The tracking op rows (pending_operations) are poll + webhook safety nets; a missing webhook is not a failure — the poll catches it and the request simply waits at its pending_* stage.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="1020" width="600" x="2089.6666395664215" y="4317.333312988281" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
