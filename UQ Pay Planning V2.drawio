@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="claude-code" pages="9">
+<mxfile host="app.diagrams.net" agent="claude-code" pages="10">
   <diagram name="01 - Card Lifecycle" id="card-lifecycle">
     <mxGraphModel dx="3512" dy="1752" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
@@ -1020,7 +1020,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="06 - CARD_TOPUP_NAHC" id="bfAns28QkYdd1YENhvaB">
-    <mxGraphModel dx="1566" dy="1951" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="752" dy="1640" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0BOv6G7DclFDWjEQHEvZ-0" />
         <mxCell id="0BOv6G7DclFDWjEQHEvZ-1" parent="0BOv6G7DclFDWjEQHEvZ-0" />
@@ -1713,7 +1713,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="09 - CARD_REPLACE_NAHC" id="aNKGMb-4d8xSnbp2w5BI">
-    <mxGraphModel dx="-3929" dy="-2162" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="-2258" dy="-1524" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="fdiY78E_wBlVqpb2p_Ax-0" />
         <mxCell id="fdiY78E_wBlVqpb2p_Ax-1" parent="fdiY78E_wBlVqpb2p_Ax-0" />
@@ -1917,6 +1917,185 @@
         </mxCell>
         <mxCell id="daHSXicIUf_iNyanYbEl-66" parent="fdiY78E_wBlVqpb2p_Ax-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• The NAHC role is checked ONCE, at creation, and never again. A subject switched NAHC → account_holder between create and approval is still replaced (they still own the card). Only the subject&#39;s status (active / blocked) is re-checked, immediately before the checker&#39;s approval.&lt;br&gt;&lt;br&gt;• Execution is IDENTICAL to CARD_REPLACE_SELF: close the old card first (internal-first → ongoing_close; the async CANCELLED push, on failure, drives card_status_sync_retry without un-closing), then the apply chain (cardholder always a REUSE — no UQPay create-cardholder call), then the balance rollover once the old card is &#39;closed&#39; with final_card_balance and the new card is &#39;active&#39;.&lt;br&gt;&lt;br&gt;• Close-first ordering keeps the ≤1-active-card invariant true." vertex="1">
           <mxGeometry height="960" width="600" x="6576.99925075531" y="5746.259440104167" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="10 - CARD_CLOSE_SELF &amp; CARD_CLOSE_NAHC" id="D4htGdXt3pr542w8rQt5">
+    <mxGraphModel dx="193" dy="132" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1600" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="TqaJLkIohV8YiBZxnOAf-0" />
+        <mxCell id="TqaJLkIohV8YiBZxnOAf-1" parent="TqaJLkIohV8YiBZxnOAf-0" />
+        <mxCell id="agpYlHxNuCScjSGtOT75-114" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=18;fontStyle=1;" value="Customer card close — CARD_CLOSE_SELF&amp;nbsp;(OTP only) and CARD_CLOSE_NAHC (one checker stage) → the shared internal-first close op" vertex="1">
+          <mxGeometry height="30" width="1360" x="1481.6666395664215" y="434" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-115" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=12;spacing=2;" value="Permanently retire a card. Two customer doors reach the SAME close op: an Account Holder closes their own card with just an internal OTP (no approval), and a corporate cardholder (NAHC = the user-facing &#39;Corporate Cardholder&#39;) closes their own card via a one-stage checker approval. Both drive an internal-first, best-effort push: we flip the card to ongoing_close on our side first (spend stops, the reapply slot opens, the owner is notified at once), then push CANCELLED to UQPay asynchronously and walk the ~30-day PRE_CANCEL → CANCELLED settlement tail. Close is gated for every actor (unlike freeze) and is irreversible. The admin door (permissions_tasks maker/checker) is a separate flow." vertex="1">
+          <mxGeometry height="112" width="1180" x="1481.6666395664215" y="468" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-116" parent="TqaJLkIohV8YiBZxnOAf-1" style="ellipse;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="2016.6666395664215" y="596" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-117" parent="TqaJLkIohV8YiBZxnOAf-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 1 · GATE — two customer doors, one shared close op" vertex="1">
+          <mxGeometry height="850" width="700" x="1681.6666395664215" y="656" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-118" parent="agpYlHxNuCScjSGtOT75-117" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaeef5;strokeColor=#9aa7bf;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;spacingRight=10;" value="&lt;b&gt;Two ways a customer closes a card — both run the SAME close op below.&lt;/b&gt; Close is GATED for every actor (unlike freeze, which is frictionless) and is IRREVERSIBLE. A live, owned card only." vertex="1">
+          <mxGeometry height="54" width="660" x="20" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-119" parent="agpYlHxNuCScjSGtOT75-117" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Self close&lt;/b&gt; &lt;i&gt;(an Account Holder closing their OWN card)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• internal OTP only — NO approval, exactly like self-unfreeze&lt;br&gt;• creates NO card_tasks row of its own, so it never sits as a pending blocker (but it IS checked against a pending replacement at initiation)&lt;br&gt;• on OTP ok the close op runs directly&lt;br&gt;• the client shows the balance-forfeit warning before the customer confirms — a plain close forfeits any leftover card balance" vertex="1">
+          <mxGeometry height="290" width="320" x="20" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-120" parent="agpYlHxNuCScjSGtOT75-117" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;CARD_CLOSE_NAHC&lt;/b&gt; &lt;i&gt;(a corporate cardholder (NAHC) closing their OWN card — one checker stage)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• the NAHC passes internal OTP first (a precondition to creating the request)&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_tasks ← insert { subject = CARD_CLOSE_NAHC, card_id = the NAHC&#39;s card, subject_user_id = the NAHC, status = &#39;pending&#39; }&lt;/span&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_task_approvals ← insert { stage 1, required_approval_role = &#39;checker&#39;, decision = &#39;pending&#39; }&lt;/span&gt; → notify checkers&lt;br&gt;• a checker decides (OTP on approve; re-check the NAHC still active + the card still closeable) → on approve &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_tasks.status = &#39;approved&#39;&lt;/span&gt; triggers execution&lt;br&gt;• the NAHC is the INITIATOR here — NOT a company maker (contrast apply / top-up NAHC)" vertex="1">
+          <mxGeometry height="290" width="320" x="360" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-121" parent="agpYlHxNuCScjSGtOT75-117" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Shared preconditions&lt;/b&gt; &lt;i&gt;(checked at self initiation, and at CARD_CLOSE_NAHC creation + re-checked at the checker&#39;s approval)&lt;/i&gt;&lt;br&gt;• the card is a live, owned card: &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.internal_status ∈ {active, frozen} AND cards.uqpay_status ∈ {ACTIVE, FROZEN}&lt;/span&gt; — else 403 invalid_card_action (a frozen card CAN be closed directly)&lt;br&gt;• no conflicting op in flight: a locked read, &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards.inflight_operation IS NULL&lt;/span&gt; — else 409 card_operation_in_progress (blocks closing while an unfreeze push is mid-flight)&lt;br&gt;• no pending customer close/replacement on this card: no &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;card_tasks&lt;/span&gt; row with card_id = this card, status = &#39;pending&#39;, subject ∈ {CARD_CLOSE_NAHC, CARD_REPLACE_SELF, CARD_REPLACE_NAHC} — else 403 (a CUSTOMER-side guard only; the admin close path is exempt)" vertex="1">
+          <mxGeometry height="180" width="660" x="20" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-122" parent="agpYlHxNuCScjSGtOT75-117" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=middle;spacingLeft=12;spacingRight=10;" value="&lt;b&gt;Gate passed → run the shared close op&lt;/b&gt; — self (OTP ok) or CARD_CLOSE_NAHC (final checker approval). The op is internal-first + best-effort push (fail-safe toward closed)." vertex="1">
+          <mxGeometry height="64" width="660" x="20" y="756" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-123" parent="TqaJLkIohV8YiBZxnOAf-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 2 · CLOSE OP — internal-first, then best-effort push to UQPay" vertex="1">
+          <mxGeometry height="620" width="700" x="1681.6666395664215" y="1566" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-124" parent="agpYlHxNuCScjSGtOT75-123" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;①&amp;nbsp; Flip our side FIRST (commits now) + notify the owner&lt;/b&gt; &lt;i&gt;(internal-first — like freeze)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards ← update { internal_status = &#39;ongoing_close&#39; }&lt;/span&gt; — commits immediately&lt;br&gt;• notify the owner &#39;card closed&#39; RIGHT AWAY, independent of the UQPay push below&lt;br&gt;• the effect is instant: real-time authorization now DENIES spend, and the reapply gate now treats this user as holding NO active card (so they can apply for a new card at once)&lt;br&gt;• NO cards.inflight_operation is set — the internal_status change is itself the transition AND the concurrency guard (like freeze)" vertex="1">
+          <mxGeometry height="180" width="660" x="20" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-125" parent="agpYlHxNuCScjSGtOT75-123" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;②&amp;nbsp; Track the provider push&lt;/b&gt; &lt;i&gt;(poll-only tracking — nothing is ever auto-re-sent)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;pending_operations ← insert { entity_type = &#39;card&#39;, entity_id = cards.id, operation = &#39;uq_close&#39;, reference_type = &#39;card_order_id&#39; }&lt;/span&gt;&lt;br&gt;• the row means the push is in flight, awaiting confirmation — resolved by an inbound webhook or a scheduler poll, then deleted" vertex="1">
+          <mxGeometry height="120" width="660" x="20" y="254" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-126" parent="agpYlHxNuCScjSGtOT75-123" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;③&amp;nbsp; Push CANCELLED to UQPay (async) + log unconditionally&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(0, 73, 156);&quot;&gt;POST /v1/issuing/cards/{id}/status&lt;/span&gt; (Update Card Status, body { card_status: &#39;CANCELLED&#39;, update_reason }) — the SAME endpoint as freeze/unfreeze&lt;br&gt;• &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;uqpay_api_logs ← insert { operation = &#39;uq_close&#39;, entity_type = &#39;card&#39;, entity_id = cards.id, idempotency_key, request_body, response_body, http_status }&lt;/span&gt; on WHATEVER UQPay returns — MANDATORY for close, not opt-in&lt;br&gt;• sync 200 { card_id, card_order_id, order_status = PENDING } → &lt;span style=&quot;font-family: &amp;quot;Courier New&amp;quot;, monospace; color: rgb(122, 59, 156);&quot;&gt;pending_operations ← update { reference_id = card_order_id }&lt;/span&gt;; the card stays ongoing_close&lt;br&gt;• sync 4xx / a later failure → see the push-failed box" vertex="1">
+          <mxGeometry height="210" width="660" x="20" y="394" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-127" parent="TqaJLkIohV8YiBZxnOAf-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 3 · CONFIRM — the push is accepted → PRE_CANCEL" vertex="1">
+          <mxGeometry height="250" width="700" x="1681.6666395664215" y="2246" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-128" parent="agpYlHxNuCScjSGtOT75-127" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;④&amp;nbsp; Confirmed → PRE_CANCEL&lt;/b&gt; &lt;i&gt;(the ~30-day pre-cancellation phase begins)&lt;/i&gt;&lt;br&gt;&lt;br&gt;• the &lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;card.status.update.succeeded&lt;/span&gt; webhook carrying data.card_status = &#39;PRE_CANCEL&#39;, matched by source_id == card_order_id (or the Retrieve Card Order poll on reference_id; deduped on webhook_events.event_id)&lt;br&gt;• &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards ← update { uqpay_status = &#39;PRE_CANCEL&#39; }&lt;/span&gt; — internal_status stays &#39;ongoing_close&#39;&lt;br&gt;• delete the pending_operations row; system-resolve any open card_status_sync_retry admin worklist for this card&lt;br&gt;• no second notification — the owner was already told at ①" vertex="1">
+          <mxGeometry height="170" width="660" x="20" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-129" parent="TqaJLkIohV8YiBZxnOAf-1" style="swimlane;html=1;rounded=1;arcSize=2;startSize=46;fontSize=14;fontStyle=1;fontColor=#ffffff;align=left;verticalAlign=middle;spacingLeft=16;fillColor=#44546a;strokeColor=#44546a;swimlaneFillColor=#f7f9fc;" value="PHASE 4 · SETTLEMENT TAIL — CANCELLED (~30 days later) + final-balance capture" vertex="1">
+          <mxGeometry height="340" width="700" x="1681.6666395664215" y="2556" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-130" parent="agpYlHxNuCScjSGtOT75-129" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=left;verticalAlign=top;spacingLeft=12;spacingRight=10;spacingTop=8;" value="&lt;b&gt;⑤&amp;nbsp; Fully closed → CANCELLED + final-balance capture&lt;/b&gt; &lt;i&gt;(NOT a pending_operations row — a 30-day in-flight op doesn&#39;t fit the tracking model; the card-status reconcile scheduler catches the flip)&lt;/i&gt;&lt;br&gt;&lt;br&gt;Two detection paths:&lt;br&gt;• &lt;b&gt;Full-close webhook&lt;/b&gt; (&lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;card.status.update.succeeded&lt;/span&gt;, data.card_status = &#39;CANCELLED&#39;, carrying data.available_balance) → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards ← update { uqpay_status = &#39;CANCELLED&#39;, internal_status = &#39;closed&#39;, final_card_balance = data.available_balance, balance = 0 }&lt;/span&gt;&lt;br&gt;• &lt;b&gt;Poll-only&lt;/b&gt; (the reconcile poll sees CANCELLED, no webhook yet) → &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;cards ← update { uqpay_status = &#39;CANCELLED&#39;, internal_status = &#39;closed&#39;, balance = 0 }&lt;/span&gt;, then raise a card_close_webhook_retrigger admin worklist ONLY IF cards.final_card_balance IS NULL — UQPay resets the live balance to 0 at full close, so the retriggered webhook is the ONLY way to recover the true final balance (a Get-Card read would return 0)&lt;br&gt;• terminal: internal_status = &#39;closed&#39;. A plain close FORFEITS the balance (final_card_balance kept for audit only). If this close is part of a replacement (a card_applications row with replaces_card_id = this card), the balance rollover fires once final_card_balance is known + the new card is active — owned by the replacement flow, not here." vertex="1">
+          <mxGeometry height="260" width="660" x="20" y="54" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-131" parent="TqaJLkIohV8YiBZxnOAf-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;OTP wrong / expired&lt;/b&gt; &lt;i&gt;(self close, or CARD_CLOSE_NAHC creation)&lt;/i&gt;&lt;br&gt;• no state change, no op row created&lt;br&gt;• re-prompt within the attempt cap; the card is untouched" vertex="1">
+          <mxGeometry height="110" width="400" x="2471.6666395664215" y="859" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-132" parent="TqaJLkIohV8YiBZxnOAf-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;CARD_CLOSE_NAHC rejected at the checker stage&lt;/b&gt;&lt;br&gt;• handled entirely by the approval engine → card_tasks.status = &#39;rejected&#39;, notify the initiator&lt;br&gt;• the close op NEVER runs — nothing was flipped, the card stays live" vertex="1">
+          <mxGeometry height="120" width="400" x="2471.6666395664215" y="999" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-133" parent="TqaJLkIohV8YiBZxnOAf-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;Precondition not met → nothing happens&lt;/b&gt;&lt;br&gt;• not a live owned card (pending_* / activation_locked / blocked / ongoing_close / closed / removed) → 403 invalid_card_action (ongoing_close/closed/removed = already closing or gone; blocked = admin-only via UQPay)&lt;br&gt;• a conflicting op in flight (cards.inflight_operation IS NOT NULL — e.g. an unfreeze push mid-flight) → 409 card_operation_in_progress&lt;br&gt;• a pending customer close/replacement already on this card → 403 invalid_card_action&lt;br&gt;• refused right away — no state change, no op row, no card_tasks row" vertex="1">
+          <mxGeometry height="210" width="400" x="2471.6666395664215" y="1161" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-134" parent="TqaJLkIohV8YiBZxnOAf-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;UQPay push fails&lt;/b&gt; &lt;i&gt;(sync 4xx / card.status.update.failed / poll order_status = FAILED)&lt;/i&gt;&lt;br&gt;• the card STAYS cards.internal_status = &#39;ongoing_close&#39; — it is NEVER un-closed (the protective effect, the &#39;closed&#39; notification, and the freed reapply slot already hold)&lt;br&gt;• delete the op row; raise &lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;admin_action_requests ← insert { type = &#39;card_status_sync_retry&#39;, status = &#39;active&#39;, entity_id = cards.id }&lt;/span&gt; if none exists — the SAME worklist type as freeze&lt;br&gt;• follow-up: an admin retries → re-pushes the card&#39;s current internal status (ongoing_close → CANCELLED) under a FRESH x-idempotency-key → on success uqpay_status = &#39;PRE_CANCEL&#39; and the worklist is system-resolved. The divergence is SAFE — we deny spend locally while UQPay lags, exactly as freeze." vertex="1">
+          <mxGeometry height="240" width="400" x="2471.6666395664215" y="1974" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-135" parent="TqaJLkIohV8YiBZxnOAf-1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=8;" value="&lt;b&gt;PRE_CANCEL → CANCELLED stuck, or the final-balance webhook missing&lt;/b&gt;&lt;br&gt;• the card-status reconcile scheduler keeps polling — a stalled tail simply WAITS (the card is already ongoing_close, unspendable, and the reapply slot is already freed, so it is NOT user-blocking)&lt;br&gt;• on a poll-only CANCELLED, the card_close_webhook_retrigger admin worklist reproduces the full-close webhook to recover cards.final_card_balance (never a Get-Card read — UQPay returns 0)&lt;br&gt;• a replacement&#39;s balance rollover simply waits for final_card_balance + the new card going active" vertex="1">
+          <mxGeometry height="220" width="400" x="2471.6666395664215" y="2664" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-136" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-116" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="agpYlHxNuCScjSGtOT75-117">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-137" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-118" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-119" value="self path">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-138" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-118" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-120" value="NAHC path">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-139" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-119" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-121" value="OTP ok">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-140" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-121" value="OTP ok + checker approves">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-141" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-121" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-122" value="all preconditions hold">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-142" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-117" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="agpYlHxNuCScjSGtOT75-123" value="gate passed — run the close op">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-143" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="agpYlHxNuCScjSGtOT75-125">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-144" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-125" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;" target="agpYlHxNuCScjSGtOT75-126">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-145" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-123" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="agpYlHxNuCScjSGtOT75-127" value="UQPay returned sync 200 (order PENDING) — await confirmation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-146" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-127" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;strokeWidth=2;" target="agpYlHxNuCScjSGtOT75-129" value="the ~30-day settlement completes — UQPay finalises the card to CANCELLED">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-147" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-131" value="OTP wrong">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-148" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-132" value="reject">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-149" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-121" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-133" value="fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-150" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-126" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-134" value="push fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-151" edge="1" parent="TqaJLkIohV8YiBZxnOAf-1" source="agpYlHxNuCScjSGtOT75-130" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;fontSize=11;labelBackgroundColor=#ffffff;endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="agpYlHxNuCScjSGtOT75-135" value="stuck">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-152" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Three gating models for CLOSE — one op, three doors" vertex="1">
+          <mxGeometry height="26" width="700" x="1481.6666395664215" y="2984" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-153" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="Close is gated for EVERY actor and is irreversible. This diagram shows the two CUSTOMER doors; the admin door is a separate flow.&#xa;&#xa;• SELF (Account Holder, own card) — internal OTP, NO approval. Writes no card_tasks row.&#xa;• CARD_CLOSE_NAHC (the NAHC, own card) — internal OTP, then card_tasks ONE checker stage (NAHC → checker; the NAHC is the initiator, not a company maker).&#xa;• ADMIN (separate flow) — permissions_tasks maker → checker (the view_/edit_/approve_close_card triple, task ACTION_ID = edit_close_card); the enix-biz-uqpay executor calls the SAME op. The admin path is EXEMPT from the &#39;no pending customer close/replacement&#39; guard.&#xa;&#xa;All three converge on the one internal-first close op." vertex="1">
+          <mxGeometry height="210" width="700" x="1481.6666395664215" y="3016" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-154" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Two internal statuses across the ~30-day cycle" vertex="1">
+          <mxGeometry height="26" width="700" x="1481.6666395664215" y="3244" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-155" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="cards.internal_status walks active|frozen → ongoing_close → closed, while cards.uqpay_status walks ACTIVE|FROZEN → PRE_CANCEL → CANCELLED alongside it.&#xa;&#xa;• ongoing_close — set the INSTANT the gate passes (internal-first); the ~30-day pre-cancellation phase; tracks UQPay PRE_CANCEL.&#xa;• closed — set only when UQPay finalises to CANCELLED (~30 days later); the card is fully closed.&#xa;&#xa;BOTH deny spend, and BOTH count as &#39;no active card&#39; in the reapply gate — which is what lets the customer apply for a new card immediately, without waiting out the CANCELLED window." vertex="1">
+          <mxGeometry height="180" width="700" x="1481.6666395664215" y="3276" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-156" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Status fields that move through the flow" vertex="1">
+          <mxGeometry height="26" width="700" x="1481.6666395664215" y="3474" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-157" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="cards.internal_status:  active / frozen → ongoing_close → closed → (removed, via the card-remove action)&#xa;cards.uqpay_status:  ACTIVE / FROZEN → PRE_CANCEL → CANCELLED&#xa;cards.final_card_balance:  NULL → captured at &#39;closed&#39; (webhook-only; audit + balance-rollover source)&#xa;cards.balance:  → 0 at &#39;closed&#39; (matches UQPay&#39;s now-dead card)&#xa;&#xa;card_tasks.status (CARD_CLOSE_NAHC only):  pending → approved  (or rejected)&#xa;&#xa;NO cards.inflight_operation is ever set — the internal_status change is itself the transition and the guard (like freeze)." vertex="1">
+          <mxGeometry height="210" width="700" x="1481.6666395664215" y="3506" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-158" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;" value="Legend" vertex="1">
+          <mxGeometry height="24" width="285" x="2221.6666395664215" y="2984" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-159" parent="TqaJLkIohV8YiBZxnOAf-1" style="rounded=1;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="2231.6666395664215" y="3016" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-160" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="system / engine action" vertex="1">
+          <mxGeometry height="22" width="360" x="2263.6666395664215" y="3016" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-161" parent="TqaJLkIohV8YiBZxnOAf-1" style="rounded=1;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="2231.6666395664215" y="3046" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-162" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="gate passed / success / terminal (closed)" vertex="1">
+          <mxGeometry height="22" width="360" x="2263.6666395664215" y="3046" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-163" parent="TqaJLkIohV8YiBZxnOAf-1" style="rounded=1;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="2231.6666395664215" y="3076" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-164" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="preconditions / gate check" vertex="1">
+          <mxGeometry height="22" width="360" x="2263.6666395664215" y="3076" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-165" parent="TqaJLkIohV8YiBZxnOAf-1" style="rounded=1;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="" vertex="1">
+          <mxGeometry height="22" width="22" x="2231.6666395664215" y="3106" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-166" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="failure / exception (with its follow-up)" vertex="1">
+          <mxGeometry height="22" width="360" x="2263.6666395664215" y="3106" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-167" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="&lt;span style=&#39;font-family:Courier New,monospace;color:#7a3b9c;&#39;&gt;table ← insert / update&lt;/span&gt;&amp;nbsp;&amp;nbsp;=&amp;nbsp; a database write / read" vertex="1">
+          <mxGeometry height="22" width="460" x="2231.6666395664215" y="3138" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-168" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=11;" value="&lt;span style=&#39;font-family:Courier New,monospace;color:#00499c;&#39;&gt;POST /v1/... , webhook.name&lt;/span&gt;&amp;nbsp;&amp;nbsp;=&amp;nbsp; a UQPay API call / webhook" vertex="1">
+          <mxGeometry height="22" width="480" x="2231.6666395664215" y="3166" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-169" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=14;fontStyle=1;" value="Developer notes" vertex="1">
+          <mxGeometry height="26" width="620" x="2221.6666395664215" y="3206" as="geometry" />
+        </mxCell>
+        <mxCell id="agpYlHxNuCScjSGtOT75-170" parent="TqaJLkIohV8YiBZxnOAf-1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=12;fillColor=#f9f9f9;strokeColor=#cccccc;spacing=12;spacingLeft=14;" value="• Close is INTERNAL-FIRST + best-effort push (fail-safe toward closed), exactly like freeze: cards.internal_status → ongoing_close commits first, so real-time authorization denies spend and the reapply slot opens at once, and the owner is notified &#39;card closed&#39; immediately — regardless of the UQPay result. A failed push does NOT un-close the card; it raises the card_status_sync_retry admin worklist.&lt;br&gt;&lt;br&gt;• Close uses NO cards.inflight_operation — like freeze, it deliberately changes internal_status, so that change is itself the transition and the concurrency guard.&lt;br&gt;&lt;br&gt;• Final balance is WEBHOOK-ONLY. UQPay resets the card&#39;s available balance to 0 once fully closed, so a Get-Card read after CANCELLED returns 0. If the reconcile POLL (not the webhook) detects CANCELLED, we raise card_close_webhook_retrigger to reproduce the webhook — never a Get-Card read.&lt;br&gt;&lt;br&gt;• Balance on a plain close is FORFEITED — no refund, no wallet/ledger movement; the customer is warned before confirming. final_card_balance is kept for audit. Only a REPLACEMENT (CARD_REPLACE_SELF / CARD_REPLACE_NAHC) rolls that balance onto the new card, and that rollover is owned by the replacement flow, not here.&lt;br&gt;&lt;br&gt;• The ~30-day PRE_CANCEL → CANCELLED tail is NOT a pending_operations row (a 30-day in-flight op doesn&#39;t fit the tracking model) — it rides the card-status reconcile scheduler.&lt;br&gt;&lt;br&gt;• CARD_CLOSE_NAHC is NAHC → checker (one stage): the NAHC initiates the close of their OWN card and a single checker approves. This differs from apply-NAHC (maker → checker) and top-up-NAHC (NAHC → maker → checker). subject_user_id = the NAHC." vertex="1">
+          <mxGeometry height="640" width="620" x="2221.6666395664215" y="3238" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
